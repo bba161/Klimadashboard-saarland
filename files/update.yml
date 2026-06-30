@@ -1,0 +1,49 @@
+name: Klimadaten aktualisieren
+
+on:
+  schedule:
+    # Stündlich zur vollen Stunde (UTC). DWD aktualisiert "recent" i.d.R.
+    # einmal täglich, Stundenwerte mehrfach täglich - stündlich ist ein
+    # guter Kompromiss zwischen Aktualität und Serverlast.
+    - cron: "5 * * * *"
+  workflow_dispatch: {}  # manuelles Auslösen über die GitHub-UI
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-data
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v4
+
+      - name: Python einrichten
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Abhängigkeiten installieren
+        run: pip install -r scripts/requirements.txt
+
+      - name: DWD-Klimadaten laden und aggregieren
+        run: python scripts/update_data.py
+
+      - name: PLZ-zu-Station-Mapping aktualisieren
+        run: python scripts/build_plz_mapping.py
+
+      - name: Änderungen committen, falls vorhanden
+        run: |
+          git config user.name "klima-dashboard-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/
+          if git diff --cached --quiet; then
+            echo "Keine Änderungen an den Daten."
+          else
+            git commit -m "Datenaktualisierung: $(date -u +'%Y-%m-%d %H:%M UTC')"
+            git push
+          fi
