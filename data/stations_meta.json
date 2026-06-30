@@ -1,0 +1,92 @@
+{
+  "00460": {
+    "name": "Berus",
+    "lat": 49.2641,
+    "lon": 6.6868,
+    "hoehe": 362.0,
+    "hourly_temp_station_id": "00460",
+    "hourly_temp_distance_km": 0.0,
+    "hourly_precip_station_id": "00460",
+    "hourly_precip_distance_km": 0.0
+  },
+  "02331": {
+    "name": "Homburg",
+    "lat": 49.3278,
+    "lon": 7.3533,
+    "hoehe": 235.0,
+    "hourly_temp_station_id": "03545",
+    "hourly_temp_distance_km": 9.1,
+    "hourly_precip_station_id": "02331",
+    "hourly_precip_distance_km": 0.0
+  },
+  "03545": {
+    "name": "Neunkirchen-Wellesweiler",
+    "lat": 49.344,
+    "lon": 7.2297,
+    "hoehe": 236.0,
+    "hourly_temp_station_id": "03545",
+    "hourly_temp_distance_km": 0.0,
+    "hourly_precip_station_id": "03545",
+    "hourly_precip_distance_km": 0.0
+  },
+  "03904": {
+    "name": "Perl-Nennig",
+    "lat": 49.5354,
+    "lon": 6.3789,
+    "hoehe": 152.0,
+    "hourly_temp_station_id": "03904",
+    "hourly_temp_distance_km": 0.0,
+    "hourly_precip_station_id": "03904",
+    "hourly_precip_distance_km": 0.0
+  },
+  "04336": {
+    "name": "Saarbrücken-Ensheim",
+    "lat": 49.2128,
+    "lon": 7.1077,
+    "hoehe": 319.0,
+    "hourly_temp_station_id": "04336",
+    "hourly_temp_distance_km": 0.0,
+    "hourly_precip_station_id": "04336",
+    "hourly_precip_distance_km": 0.0
+  },
+  "04490": {
+    "name": "Schmelz-Hüttersdorf",
+    "lat": 49.4149,
+    "lon": 6.836,
+    "hoehe": 223.0,
+    "hourly_temp_station_id": null,
+    "hourly_temp_distance_km": 15.5,
+    "hourly_precip_station_id": "04490",
+    "hourly_precip_distance_km": 0.0
+  },
+  "05029": {
+    "name": "Tholey",
+    "lat": 49.4737,
+    "lon": 7.0385,
+    "hoehe": 387.0,
+    "hourly_temp_station_id": "05029",
+    "hourly_temp_distance_km": 0.0,
+    "hourly_precip_station_id": "05029",
+    "hourly_precip_distance_km": 0.0
+  },
+  "05433": {
+    "name": "Weiskirchen",
+    "lat": 49.5534,
+    "lon": 6.812,
+    "hoehe": 383.0,
+    "hourly_temp_station_id": "05433",
+    "hourly_temp_distance_km": 0.0,
+    "hourly_precip_station_id": "05433",
+    "hourly_precip_distance_km": 0.0
+  },
+  "06217": {
+    "name": "Saarbrücken-Burbach",
+    "lat": 49.2406,
+    "lon": 6.9351,
+    "hoehe": 190.0,
+    "hourly_temp_station_id": "06217",
+    "hourly_temp_distance_km": 0.0,
+    "hourly_precip_station_id": "06217",
+    "hourly_precip_distance_km": 0.0
+  }
+}
