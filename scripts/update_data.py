@@ -416,10 +416,11 @@ def compute_referenzband_niederschlag(daily: list[dict], jahr_von: int, jahr_bis
 def get_tage_fenster() -> list[tuple[int, int]]:
     """Gibt die (Monat, Tag)-Tupel für die letzten TAGESREIHE_TAGE Tage zurück."""
     heute = datetime.now(timezone.utc).date()
-    return [(heute - timedelta(days=TAGESREIHE_TAGE - i)).month,
-            (heute - timedelta(days=TAGESREIHE_TAGE - i)).day)
-           for i in range(TAGESREIHE_TAGE + 1)]
-
+    result = []
+    for i in range(TAGESREIHE_TAGE + 1):
+        d = heute - timedelta(days=TAGESREIHE_TAGE - i)
+        result.append((d.month, d.day))
+    return result
 
 # ---------------------------------------------------------------------------
 # Stundenwerte
