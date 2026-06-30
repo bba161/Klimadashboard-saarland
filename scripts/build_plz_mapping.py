@@ -5,18 +5,12 @@ build_plz_mapping.py
 Erzeugt data/plz_mapping.json: für jede Saarland-Postleitzahl die
 nächstgelegene der 11 DWD-Stationen (per Luftlinie).
 
-Primärquelle für die PLZ-Geodaten ist das Opendatasoft-Dataset
-"georef-germany-postleitzahl" (OSM-Daten via suche-postleitzahl.org,
-ODbL-Lizenz), da es echte PLZ-Gebietsschwerpunkte liefert und nicht
-(wie manche andere offene Quellen) auch Großkunden-Sonder-PLZ enthält,
-deren Koordinate fälschlich am Sitz des Unternehmens statt am
-tatsächlichen PLZ-Gebiet liegt.
+Primärquelle ist der "postal-codes-json-xml-csv"-Datensatz von zauberware
+(github.com/zauberware/postal-codes-json-xml-csv, CC BY 4.0), da dessen
+URL nachweislich funktioniert (ZIP-Archiv mit JSON).
 
-Fällt der Abruf aus, wird ersatzweise der "postal-codes-json-xml-csv"-
-Datensatz von zauberware (github.com/zauberware/postal-codes-json-xml-csv,
-CC BY 4.0) als Fallback verwendet. Dieser enthält teils auch
-Firmen-PLZ; das ist für ein Saarland-Dashboard ein vertretbarer
-Kompromiss, da die allermeisten PLZ trotzdem korrekt georeferenziert sind.
+Als Fallback dient das Opendatasoft-Dataset "georef-germany-postleitzahl"
+(data.opendatasoft.com, ODbL-Lizenz).
 
 Das Skript benötigt die DWD-Stationskoordinaten, die bereits von
 update_data.py in data/stations_meta.json abgelegt wurden. Es sollte
@@ -25,9 +19,11 @@ deshalb NACH update_data.py ausgeführt werden (siehe GitHub Workflow).
 
 from __future__ import annotations
 
+import io
 import json
 import logging
 import sys
+import zipfile
 from pathlib import Path
 from typing import Optional
 
@@ -43,15 +39,17 @@ DATA_DIR = Path(__file__).parent.parent / "data"
 STATIONS_META_CACHE = DATA_DIR / "stations_meta.json"
 OUTPUT_FILE = DATA_DIR / "plz_mapping.json"
 
-OPENDATASOFT_URL = (
-    "https://public.opendatasoft.com/api/explore/v2.1/catalog/datasets/"
-    "georef-germany-postleitzahl/records"
-    "?where=lan_name%3D%22Saarland%22&limit=100"
+# Primär: zauberware ZIP-Archiv (verifiziert funktionierend)
+ZAUBERWARE_PRIMARY_URL = (
+    "https://raw.githubusercontent.com/zauberware/postal-codes-json-xml-csv/"
+    "master/data/DE.zip"
 )
 
-ZAUBERWARE_FALLBACK_URL = (
-    "https://raw.githubusercontent.com/zauberware/postal-codes-json-xml-csv/"
-    "master/data/DE/zipcodes.de.json"
+# Fallback: Opendatasoft (korrigierte Domain + @public-Suffix)
+OPENDATASOFT_FALLBACK_URL = (
+    "https://data.opendatasoft.com/api/explore/v2.1/catalog/datasets/"
+    "georef-germany-postleitzahl@public/records"
+    "?where=lan_name%3D%22Saarland%22&limit=100"
 )
 
 REQUEST_TIMEOUT = 60
@@ -68,29 +66,18 @@ def haversine_km(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
     return R * 2 * atan2(sqrt(a), sqrt(1 - a))
 
 
-def load_saarland_plz_opendatasoft() -> list[dict]:
-    """Liefert [{plz, ort, lat, lon}, ...] aus dem Opendatasoft-Dataset."""
-    resp = session.get(OPENDATASOFT_URL, timeout=REQUEST_TIMEOUT)
+def load_saarland_plz_zauberware() -> list[dict]:
+    """Primär: zauberware ZIP-Archiv herunterladen und JSON extrahieren."""
+    resp = session.get(ZAUBERWARE_PRIMARY_URL, timeout=REQUEST_TIMEOUT)
     resp.raise_for_status()
-    payload = resp.json()
-    results = []
-    for rec in payload.get("results", []):
-        plz = rec.get("plz") or rec.get("name")
-        geo = rec.get("geo_point_2d") or {}
-        lat, lon = geo.get("lat"), geo.get("lon")
-        ort = rec.get("name") or rec.get("plz_name") or ""
-        if plz and lat is not None and lon is not None:
-            results.append({"plz": str(plz).zfill(5), "ort": ort, "lat": float(lat), "lon": float(lon)})
-    if not results:
-        raise ValueError("Opendatasoft-Antwort enthielt keine verwertbaren PLZ-Datensätze")
-    return results
 
+    with zipfile.ZipFile(io.BytesIO(resp.content)) as zf:
+        # Die JSON-Datei im Archiv finden
+        json_names = [n for n in zf.namelist() if n.endswith(".json")]
+        if not json_names:
+            raise ValueError("Kein JSON in DE.zip gefunden")
+        data = json.loads(zf.read(json_names[0]))
 
-def load_saarland_plz_fallback() -> list[dict]:
-    """Fallback: zauberware-Datensatz, gefiltert auf state == 'Saarland'."""
-    resp = session.get(ZAUBERWARE_FALLBACK_URL, timeout=REQUEST_TIMEOUT)
-    resp.raise_for_status()
-    data = resp.json()
     seen: dict[str, dict] = {}
     for d in data:
         if d.get("state") != "Saarland":
@@ -104,8 +91,26 @@ def load_saarland_plz_fallback() -> list[dict]:
                 "lon": float(d["longitude"]),
             }
     if not seen:
-        raise ValueError("Fallback-Datensatz enthielt keine Saarland-PLZ")
+        raise ValueError("zauberware-Datensatz enthielt keine Saarland-PLZ")
     return sorted(seen.values(), key=lambda x: x["plz"])
+
+
+def load_saarland_plz_opendatasoft() -> list[dict]:
+    """Fallback: Opendatasoft-Dataset mit korrigierter URL."""
+    resp = session.get(OPENDATASOFT_FALLBACK_URL, timeout=REQUEST_TIMEOUT)
+    resp.raise_for_status()
+    payload = resp.json()
+    results = []
+    for rec in payload.get("results", []):
+        plz = rec.get("plz") or rec.get("name")
+        geo = rec.get("geo_point_2d") or {}
+        lat, lon = geo.get("lat"), geo.get("lon")
+        ort = rec.get("name") or rec.get("plz_name") or ""
+        if plz and lat is not None and lon is not None:
+            results.append({"plz": str(plz).zfill(5), "ort": ort, "lat": float(lat), "lon": float(lon)})
+    if not results:
+        raise ValueError("Opendatasoft-Antwort enthielt keine verwertbaren PLZ-Datensätze")
+    return results
 
 
 def load_station_coords() -> dict[str, dict]:
@@ -123,13 +128,18 @@ def main() -> None:
         log.error("Keine Stationskoordinaten verfügbar, breche ab.")
         sys.exit(1)
 
+    # Primär: zauberware (verifiziert), Fallback: Opendatasoft
     try:
-        plz_list = load_saarland_plz_opendatasoft()
-        quelle = "opendatasoft"
+        plz_list = load_saarland_plz_zauberware()
+        quelle = "zauberware_zip"
     except Exception as e:  # noqa: BLE001
-        log.warning("Opendatasoft-Quelle fehlgeschlagen (%s), nutze Fallback.", e)
-        plz_list = load_saarland_plz_fallback()
-        quelle = "zauberware_fallback"
+        log.warning("zauberware-Quelle fehlgeschlagen (%s), nutze Opendatasoft-Fallback.", e)
+        try:
+            plz_list = load_saarland_plz_opendatasoft()
+            quelle = "opendatasoft_fallback"
+        except Exception as e2:  # noqa: BLE001
+            log.error("Auch Opendatasoft-Fallback fehlgeschlagen (%s). Abbruch.", e2)
+            sys.exit(1)
 
     log.info("%d Saarland-PLZ geladen (Quelle: %s)", len(plz_list), quelle)
 
