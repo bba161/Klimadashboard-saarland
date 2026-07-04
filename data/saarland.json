@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-04T07:32:32+00:00",
+  "generated_at": "2026-07-04T12:13:40+00:00",
   "sommertag_schwelle_c": 25.0,
   "stations": {
     "00460": {
@@ -34,14 +34,14 @@
         "2023": 64,
         "2024": 39,
         "2025": 50,
-        "2026": 27
+        "2026": 28
       },
-      "sommertage_laufendes_jahr": 27,
-      "tageshoechstwert_heute_c": 27.5,
+      "sommertage_laufendes_jahr": 28,
+      "tageshoechstwert_heute_c": 26.1,
       "niederschlag_letzte_30_tage_mm": 47.6,
       "aktuelle_temperatur": {
-        "wert": 17.2,
-        "zeitpunkt": "2026070223"
+        "wert": 17.9,
+        "zeitpunkt": "2026070323"
       },
       "hourly_temp_distance_km": 0.0,
       "referenzperioden": {
@@ -200,6 +200,11 @@
         {
           "datum": "20260702",
           "txk": 27.5,
+          "rsk": 0.0
+        },
+        {
+          "datum": "20260703",
+          "txk": 26.1,
           "rsk": 0.0
         }
       ],
@@ -959,7 +964,7 @@
           }
         ]
       },
-      "letztes_tageswert_datum": "20260702",
+      "letztes_tageswert_datum": "20260703",
       "status": "ok",
       "fehler": null
     },
@@ -977,8 +982,8 @@
       "tageshoechstwert_heute_c": 10.5,
       "niederschlag_letzte_30_tage_mm": null,
       "aktuelle_temperatur": {
-        "wert": 16.8,
-        "zeitpunkt": "2026070223"
+        "wert": 13.3,
+        "zeitpunkt": "2026070323"
       },
       "hourly_temp_distance_km": 9.1,
       "referenzperioden": {
@@ -1841,14 +1846,14 @@
         "2023": 84,
         "2024": 60,
         "2025": 70,
-        "2026": 30
+        "2026": 31
       },
-      "sommertage_laufendes_jahr": 30,
-      "tageshoechstwert_heute_c": 28.5,
+      "sommertage_laufendes_jahr": 31,
+      "tageshoechstwert_heute_c": 26.9,
       "niederschlag_letzte_30_tage_mm": 54.8,
       "aktuelle_temperatur": {
-        "wert": 16.8,
-        "zeitpunkt": "2026070223"
+        "wert": 13.3,
+        "zeitpunkt": "2026070323"
       },
       "hourly_temp_distance_km": 0.0,
       "referenzperioden": {
@@ -2007,6 +2012,11 @@
         {
           "datum": "20260702",
           "txk": 28.5,
+          "rsk": 0.0
+        },
+        {
+          "datum": "20260703",
+          "txk": 26.9,
           "rsk": 0.0
         }
       ],
@@ -2766,7 +2776,7 @@
           }
         ]
       },
-      "letztes_tageswert_datum": "20260702",
+      "letztes_tageswert_datum": "20260703",
       "status": "ok",
       "fehler": null
     },
@@ -2856,14 +2866,14 @@
         "2023": 80,
         "2024": 55,
         "2025": 66,
-        "2026": 29
+        "2026": 30
       },
-      "sommertage_laufendes_jahr": 29,
-      "tageshoechstwert_heute_c": 28.3,
+      "sommertage_laufendes_jahr": 30,
+      "tageshoechstwert_heute_c": 27.8,
       "niederschlag_letzte_30_tage_mm": 25.6,
       "aktuelle_temperatur": {
-        "wert": 15.7,
-        "zeitpunkt": "2026070223"
+        "wert": 12.6,
+        "zeitpunkt": "2026070323"
       },
       "hourly_temp_distance_km": 0.0,
       "referenzperioden": {
@@ -3022,6 +3032,11 @@
         {
           "datum": "20260702",
           "txk": 28.3,
+          "rsk": 0.0
+        },
+        {
+          "datum": "20260703",
+          "txk": 27.8,
           "rsk": 0.0
         }
       ],
@@ -3781,7 +3796,7 @@
           }
         ]
       },
-      "letztes_tageswert_datum": "20260702",
+      "letztes_tageswert_datum": "20260703",
       "status": "ok",
       "fehler": null
     },
@@ -3817,14 +3832,14 @@
         "2023": 65,
         "2024": 48,
         "2025": 53,
-        "2026": 28
+        "2026": 29
       },
-      "sommertage_laufendes_jahr": 28,
-      "tageshoechstwert_heute_c": 27.0,
+      "sommertage_laufendes_jahr": 29,
+      "tageshoechstwert_heute_c": 25.5,
       "niederschlag_letzte_30_tage_mm": 35.8,
       "aktuelle_temperatur": {
-        "wert": 15.6,
-        "zeitpunkt": "2026070223"
+        "wert": 17.8,
+        "zeitpunkt": "2026070323"
       },
       "hourly_temp_distance_km": 0.0,
       "referenzperioden": {
@@ -3983,6 +3998,11 @@
         {
           "datum": "20260702",
           "txk": 27.0,
+          "rsk": 0.0
+        },
+        {
+          "datum": "20260703",
+          "txk": 25.5,
           "rsk": 0.0
         }
       ],
@@ -4742,7 +4762,7 @@
           }
         ]
       },
-      "letztes_tageswert_datum": "20260702",
+      "letztes_tageswert_datum": "20260703",
       "status": "ok",
       "fehler": null
     },
@@ -5566,14 +5586,14 @@
         "2023": 52,
         "2024": 38,
         "2025": 46,
-        "2026": 26
+        "2026": 27
       },
-      "sommertage_laufendes_jahr": 26,
-      "tageshoechstwert_heute_c": 26.7,
+      "sommertage_laufendes_jahr": 27,
+      "tageshoechstwert_heute_c": 25.2,
       "niederschlag_letzte_30_tage_mm": 64.4,
       "aktuelle_temperatur": {
-        "wert": 16.9,
-        "zeitpunkt": "2026070223"
+        "wert": 17.7,
+        "zeitpunkt": "2026070323"
       },
       "hourly_temp_distance_km": 0.0,
       "referenzperioden": {
@@ -5732,6 +5752,11 @@
         {
           "datum": "20260702",
           "txk": 26.7,
+          "rsk": 0.0
+        },
+        {
+          "datum": "20260703",
+          "txk": 25.2,
           "rsk": 0.0
         }
       ],
@@ -6491,7 +6516,7 @@
           }
         ]
       },
-      "letztes_tageswert_datum": "20260702",
+      "letztes_tageswert_datum": "20260703",
       "status": "ok",
       "fehler": null
     },
@@ -6527,14 +6552,14 @@
         "2023": 68,
         "2024": 49,
         "2025": 60,
-        "2026": 30
+        "2026": 31
       },
-      "sommertage_laufendes_jahr": 30,
-      "tageshoechstwert_heute_c": 27.1,
+      "sommertage_laufendes_jahr": 31,
+      "tageshoechstwert_heute_c": 26.3,
       "niederschlag_letzte_30_tage_mm": 46.9,
       "aktuelle_temperatur": {
-        "wert": 15.6,
-        "zeitpunkt": "2026070223"
+        "wert": 16.9,
+        "zeitpunkt": "2026070323"
       },
       "hourly_temp_distance_km": 0.0,
       "referenzperioden": {
@@ -6693,6 +6718,11 @@
         {
           "datum": "20260702",
           "txk": 27.1,
+          "rsk": 0.0
+        },
+        {
+          "datum": "20260703",
+          "txk": 26.3,
           "rsk": 0.0
         }
       ],
@@ -7452,7 +7482,7 @@
           }
         ]
       },
-      "letztes_tageswert_datum": "20260702",
+      "letztes_tageswert_datum": "20260703",
       "status": "ok",
       "fehler": null
     },
@@ -7487,14 +7517,14 @@
         "2023": 90,
         "2024": 67,
         "2025": 72,
-        "2026": 33
+        "2026": 34
       },
-      "sommertage_laufendes_jahr": 33,
-      "tageshoechstwert_heute_c": 28.7,
+      "sommertage_laufendes_jahr": 34,
+      "tageshoechstwert_heute_c": 27.2,
       "niederschlag_letzte_30_tage_mm": 45.2,
       "aktuelle_temperatur": {
-        "wert": 17.9,
-        "zeitpunkt": "2026070223"
+        "wert": 15.3,
+        "zeitpunkt": "2026070323"
       },
       "hourly_temp_distance_km": 0.0,
       "referenzperioden": {
@@ -7653,6 +7683,11 @@
         {
           "datum": "20260702",
           "txk": 28.7,
+          "rsk": 0.0
+        },
+        {
+          "datum": "20260703",
+          "txk": 27.2,
           "rsk": 0.0
         }
       ],
@@ -8412,7 +8447,7 @@
           }
         ]
       },
-      "letztes_tageswert_datum": "20260702",
+      "letztes_tageswert_datum": "20260703",
       "status": "ok",
       "fehler": null
     }
