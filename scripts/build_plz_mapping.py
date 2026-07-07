@@ -105,8 +105,8 @@ if plz == "66104":
         if ist_firma:
             continue
         
-        # Filtere PLZ < 66000 (das sind oft bundesweite Großkunden-PLZ)
-        if int(plz) < 66000:
+        # Filtere PLZ < 66105 (das sind oft bundesweite Großkunden-PLZ)
+        if int(plz) < 66105:
             continue
         
         if plz not in seen:
@@ -148,8 +148,8 @@ def load_saarland_plz_opendatasoft() -> list[dict]:
         if ist_firma:
             continue
         
-        # Filtere PLZ < 66000
-        if plz and int(str(plz).zfill(5)) < 66000:
+        # Filtere PLZ < 66105
+        if plz and int(str(plz).zfill(5)) < 66105:
             continue
         
         if plz and lat is not None and lon is not None:
