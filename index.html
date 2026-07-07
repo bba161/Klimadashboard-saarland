@@ -433,12 +433,24 @@
         });
       }
 
-      // --- Einordnung ---
-      function tempEinordnung(txk) {
+      // --- Einordnung VERBESSERT: Vergleich mit P10/P90 ---
+      function tempEinordnung(txk, refBand) {
         if (txk == null) return { text: "keine Daten verfügbar", cls: "" };
-        if (txk >= 30) return { text: "ungewöhnlich warm", cls: "warm" };
-        if (txk >= 25) return { text: "ungewöhnlich warm", cls: "warm" };
-        if (txk <= 0) return { text: "ungewöhnlich kalt", cls: "kalt" };
+        if (!refBand || refBand.length === 0) {
+          // Fallback ohne Referenz
+          if (txk >= 30) return { text: "ungewöhnlich warm", cls: "warm" };
+          if (txk <= 5) return { text: "ungewöhnlich kalt", cls: "kalt" };
+          return { text: "", cls: "" };
+        }
+        
+        // Letzter Tag = heute
+        const heuteRef = refBand[refBand.length - 1];
+        if (!heuteRef || heuteRef.p10 == null || heuteRef.p90 == null) {
+          return { text: "", cls: "" };
+        }
+        
+        if (txk > heuteRef.p90) return { text: "ungewöhnlich warm", cls: "warm" };
+        if (txk < heuteRef.p10) return { text: "ungewöhnlich kalt", cls: "kalt" };
         return { text: "im normalen Bereich", cls: "normal" };
       }
 
@@ -477,7 +489,10 @@
         const txk = station.tageshoechstwert_heute_c;
         const sommBisher = station.sommertage_laufendes_jahr;
 
-        const tE = tempEinordnung(txk);
+        // Referenzband für heute
+        const refBandTemp = station.referenzband_temperatur ? station.referenzband_temperatur[aktuelleReferenz] : [];
+        
+        const tE = tempEinordnung(txk, refBandTemp);
         const rE = regenEinordnung(niederschlag30, refJahrNied);
 
         const grid = $("dashboard-grid");
@@ -500,8 +515,8 @@
             <div class="kachel ${aktuellerTab === 'sommertage' ? 'active' : ''}" data-tab="sommertage">
               <div class="icon">${ICON_SUN}</div>
               <div>
-                <h2>Heiße Tage</h2>
-                <p><span class="einordnung mehr">Heiße Tage</span> ab 25°C: <span class="wert">${sommBisher != null ? sommBisher : '–'}</span> seit Jahresbeginn. In welchem Monat diese Tage auftreten, schwankt von Jahr zu Jahr, seit 2000 werden es aber <span class="einordnung mehr">immer mehr</span>.</p>
+                <h2>Sommertage</h2>
+                <p><span class="einordnung mehr">Sommertage</span> ab 25°C: <span class="wert">${sommBisher != null ? sommBisher : '–'}</span> seit März. In welchem Monat diese Tage auftreten, schwankt von Jahr zu Jahr, seit 2000 werden es aber <span class="einordnung mehr">immer mehr</span>.</p>
               </div>
             </div>
           </div>
@@ -627,9 +642,19 @@
           options: {
             responsive: true,
             maintainAspectRatio: false,
+            onClick: (event, activeElements) => {
+              // Klick aktiviert Tooltip
+              if (activeElements.length > 0) {
+                chart.tooltip.setActiveElements(activeElements);
+                chart.update();
+              }
+            },
             plugins: {
               legend: { display: false },
               tooltip: {
+                enabled: true,
+                mode: 'index',
+                intersect: false,
                 callbacks: {
                   label: item => {
                     if (item.dataset.label === "Tageshöchsttemperatur") {
@@ -654,7 +679,7 @@
         });
       }
 
-      // --- Regen Chart ---
+      // --- Regen Chart (JETZT BLAU!) ---
       function zeichneRegenChart(station) {
         const title = $("chart-title");
         const sub = $("chart-sub");
@@ -731,10 +756,10 @@
                 type: "line",
                 label: "Regen der letzten 30 Tage",
                 data: kumWerte,
-                borderColor: "#6b8e23",
+                borderColor: "#004d8b",
                 borderWidth: 2.5,
                 pointRadius: kumWerte.map((v, i) => i === kumWerte.length - 1 ? 5 : 0),
-                pointBackgroundColor: "#6b8e23",
+                pointBackgroundColor: "#004d8b",
                 fill: false,
                 tension: 0.2,
                 order: 1
@@ -744,9 +769,18 @@
           options: {
             responsive: true,
             maintainAspectRatio: false,
+            onClick: (event, activeElements) => {
+              if (activeElements.length > 0) {
+                chart.tooltip.setActiveElements(activeElements);
+                chart.update();
+              }
+            },
             plugins: {
               legend: { display: false },
               tooltip: {
+                enabled: true,
+                mode: 'index',
+                intersect: false,
                 callbacks: {
                   label: item => {
                     if (item.dataset.label === "Regen der letzten 30 Tage") {
@@ -778,8 +812,8 @@
         const sub = $("chart-sub");
         const toggle = $("referenz-toggle");
 
-        title.innerHTML = `So viele <span style="text-decoration:underline">heiße Tage</span> gab es in ${station.name} von März bis Oktober`;
-        sub.textContent = "Heißer Tag = Temperatur steigt auf 25 °C oder höher. Die Linie zeigt, wohin sich der langjährige Trend von 2000 bis zum vergangenen Jahr entwickelt hat.";
+        title.innerHTML = `So viele <span style="text-decoration:underline">Sommertage</span> gab es in ${station.name} von März bis Oktober`;
+        sub.textContent = "Sommertag = Temperatur steigt auf 25 °C oder höher. Die Linie zeigt, wohin sich der langjährige Trend von 2000 bis zum vergangenen Jahr entwickelt hat.";
         toggle.style.display = "none";
 
         const eintraege = Object.entries(station.sommertage_pro_jahr).sort((a, b) => Number(a[0]) - Number(b[0]));
@@ -816,9 +850,18 @@
           options: {
             responsive: true,
             maintainAspectRatio: false,
+            onClick: (event, activeElements) => {
+              if (activeElements.length > 0) {
+                chart.tooltip.setActiveElements(activeElements);
+                chart.update();
+              }
+            },
             plugins: {
               legend: { display: false },
               tooltip: {
+                enabled: true,
+                mode: 'index',
+                intersect: false,
                 callbacks: {
                   label: item => {
                     if (item.dataset.type === "bar") {
