@@ -81,7 +81,7 @@ def load_saarland_plz_zauberware() -> list[dict]:
     
     # Firmen-Keywords, die wir rausfiltern wollen
     firmen_keywords = [
-        "AG", "Media", "AOK", "GmbH", "KG", "Versicherung", "Agentur", "Bank", "Post",
+        "AG", "Media", "Landesamt", "AOK", "GmbH", "KG", "Versicherung", "Agentur", "Bank", "Post",
         "Direkt", "Service", "Regio", "Deutsche", "Universität", "Klinik",
         "Rundfunk", "Lotterie", "reha", "Rentenversicherung", "HUK",
         "Innungskrankenkasse", "UKV", "Saarländischer", "Praktiker",
@@ -124,7 +124,7 @@ def load_saarland_plz_opendatasoft() -> list[dict]:
     payload = resp.json()
     
     firmen_keywords = [
-        "AG", "Media", "AOK", "GmbH", "KG", "Versicherung", "Agentur", "Bank", "Post",
+        "AG", "Media", "AOK", "Landesamt", "GmbH", "KG", "Versicherung", "Agentur", "Bank", "Post",
         "Direkt", "Service", "Regio", "Deutsche", "Universität", "Klinik",
         "Rundfunk", "Lotterie", "reha", "Rentenversicherung", "HUK",
         "Innungskrankenkasse", "UKV", "Saarländischer", "Praktiker",
