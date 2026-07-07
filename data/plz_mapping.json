@@ -1,102 +1,18 @@
 {
   "quelle": "zauberware_zip",
-  "anzahl_plz": 91,
+  "anzahl_plz": 71,
   "mapping": {
-    "50424": {
-      "ort": "COSMOS Lebensversicherungs-AG",
-      "station_id": "06217",
-      "station_name": "Saarbrücken-Burbach",
-      "distanz_km": 5.3
-    },
-    "66087": {
-      "ort": "Union Reiseversicherung AG ( URV )",
-      "station_id": "04336",
-      "station_name": "Saarbrücken-Ensheim",
-      "distanz_km": 6.0
-    },
-    "66088": {
-      "ort": "Agentur für Arbeit Saarbrücken",
-      "station_id": "06217",
-      "station_name": "Saarbrücken-Burbach",
-      "distanz_km": 3.7
-    },
-    "66090": {
-      "ort": "Mercedes-Benz Banking Service GmbH",
-      "station_id": "04336",
-      "station_name": "Saarbrücken-Ensheim",
-      "distanz_km": 6.2
-    },
-    "66094": {
-      "ort": "MediServ GmbH",
-      "station_id": "04336",
-      "station_name": "Saarbrücken-Ensheim",
-      "distanz_km": 5.0
-    },
-    "66097": {
-      "ort": "Deutsche Post AG Direkt Marketing Center Saarbrücken",
-      "station_id": "06217",
-      "station_name": "Saarbrücken-Burbach",
-      "distanz_km": 1.5
-    },
-    "66098": {
-      "ort": "Innungskrankenkasse Südwest",
-      "station_id": "06217",
-      "station_name": "Saarbrücken-Burbach",
-      "distanz_km": 4.2
-    },
-    "66099": {
-      "ort": "UKV ( Union Krankenversicherung AG)",
-      "station_id": "04336",
-      "station_name": "Saarbrücken-Ensheim",
-      "distanz_km": 6.0
-    },
-    "66100": {
-      "ort": "Saarländischer Rundfunk Funkhaus Halberg",
-      "station_id": "04336",
-      "station_name": "Saarbrücken-Ensheim",
-      "distanz_km": 5.3
-    },
-    "66101": {
-      "ort": "Cosmos Direkt Versicherung",
-      "station_id": "06217",
-      "station_name": "Saarbrücken-Burbach",
-      "distanz_km": 5.3
-    },
-    "66102": {
-      "ort": "Staatl. Lotterie Ein. M. Weber KG",
-      "station_id": "06217",
-      "station_name": "Saarbrücken-Burbach",
-      "distanz_km": 3.2
-    },
     "66103": {
-      "ort": "Regio Print",
+      "ort": "Saarbrücker Media Verkaufsgesellschaft",
       "station_id": "06217",
       "station_name": "Saarbrücken-Burbach",
       "distanz_km": 4.0
     },
     "66104": {
-      "ort": "Agentur für Arbeit Saarbrücken",
-      "station_id": "06217",
-      "station_name": "Saarbrücken-Burbach",
-      "distanz_km": 3.7
-    },
-    "66106": {
-      "ort": "reha GmbH",
-      "station_id": "06217",
-      "station_name": "Saarbrücken-Burbach",
-      "distanz_km": 4.7
-    },
-    "66108": {
-      "ort": "Deutsche Rentenversicherung Saarland",
+      "ort": "AOK Rheinland-Pfalz/Saarland",
       "station_id": "06217",
       "station_name": "Saarbrücken-Burbach",
       "distanz_km": 5.2
-    },
-    "66109": {
-      "ort": "HUK Coburg",
-      "station_id": "06217",
-      "station_name": "Saarbrücken-Burbach",
-      "distanz_km": 4.9
     },
     "66111": {
       "ort": "Saarbrücken",
@@ -194,12 +110,6 @@
       "station_name": "Saarbrücken-Burbach",
       "distanz_km": 4.8
     },
-    "66150": {
-      "ort": "Deutsche Post AG Niederlassung BRIEF Saarbrücken",
-      "station_id": "06217",
-      "station_name": "Saarbrücken-Burbach",
-      "distanz_km": 3.8
-    },
     "66265": {
       "ort": "Heusweiler",
       "station_id": "06217",
@@ -235,12 +145,6 @@
       "station_id": "03545",
       "station_name": "Neunkirchen-Wellesweiler",
       "distanz_km": 9.8
-    },
-    "66330": {
-      "ort": "Saarstahl AG",
-      "station_id": "06217",
-      "station_name": "Saarbrücken-Burbach",
-      "distanz_km": 6.2
     },
     "66333": {
       "ort": "Völklingen",
@@ -278,17 +182,11 @@
       "station_name": "Saarbrücken-Ensheim",
       "distanz_km": 5.4
     },
-    "66421": {
-      "ort": "Universitätskliniken des Saarlandes",
-      "station_id": "02331",
-      "station_name": "Homburg",
-      "distanz_km": 1.6
-    },
     "66424": {
       "ort": "Homburg",
-      "station_id": "02331",
-      "station_name": "Homburg",
-      "distanz_km": 1.1
+      "station_id": "03545",
+      "station_name": "Neunkirchen-Wellesweiler",
+      "distanz_km": 8.1
     },
     "66440": {
       "ort": "Blieskastel",
@@ -307,12 +205,6 @@
       "station_id": "04336",
       "station_name": "Saarbrücken-Ensheim",
       "distanz_km": 9.7
-    },
-    "66458": {
-      "ort": "Praktiker",
-      "station_id": "03545",
-      "station_name": "Neunkirchen-Wellesweiler",
-      "distanz_km": 6.4
     },
     "66459": {
       "ort": "Kirkel",
@@ -352,9 +244,9 @@
     },
     "66571": {
       "ort": "Eppelborn",
-      "station_id": "04490",
-      "station_name": "Schmelz-Hüttersdorf",
-      "distanz_km": 9.6
+      "station_id": "05029",
+      "station_name": "Tholey",
+      "distanz_km": 9.7
     },
     "66578": {
       "ort": "Schiffweiler",
@@ -422,17 +314,11 @@
       "station_name": "Tholey",
       "distanz_km": 5.4
     },
-    "66661": {
-      "ort": "Assist Heimpflege-Bedarf GmbH",
-      "station_id": "04490",
-      "station_name": "Schmelz-Hüttersdorf",
-      "distanz_km": 16.9
-    },
     "66663": {
       "ort": "Merzig",
-      "station_id": "04490",
-      "station_name": "Schmelz-Hüttersdorf",
-      "distanz_km": 14.6
+      "station_id": "05433",
+      "station_name": "Weiskirchen",
+      "distanz_km": 17.5
     },
     "66679": {
       "ort": "Losheim am See",
@@ -454,9 +340,9 @@
     },
     "66701": {
       "ort": "Beckingen",
-      "station_id": "04490",
-      "station_name": "Schmelz-Hüttersdorf",
-      "distanz_km": 10.0
+      "station_id": "00460",
+      "station_name": "Berus",
+      "distanz_km": 15.1
     },
     "66706": {
       "ort": "Perl",
@@ -470,12 +356,6 @@
       "station_name": "Weiskirchen",
       "distanz_km": 0.5
     },
-    "66738": {
-      "ort": "Bundeszentralamt für Steuern Dienstsitz Saarlouis",
-      "station_id": "00460",
-      "station_name": "Berus",
-      "distanz_km": 8.2
-    },
     "66740": {
       "ort": "Saarlouis",
       "station_id": "00460",
@@ -484,9 +364,9 @@
     },
     "66763": {
       "ort": "Dillingen",
-      "station_id": "04490",
-      "station_name": "Schmelz-Hüttersdorf",
-      "distanz_km": 10.2
+      "station_id": "00460",
+      "station_name": "Berus",
+      "distanz_km": 10.6
     },
     "66773": {
       "ort": "Schwalbach",
@@ -496,9 +376,9 @@
     },
     "66780": {
       "ort": "Rehlingen-Siersburg",
-      "station_id": "04490",
-      "station_name": "Schmelz-Hüttersdorf",
-      "distanz_km": 11.8
+      "station_id": "00460",
+      "station_name": "Berus",
+      "distanz_km": 12.4
     },
     "66787": {
       "ort": "Wadgassen",
@@ -508,9 +388,9 @@
     },
     "66793": {
       "ort": "Saarwellingen",
-      "station_id": "04490",
-      "station_name": "Schmelz-Hüttersdorf",
-      "distanz_km": 7.1
+      "station_id": "00460",
+      "station_name": "Berus",
+      "distanz_km": 13.2
     },
     "66798": {
       "ort": "Wallerfangen",
@@ -532,21 +412,21 @@
     },
     "66809": {
       "ort": "Nalbach",
-      "station_id": "04490",
-      "station_name": "Schmelz-Hüttersdorf",
-      "distanz_km": 5.2
+      "station_id": "00460",
+      "station_name": "Berus",
+      "distanz_km": 15.0
     },
     "66822": {
       "ort": "Lebach",
-      "station_id": "04490",
-      "station_name": "Schmelz-Hüttersdorf",
-      "distanz_km": 5.4
+      "station_id": "05029",
+      "station_name": "Tholey",
+      "distanz_km": 11.6
     },
     "66839": {
       "ort": "Schmelz",
-      "station_id": "04490",
-      "station_name": "Schmelz-Hüttersdorf",
-      "distanz_km": 2.3
+      "station_id": "05433",
+      "station_name": "Weiskirchen",
+      "distanz_km": 13.6
     }
   }
 }

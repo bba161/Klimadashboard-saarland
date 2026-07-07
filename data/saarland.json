@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-06T23:47:22+00:00",
+  "generated_at": "2026-07-07T09:18:43+00:00",
   "sommertag_schwelle_c": 25.0,
   "stations": {
     "00460": {
@@ -34,14 +34,14 @@
         "2023": 64,
         "2024": 39,
         "2025": 50,
-        "2026": 30
+        "2026": 31
       },
-      "sommertage_laufendes_jahr": 30,
-      "tageshoechstwert_heute_c": 26.7,
-      "niederschlag_letzte_30_tage_mm": 37.8,
+      "sommertage_laufendes_jahr": 31,
+      "tageshoechstwert_heute_c": 30.5,
+      "niederschlag_letzte_30_tage_mm": 37.4,
       "aktuelle_temperatur": {
-        "wert": 18.6,
-        "zeitpunkt": "2026070523"
+        "wert": 22.2,
+        "zeitpunkt": "2026070623"
       },
       "hourly_temp_distance_km": 0.0,
       "referenzperioden": {
@@ -57,11 +57,6 @@
         }
       },
       "tagesreihe_30d": [
-        {
-          "datum": "20260606",
-          "txk": 21.8,
-          "rsk": 0.4
-        },
         {
           "datum": "20260607",
           "txk": 20.5,
@@ -206,16 +201,15 @@
           "datum": "20260705",
           "txk": 26.7,
           "rsk": 0.0
+        },
+        {
+          "datum": "20260706",
+          "txk": 30.5,
+          "rsk": 0.0
         }
       ],
       "referenzband_temperatur": {
         "1961-1990": [
-          {
-            "tag": "06-06",
-            "mean": 19.4,
-            "p10": 14.2,
-            "p90": 24.7
-          },
           {
             "tag": "06-07",
             "mean": 18.3,
@@ -395,15 +389,15 @@
             "mean": 22.1,
             "p10": 16.8,
             "p90": 27.1
+          },
+          {
+            "tag": "07-07",
+            "mean": 22.1,
+            "p10": 17.1,
+            "p90": 26.8
           }
         ],
         "1991-2020": [
-          {
-            "tag": "06-06",
-            "mean": 20.8,
-            "p10": 13.7,
-            "p90": 26.8
-          },
           {
             "tag": "06-07",
             "mean": 22.2,
@@ -583,388 +577,394 @@
             "mean": 22.7,
             "p10": 17.4,
             "p90": 29.4
+          },
+          {
+            "tag": "07-07",
+            "mean": 22.5,
+            "p10": 17.2,
+            "p90": 27.7
           }
         ]
       },
       "referenzband_niederschlag": {
         "1961-1990": [
           {
-            "tag": "06-06",
-            "kum_mean": 1.7,
+            "tag": "06-07",
+            "kum_mean": 4.9,
             "kum_p10": 0.0,
-            "kum_p90": 5.4
+            "kum_p90": 12.2
           },
           {
-            "tag": "06-07",
-            "kum_mean": 6.6,
+            "tag": "06-08",
+            "kum_mean": 6.4,
             "kum_p10": 0.0,
             "kum_p90": 15.8
           },
           {
-            "tag": "06-08",
-            "kum_mean": 8.1,
-            "kum_p10": 0.0,
-            "kum_p90": 19.6
-          },
-          {
             "tag": "06-09",
-            "kum_mean": 10.5,
+            "kum_mean": 8.8,
             "kum_p10": 0.0,
-            "kum_p90": 25.3
+            "kum_p90": 24.5
           },
           {
             "tag": "06-10",
-            "kum_mean": 11.8,
-            "kum_p10": 0.4,
-            "kum_p90": 27.8
+            "kum_mean": 10.1,
+            "kum_p10": 0.0,
+            "kum_p90": 26.5
           },
           {
             "tag": "06-11",
-            "kum_mean": 13.2,
-            "kum_p10": 0.5,
-            "kum_p90": 27.9
+            "kum_mean": 11.5,
+            "kum_p10": 0.4,
+            "kum_p90": 26.8
           },
           {
             "tag": "06-12",
-            "kum_mean": 14.6,
+            "kum_mean": 12.9,
             "kum_p10": 0.5,
-            "kum_p90": 31.1
+            "kum_p90": 26.8
           },
           {
             "tag": "06-13",
-            "kum_mean": 17.8,
-            "kum_p10": 1.2,
-            "kum_p90": 41.6
+            "kum_mean": 16.1,
+            "kum_p10": 0.9,
+            "kum_p90": 38.7
           },
           {
             "tag": "06-14",
-            "kum_mean": 19.1,
-            "kum_p10": 1.2,
-            "kum_p90": 41.6
+            "kum_mean": 17.4,
+            "kum_p10": 0.9,
+            "kum_p90": 39.0
           },
           {
             "tag": "06-15",
-            "kum_mean": 21.3,
-            "kum_p10": 1.9,
-            "kum_p90": 41.7
+            "kum_mean": 19.6,
+            "kum_p10": 1.3,
+            "kum_p90": 39.0
           },
           {
             "tag": "06-16",
-            "kum_mean": 23.6,
-            "kum_p10": 1.9,
-            "kum_p90": 44.9
+            "kum_mean": 21.9,
+            "kum_p10": 1.3,
+            "kum_p90": 42.3
           },
           {
             "tag": "06-17",
-            "kum_mean": 26.7,
-            "kum_p10": 1.9,
-            "kum_p90": 56.2
+            "kum_mean": 25.0,
+            "kum_p10": 1.3,
+            "kum_p90": 48.4
           },
           {
             "tag": "06-18",
-            "kum_mean": 28.6,
-            "kum_p10": 2.9,
-            "kum_p90": 56.2
+            "kum_mean": 26.9,
+            "kum_p10": 1.3,
+            "kum_p90": 48.4
           },
           {
             "tag": "06-19",
-            "kum_mean": 31.4,
-            "kum_p10": 2.9,
-            "kum_p90": 57.7
+            "kum_mean": 29.8,
+            "kum_p10": 1.3,
+            "kum_p90": 51.8
           },
           {
             "tag": "06-20",
-            "kum_mean": 34.9,
-            "kum_p10": 2.9,
-            "kum_p90": 58.0
+            "kum_mean": 33.2,
+            "kum_p10": 1.3,
+            "kum_p90": 53.1
           },
           {
             "tag": "06-21",
-            "kum_mean": 37.6,
-            "kum_p10": 11.8,
-            "kum_p90": 66.7
+            "kum_mean": 35.9,
+            "kum_p10": 9.9,
+            "kum_p90": 66.6
           },
           {
             "tag": "06-22",
-            "kum_mean": 38.9,
-            "kum_p10": 11.9,
-            "kum_p90": 67.0
+            "kum_mean": 37.2,
+            "kum_p10": 11.6,
+            "kum_p90": 66.9
           },
           {
             "tag": "06-23",
-            "kum_mean": 42.2,
-            "kum_p10": 15.5,
-            "kum_p90": 78.1
+            "kum_mean": 40.5,
+            "kum_p10": 13.5,
+            "kum_p90": 73.2
           },
           {
             "tag": "06-24",
-            "kum_mean": 45.7,
-            "kum_p10": 15.7,
-            "kum_p90": 85.6
+            "kum_mean": 44.0,
+            "kum_p10": 13.7,
+            "kum_p90": 84.4
           },
           {
             "tag": "06-25",
-            "kum_mean": 47.0,
-            "kum_p10": 16.0,
-            "kum_p90": 85.9
+            "kum_mean": 45.3,
+            "kum_p10": 14.0,
+            "kum_p90": 84.7
           },
           {
             "tag": "06-26",
-            "kum_mean": 50.9,
-            "kum_p10": 16.0,
-            "kum_p90": 92.2
+            "kum_mean": 49.2,
+            "kum_p10": 14.0,
+            "kum_p90": 91.0
           },
           {
             "tag": "06-27",
-            "kum_mean": 53.0,
-            "kum_p10": 16.0,
-            "kum_p90": 93.7
+            "kum_mean": 51.4,
+            "kum_p10": 14.0,
+            "kum_p90": 92.6
           },
           {
             "tag": "06-28",
-            "kum_mean": 56.5,
-            "kum_p10": 16.0,
-            "kum_p90": 108.9
+            "kum_mean": 54.8,
+            "kum_p10": 14.0,
+            "kum_p90": 108.8
           },
           {
             "tag": "06-29",
-            "kum_mean": 59.1,
-            "kum_p10": 16.7,
-            "kum_p90": 108.9
+            "kum_mean": 57.4,
+            "kum_p10": 14.7,
+            "kum_p90": 108.8
           },
           {
             "tag": "06-30",
-            "kum_mean": 60.9,
-            "kum_p10": 17.4,
-            "kum_p90": 109.7
+            "kum_mean": 59.2,
+            "kum_p10": 15.4,
+            "kum_p90": 109.6
           },
           {
             "tag": "07-01",
-            "kum_mean": 63.0,
-            "kum_p10": 18.5,
-            "kum_p90": 109.7
+            "kum_mean": 61.3,
+            "kum_p10": 16.6,
+            "kum_p90": 109.6
           },
           {
             "tag": "07-02",
-            "kum_mean": 65.0,
-            "kum_p10": 19.3,
-            "kum_p90": 109.7
+            "kum_mean": 63.3,
+            "kum_p10": 18.9,
+            "kum_p90": 109.6
           },
           {
             "tag": "07-03",
-            "kum_mean": 67.6,
-            "kum_p10": 19.3,
+            "kum_mean": 65.9,
+            "kum_p10": 18.9,
             "kum_p90": 111.0
           },
           {
             "tag": "07-04",
-            "kum_mean": 69.2,
-            "kum_p10": 19.3,
+            "kum_mean": 67.5,
+            "kum_p10": 18.9,
             "kum_p90": 111.7
           },
           {
             "tag": "07-05",
-            "kum_mean": 71.7,
-            "kum_p10": 24.0,
-            "kum_p90": 121.8
+            "kum_mean": 70.0,
+            "kum_p10": 22.1,
+            "kum_p90": 121.7
           },
           {
             "tag": "07-06",
-            "kum_mean": 73.0,
-            "kum_p10": 24.2,
-            "kum_p90": 121.8
+            "kum_mean": 71.3,
+            "kum_p10": 22.3,
+            "kum_p90": 121.7
+          },
+          {
+            "tag": "07-07",
+            "kum_mean": 73.4,
+            "kum_p10": 22.3,
+            "kum_p90": 121.7
           }
         ],
         "1991-2020": [
           {
-            "tag": "06-06",
-            "kum_mean": 3.2,
-            "kum_p10": 0.0,
-            "kum_p90": 9.2
-          },
-          {
             "tag": "06-07",
-            "kum_mean": 8.0,
+            "kum_mean": 4.9,
             "kum_p10": 0.0,
-            "kum_p90": 19.4
+            "kum_p90": 18.3
           },
           {
             "tag": "06-08",
-            "kum_mean": 10.2,
+            "kum_mean": 7.0,
             "kum_p10": 0.0,
-            "kum_p90": 24.0
+            "kum_p90": 18.7
           },
           {
             "tag": "06-09",
-            "kum_mean": 13.1,
+            "kum_mean": 9.9,
             "kum_p10": 0.0,
-            "kum_p90": 30.1
+            "kum_p90": 28.6
           },
           {
             "tag": "06-10",
-            "kum_mean": 15.9,
-            "kum_p10": 0.5,
-            "kum_p90": 34.8
+            "kum_mean": 12.7,
+            "kum_p10": 0.0,
+            "kum_p90": 31.8
           },
           {
             "tag": "06-11",
-            "kum_mean": 19.5,
-            "kum_p10": 1.4,
-            "kum_p90": 46.0
+            "kum_mean": 16.4,
+            "kum_p10": 0.2,
+            "kum_p90": 37.1
           },
           {
             "tag": "06-12",
-            "kum_mean": 21.8,
-            "kum_p10": 1.9,
-            "kum_p90": 48.9
+            "kum_mean": 18.6,
+            "kum_p10": 1.5,
+            "kum_p90": 38.3
           },
           {
             "tag": "06-13",
-            "kum_mean": 23.5,
-            "kum_p10": 2.4,
-            "kum_p90": 49.7
+            "kum_mean": 20.4,
+            "kum_p10": 1.9,
+            "kum_p90": 44.7
           },
           {
             "tag": "06-14",
-            "kum_mean": 25.4,
-            "kum_p10": 4.8,
-            "kum_p90": 50.2
+            "kum_mean": 22.3,
+            "kum_p10": 2.9,
+            "kum_p90": 49.0
           },
           {
             "tag": "06-15",
-            "kum_mean": 28.3,
-            "kum_p10": 5.0,
-            "kum_p90": 70.1
+            "kum_mean": 25.1,
+            "kum_p10": 3.6,
+            "kum_p90": 69.7
           },
           {
             "tag": "06-16",
-            "kum_mean": 29.5,
-            "kum_p10": 5.0,
-            "kum_p90": 77.9
+            "kum_mean": 26.4,
+            "kum_p10": 3.6,
+            "kum_p90": 72.5
           },
           {
             "tag": "06-17",
-            "kum_mean": 32.3,
-            "kum_p10": 5.1,
-            "kum_p90": 79.1
+            "kum_mean": 29.1,
+            "kum_p10": 4.2,
+            "kum_p90": 73.0
           },
           {
             "tag": "06-18",
-            "kum_mean": 32.8,
-            "kum_p10": 7.0,
-            "kum_p90": 79.1
+            "kum_mean": 29.6,
+            "kum_p10": 4.2,
+            "kum_p90": 73.0
           },
           {
             "tag": "06-19",
-            "kum_mean": 33.8,
-            "kum_p10": 7.0,
-            "kum_p90": 79.1
+            "kum_mean": 30.7,
+            "kum_p10": 4.5,
+            "kum_p90": 73.0
           },
           {
             "tag": "06-20",
-            "kum_mean": 38.0,
-            "kum_p10": 9.2,
-            "kum_p90": 79.1
+            "kum_mean": 34.8,
+            "kum_p10": 4.5,
+            "kum_p90": 76.2
           },
           {
             "tag": "06-21",
-            "kum_mean": 38.8,
-            "kum_p10": 9.2,
-            "kum_p90": 82.3
+            "kum_mean": 35.6,
+            "kum_p10": 4.5,
+            "kum_p90": 77.0
           },
           {
             "tag": "06-22",
-            "kum_mean": 41.2,
-            "kum_p10": 9.4,
-            "kum_p90": 91.9
+            "kum_mean": 38.0,
+            "kum_p10": 4.5,
+            "kum_p90": 85.4
           },
           {
             "tag": "06-23",
-            "kum_mean": 42.1,
-            "kum_p10": 9.6,
-            "kum_p90": 94.4
+            "kum_mean": 39.0,
+            "kum_p10": 5.1,
+            "kum_p90": 86.2
           },
           {
             "tag": "06-24",
-            "kum_mean": 43.3,
-            "kum_p10": 9.6,
-            "kum_p90": 94.7
+            "kum_mean": 40.2,
+            "kum_p10": 5.5,
+            "kum_p90": 86.5
           },
           {
             "tag": "06-25",
-            "kum_mean": 44.8,
-            "kum_p10": 9.9,
-            "kum_p90": 96.0
+            "kum_mean": 41.6,
+            "kum_p10": 9.6,
+            "kum_p90": 87.8
           },
           {
             "tag": "06-26",
-            "kum_mean": 45.7,
-            "kum_p10": 9.9,
-            "kum_p90": 96.1
+            "kum_mean": 42.6,
+            "kum_p10": 9.6,
+            "kum_p90": 88.0
           },
           {
             "tag": "06-27",
-            "kum_mean": 47.2,
+            "kum_mean": 44.1,
+            "kum_p10": 9.6,
+            "kum_p90": 88.0
+          },
+          {
+            "tag": "06-28",
+            "kum_mean": 45.2,
             "kum_p10": 9.9,
             "kum_p90": 96.1
           },
           {
-            "tag": "06-28",
-            "kum_mean": 48.4,
-            "kum_p10": 11.9,
-            "kum_p90": 96.4
-          },
-          {
             "tag": "06-29",
-            "kum_mean": 49.7,
-            "kum_p10": 13.2,
-            "kum_p90": 96.8
+            "kum_mean": 46.5,
+            "kum_p10": 12.2,
+            "kum_p90": 96.7
           },
           {
             "tag": "06-30",
-            "kum_mean": 50.7,
-            "kum_p10": 13.6,
-            "kum_p90": 96.8
+            "kum_mean": 47.5,
+            "kum_p10": 12.9,
+            "kum_p90": 96.7
           },
           {
             "tag": "07-01",
-            "kum_mean": 52.6,
-            "kum_p10": 13.6,
-            "kum_p90": 97.3
+            "kum_mean": 49.4,
+            "kum_p10": 12.9,
+            "kum_p90": 97.2
           },
           {
             "tag": "07-02",
-            "kum_mean": 55.2,
-            "kum_p10": 13.7,
-            "kum_p90": 107.2
+            "kum_mean": 52.1,
+            "kum_p10": 12.9,
+            "kum_p90": 107.1
           },
           {
             "tag": "07-03",
-            "kum_mean": 58.4,
+            "kum_mean": 55.2,
             "kum_p10": 13.7,
-            "kum_p90": 118.0
+            "kum_p90": 117.8
           },
           {
             "tag": "07-04",
-            "kum_mean": 59.7,
-            "kum_p10": 16.0,
-            "kum_p90": 118.1
+            "kum_mean": 56.5,
+            "kum_p10": 14.4,
+            "kum_p90": 118.0
           },
           {
             "tag": "07-05",
-            "kum_mean": 62.5,
+            "kum_mean": 59.3,
             "kum_p10": 16.8,
-            "kum_p90": 118.1
+            "kum_p90": 118.0
           },
           {
             "tag": "07-06",
-            "kum_mean": 64.1,
-            "kum_p10": 20.1,
-            "kum_p90": 118.1
+            "kum_mean": 60.9,
+            "kum_p10": 18.1,
+            "kum_p90": 118.0
+          },
+          {
+            "tag": "07-07",
+            "kum_mean": 62.9,
+            "kum_p10": 20.0,
+            "kum_p90": 118.0
           }
         ]
       },
-      "letztes_tageswert_datum": "20260705",
+      "letztes_tageswert_datum": "20260706",
       "status": "ok",
       "fehler": null
     },
@@ -1846,14 +1846,14 @@
         "2023": 84,
         "2024": 60,
         "2025": 70,
-        "2026": 33
+        "2026": 34
       },
-      "sommertage_laufendes_jahr": 33,
-      "tageshoechstwert_heute_c": 27.2,
-      "niederschlag_letzte_30_tage_mm": 34.2,
+      "sommertage_laufendes_jahr": 34,
+      "tageshoechstwert_heute_c": 30.7,
+      "niederschlag_letzte_30_tage_mm": 33.7,
       "aktuelle_temperatur": {
-        "wert": 16.4,
-        "zeitpunkt": "2026070523"
+        "wert": 15.6,
+        "zeitpunkt": "2026070623"
       },
       "hourly_temp_distance_km": 0.0,
       "referenzperioden": {
@@ -1869,11 +1869,6 @@
         }
       },
       "tagesreihe_30d": [
-        {
-          "datum": "20260606",
-          "txk": 23.5,
-          "rsk": 0.5
-        },
         {
           "datum": "20260607",
           "txk": 22.1,
@@ -2018,16 +2013,15 @@
           "datum": "20260705",
           "txk": 27.2,
           "rsk": 0.0
+        },
+        {
+          "datum": "20260706",
+          "txk": 30.7,
+          "rsk": 0.0
         }
       ],
       "referenzband_temperatur": {
         "1961-1990": [
-          {
-            "tag": "06-06",
-            "mean": 20.5,
-            "p10": 16.0,
-            "p90": 26.8
-          },
           {
             "tag": "06-07",
             "mean": 19.7,
@@ -2207,15 +2201,15 @@
             "mean": 24.8,
             "p10": 18.2,
             "p90": 29.0
+          },
+          {
+            "tag": "07-07",
+            "mean": 24.2,
+            "p10": 19.2,
+            "p90": 29.2
           }
         ],
         "1991-2020": [
-          {
-            "tag": "06-06",
-            "mean": 22.2,
-            "p10": 16.2,
-            "p90": 29.1
-          },
           {
             "tag": "06-07",
             "mean": 23.2,
@@ -2395,388 +2389,394 @@
             "mean": 24.2,
             "p10": 18.4,
             "p90": 30.5
+          },
+          {
+            "tag": "07-07",
+            "mean": 23.9,
+            "p10": 18.5,
+            "p90": 29.1
           }
         ]
       },
       "referenzband_niederschlag": {
         "1961-1990": [
           {
-            "tag": "06-06",
-            "kum_mean": 1.9,
-            "kum_p10": 0.0,
-            "kum_p90": 5.0
-          },
-          {
             "tag": "06-07",
-            "kum_mean": 6.2,
+            "kum_mean": 4.3,
             "kum_p10": 0.0,
-            "kum_p90": 17.4
+            "kum_p90": 12.0
           },
           {
             "tag": "06-08",
-            "kum_mean": 7.8,
+            "kum_mean": 5.9,
             "kum_p10": 0.0,
-            "kum_p90": 19.3
+            "kum_p90": 15.1
           },
           {
             "tag": "06-09",
-            "kum_mean": 10.8,
+            "kum_mean": 8.9,
             "kum_p10": 0.0,
-            "kum_p90": 24.4
+            "kum_p90": 21.7
           },
           {
             "tag": "06-10",
-            "kum_mean": 12.7,
-            "kum_p10": 0.5,
+            "kum_mean": 10.7,
+            "kum_p10": 0.2,
             "kum_p90": 27.3
           },
           {
             "tag": "06-11",
-            "kum_mean": 13.9,
+            "kum_mean": 11.9,
             "kum_p10": 0.6,
-            "kum_p90": 31.8
+            "kum_p90": 29.5
           },
           {
             "tag": "06-12",
-            "kum_mean": 14.9,
+            "kum_mean": 13.0,
             "kum_p10": 0.6,
-            "kum_p90": 33.2
+            "kum_p90": 30.5
           },
           {
             "tag": "06-13",
-            "kum_mean": 17.9,
+            "kum_mean": 16.0,
             "kum_p10": 0.6,
-            "kum_p90": 39.0
+            "kum_p90": 36.7
           },
           {
             "tag": "06-14",
-            "kum_mean": 19.5,
+            "kum_mean": 17.6,
             "kum_p10": 0.8,
-            "kum_p90": 39.0
+            "kum_p90": 36.7
           },
           {
             "tag": "06-15",
-            "kum_mean": 22.9,
-            "kum_p10": 3.8,
-            "kum_p90": 39.6
+            "kum_mean": 20.9,
+            "kum_p10": 3.5,
+            "kum_p90": 36.7
           },
           {
             "tag": "06-16",
-            "kum_mean": 25.4,
-            "kum_p10": 3.8,
-            "kum_p90": 45.1
+            "kum_mean": 23.5,
+            "kum_p10": 3.5,
+            "kum_p90": 43.8
           },
           {
             "tag": "06-17",
-            "kum_mean": 29.1,
-            "kum_p10": 3.8,
-            "kum_p90": 49.6
+            "kum_mean": 27.1,
+            "kum_p10": 3.5,
+            "kum_p90": 45.8
           },
           {
             "tag": "06-18",
-            "kum_mean": 31.6,
-            "kum_p10": 3.8,
+            "kum_mean": 29.7,
+            "kum_p10": 3.5,
             "kum_p90": 50.4
           },
           {
             "tag": "06-19",
-            "kum_mean": 33.8,
-            "kum_p10": 3.8,
+            "kum_mean": 31.9,
+            "kum_p10": 3.5,
             "kum_p90": 56.9
           },
           {
             "tag": "06-20",
-            "kum_mean": 37.0,
-            "kum_p10": 3.8,
+            "kum_mean": 35.1,
+            "kum_p10": 3.5,
             "kum_p90": 62.5
           },
           {
             "tag": "06-21",
-            "kum_mean": 41.2,
-            "kum_p10": 7.7,
+            "kum_mean": 39.3,
+            "kum_p10": 4.3,
             "kum_p90": 66.3
           },
           {
             "tag": "06-22",
-            "kum_mean": 44.0,
-            "kum_p10": 7.7,
+            "kum_mean": 42.1,
+            "kum_p10": 4.3,
             "kum_p90": 66.3
           },
           {
             "tag": "06-23",
-            "kum_mean": 46.1,
-            "kum_p10": 7.7,
-            "kum_p90": 72.9
+            "kum_mean": 44.1,
+            "kum_p10": 5.2,
+            "kum_p90": 71.8
           },
           {
             "tag": "06-24",
-            "kum_mean": 47.4,
-            "kum_p10": 7.7,
+            "kum_mean": 45.5,
+            "kum_p10": 5.2,
             "kum_p90": 72.9
           },
           {
             "tag": "06-25",
-            "kum_mean": 49.1,
-            "kum_p10": 7.7,
-            "kum_p90": 73.7
+            "kum_mean": 47.1,
+            "kum_p10": 6.7,
+            "kum_p90": 72.9
           },
           {
             "tag": "06-26",
-            "kum_mean": 51.6,
-            "kum_p10": 7.7,
-            "kum_p90": 77.5
+            "kum_mean": 49.7,
+            "kum_p10": 6.7,
+            "kum_p90": 76.5
           },
           {
             "tag": "06-27",
-            "kum_mean": 53.6,
-            "kum_p10": 8.8,
-            "kum_p90": 78.8
+            "kum_mean": 51.7,
+            "kum_p10": 6.7,
+            "kum_p90": 78.1
           },
           {
             "tag": "06-28",
-            "kum_mean": 58.6,
-            "kum_p10": 9.5,
-            "kum_p90": 95.3
+            "kum_mean": 56.7,
+            "kum_p10": 6.7,
+            "kum_p90": 94.1
           },
           {
             "tag": "06-29",
-            "kum_mean": 61.5,
-            "kum_p10": 12.4,
-            "kum_p90": 101.0
+            "kum_mean": 59.6,
+            "kum_p10": 9.0,
+            "kum_p90": 100.3
           },
           {
             "tag": "06-30",
-            "kum_mean": 63.8,
-            "kum_p10": 15.7,
-            "kum_p90": 104.7
+            "kum_mean": 61.9,
+            "kum_p10": 12.3,
+            "kum_p90": 101.3
           },
           {
             "tag": "07-01",
-            "kum_mean": 66.7,
-            "kum_p10": 27.1,
-            "kum_p90": 105.6
+            "kum_mean": 64.8,
+            "kum_p10": 23.7,
+            "kum_p90": 104.7
           },
           {
             "tag": "07-02",
-            "kum_mean": 68.9,
-            "kum_p10": 33.5,
-            "kum_p90": 105.6
+            "kum_mean": 66.9,
+            "kum_p10": 33.2,
+            "kum_p90": 104.7
           },
           {
             "tag": "07-03",
-            "kum_mean": 71.4,
-            "kum_p10": 33.5,
-            "kum_p90": 105.6
+            "kum_mean": 69.5,
+            "kum_p10": 33.2,
+            "kum_p90": 104.7
           },
           {
             "tag": "07-04",
-            "kum_mean": 72.6,
-            "kum_p10": 33.5,
-            "kum_p90": 105.6
+            "kum_mean": 70.7,
+            "kum_p10": 33.2,
+            "kum_p90": 104.7
           },
           {
             "tag": "07-05",
-            "kum_mean": 74.6,
-            "kum_p10": 39.1,
-            "kum_p90": 105.6
+            "kum_mean": 72.7,
+            "kum_p10": 38.8,
+            "kum_p90": 104.7
           },
           {
             "tag": "07-06",
-            "kum_mean": 76.0,
-            "kum_p10": 39.1,
-            "kum_p90": 105.6
+            "kum_mean": 74.1,
+            "kum_p10": 38.8,
+            "kum_p90": 104.7
+          },
+          {
+            "tag": "07-07",
+            "kum_mean": 75.5,
+            "kum_p10": 40.0,
+            "kum_p90": 109.9
           }
         ],
         "1991-2020": [
           {
-            "tag": "06-06",
-            "kum_mean": 2.0,
+            "tag": "06-07",
+            "kum_mean": 4.0,
             "kum_p10": 0.0,
-            "kum_p90": 5.2
+            "kum_p90": 13.0
           },
           {
-            "tag": "06-07",
-            "kum_mean": 5.9,
+            "tag": "06-08",
+            "kum_mean": 6.2,
             "kum_p10": 0.0,
             "kum_p90": 16.0
           },
           {
-            "tag": "06-08",
-            "kum_mean": 8.2,
-            "kum_p10": 0.0,
-            "kum_p90": 19.9
-          },
-          {
             "tag": "06-09",
-            "kum_mean": 9.9,
+            "kum_mean": 8.0,
             "kum_p10": 0.0,
-            "kum_p90": 21.8
+            "kum_p90": 17.3
           },
           {
             "tag": "06-10",
-            "kum_mean": 12.3,
-            "kum_p10": 0.6,
-            "kum_p90": 26.0
+            "kum_mean": 10.3,
+            "kum_p10": 0.0,
+            "kum_p90": 22.4
           },
           {
             "tag": "06-11",
-            "kum_mean": 16.2,
-            "kum_p10": 0.6,
-            "kum_p90": 31.9
+            "kum_mean": 14.2,
+            "kum_p10": 0.0,
+            "kum_p90": 29.5
           },
           {
             "tag": "06-12",
-            "kum_mean": 19.0,
-            "kum_p10": 2.1,
-            "kum_p90": 43.6
+            "kum_mean": 17.0,
+            "kum_p10": 1.8,
+            "kum_p90": 41.9
           },
           {
             "tag": "06-13",
-            "kum_mean": 21.4,
+            "kum_mean": 19.4,
             "kum_p10": 2.1,
-            "kum_p90": 56.0
+            "kum_p90": 54.2
           },
           {
             "tag": "06-14",
-            "kum_mean": 23.6,
-            "kum_p10": 5.9,
-            "kum_p90": 59.2
+            "kum_mean": 21.6,
+            "kum_p10": 5.6,
+            "kum_p90": 57.4
           },
           {
             "tag": "06-15",
-            "kum_mean": 26.2,
-            "kum_p10": 6.5,
-            "kum_p90": 67.2
+            "kum_mean": 24.3,
+            "kum_p10": 5.6,
+            "kum_p90": 62.8
           },
           {
             "tag": "06-16",
-            "kum_mean": 27.8,
-            "kum_p10": 6.5,
-            "kum_p90": 68.9
+            "kum_mean": 25.8,
+            "kum_p10": 5.6,
+            "kum_p90": 65.7
           },
           {
             "tag": "06-17",
-            "kum_mean": 30.3,
-            "kum_p10": 6.5,
-            "kum_p90": 71.0
+            "kum_mean": 28.4,
+            "kum_p10": 5.6,
+            "kum_p90": 68.2
           },
           {
             "tag": "06-18",
-            "kum_mean": 31.2,
-            "kum_p10": 7.0,
-            "kum_p90": 72.1
+            "kum_mean": 29.2,
+            "kum_p10": 6.2,
+            "kum_p90": 69.3
           },
           {
             "tag": "06-19",
-            "kum_mean": 31.7,
-            "kum_p10": 7.1,
-            "kum_p90": 74.3
+            "kum_mean": 29.8,
+            "kum_p10": 6.7,
+            "kum_p90": 71.7
           },
           {
             "tag": "06-20",
-            "kum_mean": 34.6,
-            "kum_p10": 10.3,
-            "kum_p90": 78.8
+            "kum_mean": 32.6,
+            "kum_p10": 8.1,
+            "kum_p90": 76.0
           },
           {
             "tag": "06-21",
-            "kum_mean": 36.1,
-            "kum_p10": 11.4,
-            "kum_p90": 82.2
+            "kum_mean": 34.1,
+            "kum_p10": 8.3,
+            "kum_p90": 80.2
           },
           {
             "tag": "06-22",
-            "kum_mean": 39.6,
-            "kum_p10": 13.0,
-            "kum_p90": 82.2
+            "kum_mean": 37.7,
+            "kum_p10": 10.9,
+            "kum_p90": 80.2
           },
           {
             "tag": "06-23",
-            "kum_mean": 41.3,
-            "kum_p10": 13.0,
-            "kum_p90": 82.2
+            "kum_mean": 39.3,
+            "kum_p10": 10.9,
+            "kum_p90": 80.4
           },
           {
             "tag": "06-24",
-            "kum_mean": 42.6,
-            "kum_p10": 13.0,
-            "kum_p90": 85.0
+            "kum_mean": 40.6,
+            "kum_p10": 10.9,
+            "kum_p90": 83.3
           },
           {
             "tag": "06-25",
-            "kum_mean": 45.3,
-            "kum_p10": 15.0,
-            "kum_p90": 96.9
+            "kum_mean": 43.3,
+            "kum_p10": 13.6,
+            "kum_p90": 94.3
           },
           {
             "tag": "06-26",
-            "kum_mean": 47.3,
-            "kum_p10": 16.4,
-            "kum_p90": 97.3
+            "kum_mean": 45.4,
+            "kum_p10": 15.1,
+            "kum_p90": 94.7
           },
           {
             "tag": "06-27",
-            "kum_mean": 50.4,
-            "kum_p10": 16.5,
-            "kum_p90": 99.3
+            "kum_mean": 48.5,
+            "kum_p10": 15.9,
+            "kum_p90": 96.5
           },
           {
             "tag": "06-28",
-            "kum_mean": 51.8,
-            "kum_p10": 20.5,
-            "kum_p90": 101.1
+            "kum_mean": 49.8,
+            "kum_p10": 16.5,
+            "kum_p90": 98.5
           },
           {
             "tag": "06-29",
-            "kum_mean": 53.2,
-            "kum_p10": 21.1,
-            "kum_p90": 102.7
+            "kum_mean": 51.2,
+            "kum_p10": 17.4,
+            "kum_p90": 100.1
           },
           {
             "tag": "06-30",
-            "kum_mean": 54.1,
-            "kum_p10": 21.5,
-            "kum_p90": 103.6
+            "kum_mean": 52.1,
+            "kum_p10": 18.1,
+            "kum_p90": 101.0
           },
           {
             "tag": "07-01",
-            "kum_mean": 55.9,
-            "kum_p10": 21.8,
-            "kum_p90": 106.1
+            "kum_mean": 53.9,
+            "kum_p10": 18.5,
+            "kum_p90": 103.5
           },
           {
             "tag": "07-02",
-            "kum_mean": 57.1,
-            "kum_p10": 22.1,
-            "kum_p90": 106.9
+            "kum_mean": 55.1,
+            "kum_p10": 18.9,
+            "kum_p90": 104.3
           },
           {
             "tag": "07-03",
-            "kum_mean": 61.3,
-            "kum_p10": 24.7,
-            "kum_p90": 126.8
+            "kum_mean": 59.3,
+            "kum_p10": 20.4,
+            "kum_p90": 124.9
           },
           {
             "tag": "07-04",
-            "kum_mean": 64.2,
-            "kum_p10": 24.7,
-            "kum_p90": 127.0
+            "kum_mean": 62.2,
+            "kum_p10": 20.4,
+            "kum_p90": 125.1
           },
           {
             "tag": "07-05",
-            "kum_mean": 67.6,
-            "kum_p10": 26.2,
-            "kum_p90": 127.9
+            "kum_mean": 65.6,
+            "kum_p10": 25.2,
+            "kum_p90": 126.0
           },
           {
             "tag": "07-06",
-            "kum_mean": 70.7,
-            "kum_p10": 26.9,
-            "kum_p90": 129.2
+            "kum_mean": 68.7,
+            "kum_p10": 25.8,
+            "kum_p90": 127.3
+          },
+          {
+            "tag": "07-07",
+            "kum_mean": 72.0,
+            "kum_p10": 25.9,
+            "kum_p90": 128.5
           }
         ]
       },
-      "letztes_tageswert_datum": "20260705",
+      "letztes_tageswert_datum": "20260706",
       "status": "ok",
       "fehler": null
     },
@@ -2866,14 +2866,14 @@
         "2023": 80,
         "2024": 55,
         "2025": 66,
-        "2026": 32
+        "2026": 33
       },
-      "sommertage_laufendes_jahr": 32,
-      "tageshoechstwert_heute_c": 27.5,
-      "niederschlag_letzte_30_tage_mm": 12.3,
+      "sommertage_laufendes_jahr": 33,
+      "tageshoechstwert_heute_c": 31.4,
+      "niederschlag_letzte_30_tage_mm": 11.5,
       "aktuelle_temperatur": {
-        "wert": 16.2,
-        "zeitpunkt": "2026070523"
+        "wert": 15.0,
+        "zeitpunkt": "2026070623"
       },
       "hourly_temp_distance_km": 0.0,
       "referenzperioden": {
@@ -2889,11 +2889,6 @@
         }
       },
       "tagesreihe_30d": [
-        {
-          "datum": "20260606",
-          "txk": 23.2,
-          "rsk": 0.8
-        },
         {
           "datum": "20260607",
           "txk": 21.2,
@@ -3038,16 +3033,15 @@
           "datum": "20260705",
           "txk": 27.5,
           "rsk": 0.0
+        },
+        {
+          "datum": "20260706",
+          "txk": 31.4,
+          "rsk": 0.0
         }
       ],
       "referenzband_temperatur": {
         "1961-1990": [
-          {
-            "tag": "06-06",
-            "mean": 20.4,
-            "p10": 15.1,
-            "p90": 25.6
-          },
           {
             "tag": "06-07",
             "mean": 20.1,
@@ -3227,15 +3221,15 @@
             "mean": 23.9,
             "p10": 17.8,
             "p90": 29.1
+          },
+          {
+            "tag": "07-07",
+            "mean": 23.9,
+            "p10": 19.0,
+            "p90": 28.9
           }
         ],
         "1991-2020": [
-          {
-            "tag": "06-06",
-            "mean": 21.7,
-            "p10": 16.0,
-            "p90": 28.0
-          },
           {
             "tag": "06-07",
             "mean": 22.7,
@@ -3415,388 +3409,394 @@
             "mean": 25.2,
             "p10": 20.4,
             "p90": 31.3
+          },
+          {
+            "tag": "07-07",
+            "mean": 25.0,
+            "p10": 20.6,
+            "p90": 31.5
           }
         ]
       },
       "referenzband_niederschlag": {
         "1961-1990": [
           {
-            "tag": "06-06",
-            "kum_mean": 1.4,
-            "kum_p10": 0.0,
-            "kum_p90": 4.3
-          },
-          {
             "tag": "06-07",
-            "kum_mean": 4.4,
+            "kum_mean": 3.0,
             "kum_p10": 0.0,
-            "kum_p90": 9.9
+            "kum_p90": 8.4
           },
           {
             "tag": "06-08",
-            "kum_mean": 5.9,
-            "kum_p10": 0.1,
-            "kum_p90": 12.7
+            "kum_mean": 4.6,
+            "kum_p10": 0.0,
+            "kum_p90": 10.2
           },
           {
             "tag": "06-09",
-            "kum_mean": 9.5,
-            "kum_p10": 0.2,
-            "kum_p90": 26.1
+            "kum_mean": 8.1,
+            "kum_p10": 0.0,
+            "kum_p90": 24.1
           },
           {
             "tag": "06-10",
-            "kum_mean": 10.2,
-            "kum_p10": 0.2,
-            "kum_p90": 29.6
+            "kum_mean": 8.8,
+            "kum_p10": 0.1,
+            "kum_p90": 27.6
           },
           {
             "tag": "06-11",
-            "kum_mean": 11.3,
-            "kum_p10": 0.3,
-            "kum_p90": 29.8
+            "kum_mean": 9.9,
+            "kum_p10": 0.1,
+            "kum_p90": 27.6
           },
           {
             "tag": "06-12",
-            "kum_mean": 12.2,
-            "kum_p10": 0.6,
-            "kum_p90": 31.6
+            "kum_mean": 10.9,
+            "kum_p10": 0.2,
+            "kum_p90": 28.6
           },
           {
             "tag": "06-13",
-            "kum_mean": 14.0,
-            "kum_p10": 1.4,
-            "kum_p90": 34.9
+            "kum_mean": 12.6,
+            "kum_p10": 0.2,
+            "kum_p90": 33.1
           },
           {
             "tag": "06-14",
-            "kum_mean": 14.8,
-            "kum_p10": 2.5,
-            "kum_p90": 34.9
+            "kum_mean": 13.4,
+            "kum_p10": 1.1,
+            "kum_p90": 33.1
           },
           {
             "tag": "06-15",
-            "kum_mean": 17.3,
-            "kum_p10": 2.6,
-            "kum_p90": 34.9
+            "kum_mean": 15.9,
+            "kum_p10": 1.6,
+            "kum_p90": 33.1
           },
           {
             "tag": "06-16",
-            "kum_mean": 19.3,
-            "kum_p10": 2.6,
-            "kum_p90": 41.2
+            "kum_mean": 18.0,
+            "kum_p10": 1.9,
+            "kum_p90": 39.2
           },
           {
             "tag": "06-17",
-            "kum_mean": 21.8,
-            "kum_p10": 3.2,
-            "kum_p90": 41.8
+            "kum_mean": 20.4,
+            "kum_p10": 3.0,
+            "kum_p90": 39.4
           },
           {
             "tag": "06-18",
-            "kum_mean": 24.2,
-            "kum_p10": 3.2,
+            "kum_mean": 22.8,
+            "kum_p10": 3.0,
             "kum_p90": 43.5
           },
           {
             "tag": "06-19",
-            "kum_mean": 27.6,
-            "kum_p10": 3.2,
-            "kum_p90": 52.7
+            "kum_mean": 26.2,
+            "kum_p10": 3.0,
+            "kum_p90": 50.4
           },
           {
             "tag": "06-20",
-            "kum_mean": 29.0,
-            "kum_p10": 6.5,
-            "kum_p90": 53.0
+            "kum_mean": 27.6,
+            "kum_p10": 4.0,
+            "kum_p90": 50.6
           },
           {
             "tag": "06-21",
-            "kum_mean": 32.0,
-            "kum_p10": 10.5,
-            "kum_p90": 53.6
+            "kum_mean": 30.6,
+            "kum_p10": 9.0,
+            "kum_p90": 51.5
           },
           {
             "tag": "06-22",
-            "kum_mean": 34.4,
-            "kum_p10": 11.5,
-            "kum_p90": 54.4
+            "kum_mean": 33.1,
+            "kum_p10": 10.0,
+            "kum_p90": 52.0
           },
           {
             "tag": "06-23",
-            "kum_mean": 37.6,
-            "kum_p10": 13.9,
-            "kum_p90": 55.9
+            "kum_mean": 36.3,
+            "kum_p10": 12.6,
+            "kum_p90": 53.5
           },
           {
             "tag": "06-24",
-            "kum_mean": 40.0,
-            "kum_p10": 14.9,
-            "kum_p90": 63.4
+            "kum_mean": 38.7,
+            "kum_p10": 13.7,
+            "kum_p90": 60.8
           },
           {
             "tag": "06-25",
-            "kum_mean": 42.1,
-            "kum_p10": 16.6,
-            "kum_p90": 65.2
+            "kum_mean": 40.7,
+            "kum_p10": 15.3,
+            "kum_p90": 61.8
           },
           {
             "tag": "06-26",
-            "kum_mean": 44.3,
-            "kum_p10": 16.6,
-            "kum_p90": 68.1
+            "kum_mean": 42.9,
+            "kum_p10": 15.3,
+            "kum_p90": 64.2
           },
           {
             "tag": "06-27",
-            "kum_mean": 49.7,
-            "kum_p10": 20.4,
-            "kum_p90": 69.4
+            "kum_mean": 48.3,
+            "kum_p10": 19.9,
+            "kum_p90": 66.7
           },
           {
             "tag": "06-28",
-            "kum_mean": 53.3,
-            "kum_p10": 21.1,
-            "kum_p90": 87.6
+            "kum_mean": 51.9,
+            "kum_p10": 20.7,
+            "kum_p90": 85.9
           },
           {
             "tag": "06-29",
-            "kum_mean": 55.1,
+            "kum_mean": 53.8,
             "kum_p10": 21.1,
-            "kum_p90": 90.3
+            "kum_p90": 87.9
           },
           {
             "tag": "06-30",
-            "kum_mean": 58.2,
+            "kum_mean": 56.9,
             "kum_p10": 21.1,
-            "kum_p90": 95.5
+            "kum_p90": 93.1
           },
           {
             "tag": "07-01",
-            "kum_mean": 59.7,
+            "kum_mean": 58.3,
             "kum_p10": 21.1,
-            "kum_p90": 104.6
+            "kum_p90": 102.1
           },
           {
             "tag": "07-02",
-            "kum_mean": 63.2,
-            "kum_p10": 22.6,
-            "kum_p90": 109.8
+            "kum_mean": 61.8,
+            "kum_p10": 21.2,
+            "kum_p90": 107.3
           },
           {
             "tag": "07-03",
-            "kum_mean": 65.2,
-            "kum_p10": 22.8,
-            "kum_p90": 112.0
+            "kum_mean": 63.8,
+            "kum_p10": 21.4,
+            "kum_p90": 109.4
           },
           {
             "tag": "07-04",
-            "kum_mean": 67.1,
-            "kum_p10": 23.1,
-            "kum_p90": 115.0
+            "kum_mean": 65.8,
+            "kum_p10": 21.8,
+            "kum_p90": 112.4
           },
           {
             "tag": "07-05",
-            "kum_mean": 71.0,
-            "kum_p10": 30.1,
-            "kum_p90": 118.1
+            "kum_mean": 69.6,
+            "kum_p10": 28.2,
+            "kum_p90": 115.4
           },
           {
             "tag": "07-06",
-            "kum_mean": 73.2,
-            "kum_p10": 30.2,
-            "kum_p90": 125.2
+            "kum_mean": 71.8,
+            "kum_p10": 28.3,
+            "kum_p90": 121.4
+          },
+          {
+            "tag": "07-07",
+            "kum_mean": 73.4,
+            "kum_p10": 28.3,
+            "kum_p90": 124.9
           }
         ],
         "1991-2020": [
           {
-            "tag": "06-06",
-            "kum_mean": 3.5,
-            "kum_p10": 0.0,
-            "kum_p90": 8.0
-          },
-          {
             "tag": "06-07",
-            "kum_mean": 6.9,
+            "kum_mean": 3.4,
             "kum_p10": 0.0,
-            "kum_p90": 16.8
+            "kum_p90": 8.6
           },
           {
             "tag": "06-08",
-            "kum_mean": 8.3,
+            "kum_mean": 4.8,
             "kum_p10": 0.0,
-            "kum_p90": 19.0
+            "kum_p90": 11.4
           },
           {
             "tag": "06-09",
-            "kum_mean": 12.4,
-            "kum_p10": 0.6,
-            "kum_p90": 23.8
+            "kum_mean": 8.9,
+            "kum_p10": 0.0,
+            "kum_p90": 18.4
           },
           {
             "tag": "06-10",
-            "kum_mean": 16.3,
-            "kum_p10": 1.1,
-            "kum_p90": 32.2
+            "kum_mean": 12.8,
+            "kum_p10": 0.0,
+            "kum_p90": 24.8
           },
           {
             "tag": "06-11",
-            "kum_mean": 18.0,
-            "kum_p10": 1.1,
-            "kum_p90": 32.5
+            "kum_mean": 14.5,
+            "kum_p10": 0.0,
+            "kum_p90": 26.1
           },
           {
             "tag": "06-12",
-            "kum_mean": 21.4,
-            "kum_p10": 4.4,
-            "kum_p90": 36.0
+            "kum_mean": 17.9,
+            "kum_p10": 1.1,
+            "kum_p90": 32.8
           },
           {
             "tag": "06-13",
-            "kum_mean": 23.9,
-            "kum_p10": 4.9,
-            "kum_p90": 37.6
+            "kum_mean": 20.4,
+            "kum_p10": 1.1,
+            "kum_p90": 35.4
           },
           {
             "tag": "06-14",
-            "kum_mean": 25.1,
-            "kum_p10": 5.6,
+            "kum_mean": 21.6,
+            "kum_p10": 1.4,
             "kum_p90": 39.1
           },
           {
             "tag": "06-15",
-            "kum_mean": 27.3,
-            "kum_p10": 5.6,
-            "kum_p90": 48.4
+            "kum_mean": 23.8,
+            "kum_p10": 1.5,
+            "kum_p90": 47.4
           },
           {
             "tag": "06-16",
-            "kum_mean": 28.5,
-            "kum_p10": 5.6,
-            "kum_p90": 52.3
+            "kum_mean": 25.0,
+            "kum_p10": 1.5,
+            "kum_p90": 49.0
           },
           {
             "tag": "06-17",
-            "kum_mean": 31.2,
-            "kum_p10": 5.6,
-            "kum_p90": 52.4
+            "kum_mean": 27.7,
+            "kum_p10": 1.5,
+            "kum_p90": 50.1
           },
           {
             "tag": "06-18",
-            "kum_mean": 32.4,
-            "kum_p10": 10.7,
-            "kum_p90": 52.8
+            "kum_mean": 28.9,
+            "kum_p10": 8.6,
+            "kum_p90": 50.5
           },
           {
             "tag": "06-19",
-            "kum_mean": 36.1,
-            "kum_p10": 11.2,
-            "kum_p90": 64.7
+            "kum_mean": 32.7,
+            "kum_p10": 9.4,
+            "kum_p90": 63.7
           },
           {
             "tag": "06-20",
-            "kum_mean": 38.8,
-            "kum_p10": 13.4,
-            "kum_p90": 64.8
+            "kum_mean": 35.3,
+            "kum_p10": 11.7,
+            "kum_p90": 63.8
           },
           {
             "tag": "06-21",
-            "kum_mean": 39.9,
-            "kum_p10": 15.6,
-            "kum_p90": 69.9
+            "kum_mean": 36.4,
+            "kum_p10": 12.5,
+            "kum_p90": 67.7
           },
           {
             "tag": "06-22",
-            "kum_mean": 44.3,
-            "kum_p10": 19.5,
-            "kum_p90": 71.4
+            "kum_mean": 40.8,
+            "kum_p10": 12.5,
+            "kum_p90": 68.2
           },
           {
             "tag": "06-23",
-            "kum_mean": 45.2,
-            "kum_p10": 19.5,
-            "kum_p90": 71.4
+            "kum_mean": 41.7,
+            "kum_p10": 12.6,
+            "kum_p90": 68.2
           },
           {
             "tag": "06-24",
-            "kum_mean": 46.5,
-            "kum_p10": 19.5,
-            "kum_p90": 76.0
+            "kum_mean": 43.0,
+            "kum_p10": 12.6,
+            "kum_p90": 72.7
           },
           {
             "tag": "06-25",
-            "kum_mean": 48.9,
-            "kum_p10": 19.5,
-            "kum_p90": 76.9
+            "kum_mean": 45.4,
+            "kum_p10": 13.6,
+            "kum_p90": 73.6
           },
           {
             "tag": "06-26",
-            "kum_mean": 50.9,
-            "kum_p10": 20.9,
-            "kum_p90": 77.2
+            "kum_mean": 47.4,
+            "kum_p10": 13.6,
+            "kum_p90": 73.9
           },
           {
             "tag": "06-27",
-            "kum_mean": 52.8,
-            "kum_p10": 20.9,
-            "kum_p90": 77.4
+            "kum_mean": 49.3,
+            "kum_p10": 13.9,
+            "kum_p90": 74.1
           },
           {
             "tag": "06-28",
-            "kum_mean": 54.5,
-            "kum_p10": 22.6,
-            "kum_p90": 77.8
+            "kum_mean": 51.0,
+            "kum_p10": 17.2,
+            "kum_p90": 76.5
           },
           {
             "tag": "06-29",
-            "kum_mean": 56.2,
-            "kum_p10": 23.6,
-            "kum_p90": 88.6
+            "kum_mean": 52.7,
+            "kum_p10": 18.1,
+            "kum_p90": 85.2
           },
           {
             "tag": "06-30",
-            "kum_mean": 56.8,
-            "kum_p10": 25.0,
-            "kum_p90": 88.9
+            "kum_mean": 53.3,
+            "kum_p10": 18.1,
+            "kum_p90": 85.5
           },
           {
             "tag": "07-01",
-            "kum_mean": 57.6,
-            "kum_p10": 25.9,
-            "kum_p90": 89.1
+            "kum_mean": 54.2,
+            "kum_p10": 18.6,
+            "kum_p90": 85.7
           },
           {
             "tag": "07-02",
-            "kum_mean": 59.0,
-            "kum_p10": 33.5,
-            "kum_p90": 89.6
+            "kum_mean": 55.5,
+            "kum_p10": 26.2,
+            "kum_p90": 86.2
           },
           {
             "tag": "07-03",
-            "kum_mean": 61.6,
-            "kum_p10": 34.0,
-            "kum_p90": 90.0
+            "kum_mean": 58.1,
+            "kum_p10": 29.3,
+            "kum_p90": 87.7
           },
           {
             "tag": "07-04",
-            "kum_mean": 62.2,
-            "kum_p10": 34.4,
-            "kum_p90": 91.6
+            "kum_mean": 58.7,
+            "kum_p10": 29.8,
+            "kum_p90": 88.3
           },
           {
             "tag": "07-05",
-            "kum_mean": 64.6,
-            "kum_p10": 35.0,
-            "kum_p90": 92.3
+            "kum_mean": 61.1,
+            "kum_p10": 32.1,
+            "kum_p90": 89.0
           },
           {
             "tag": "07-06",
-            "kum_mean": 67.1,
-            "kum_p10": 38.2,
-            "kum_p90": 92.4
+            "kum_mean": 63.6,
+            "kum_p10": 34.3,
+            "kum_p90": 89.1
+          },
+          {
+            "tag": "07-07",
+            "kum_mean": 64.8,
+            "kum_p10": 37.3,
+            "kum_p90": 89.7
           }
         ]
       },
-      "letztes_tageswert_datum": "20260705",
+      "letztes_tageswert_datum": "20260706",
       "status": "ok",
       "fehler": null
     },
@@ -3832,14 +3832,14 @@
         "2023": 65,
         "2024": 48,
         "2025": 53,
-        "2026": 31
+        "2026": 32
       },
-      "sommertage_laufendes_jahr": 31,
-      "tageshoechstwert_heute_c": 26.7,
-      "niederschlag_letzte_30_tage_mm": 28.5,
+      "sommertage_laufendes_jahr": 32,
+      "tageshoechstwert_heute_c": 29.6,
+      "niederschlag_letzte_30_tage_mm": 27.7,
       "aktuelle_temperatur": {
-        "wert": 17.7,
-        "zeitpunkt": "2026070523"
+        "wert": 19.7,
+        "zeitpunkt": "2026070623"
       },
       "hourly_temp_distance_km": 0.0,
       "referenzperioden": {
@@ -3855,11 +3855,6 @@
         }
       },
       "tagesreihe_30d": [
-        {
-          "datum": "20260606",
-          "txk": 22.7,
-          "rsk": 0.8
-        },
         {
           "datum": "20260607",
           "txk": 20.9,
@@ -4004,16 +3999,15 @@
           "datum": "20260705",
           "txk": 26.7,
           "rsk": 0.0
+        },
+        {
+          "datum": "20260706",
+          "txk": 29.6,
+          "rsk": 0.0
         }
       ],
       "referenzband_temperatur": {
         "1961-1990": [
-          {
-            "tag": "06-06",
-            "mean": 19.3,
-            "p10": 14.4,
-            "p90": 25.2
-          },
           {
             "tag": "06-07",
             "mean": 18.6,
@@ -4193,15 +4187,15 @@
             "mean": 22.5,
             "p10": 17.4,
             "p90": 26.8
+          },
+          {
+            "tag": "07-07",
+            "mean": 22.3,
+            "p10": 17.3,
+            "p90": 27.3
           }
         ],
         "1991-2020": [
-          {
-            "tag": "06-06",
-            "mean": 21.1,
-            "p10": 15.1,
-            "p90": 27.7
-          },
           {
             "tag": "06-07",
             "mean": 22.2,
@@ -4381,388 +4375,394 @@
             "mean": 23.0,
             "p10": 17.4,
             "p90": 30.1
+          },
+          {
+            "tag": "07-07",
+            "mean": 22.7,
+            "p10": 17.9,
+            "p90": 27.3
           }
         ]
       },
       "referenzband_niederschlag": {
         "1961-1990": [
           {
-            "tag": "06-06",
-            "kum_mean": 2.6,
-            "kum_p10": 0.0,
-            "kum_p90": 8.1
-          },
-          {
             "tag": "06-07",
-            "kum_mean": 6.5,
+            "kum_mean": 3.9,
             "kum_p10": 0.0,
-            "kum_p90": 15.5
+            "kum_p90": 10.8
           },
           {
             "tag": "06-08",
-            "kum_mean": 7.9,
+            "kum_mean": 5.3,
             "kum_p10": 0.0,
-            "kum_p90": 16.2
+            "kum_p90": 12.4
           },
           {
             "tag": "06-09",
-            "kum_mean": 11.0,
+            "kum_mean": 8.4,
             "kum_p10": 0.0,
-            "kum_p90": 25.0
+            "kum_p90": 21.6
           },
           {
             "tag": "06-10",
-            "kum_mean": 12.6,
+            "kum_mean": 10.0,
             "kum_p10": 0.2,
-            "kum_p90": 25.9
+            "kum_p90": 23.0
           },
           {
             "tag": "06-11",
-            "kum_mean": 15.0,
+            "kum_mean": 12.3,
             "kum_p10": 0.4,
-            "kum_p90": 33.8
+            "kum_p90": 25.1
           },
           {
             "tag": "06-12",
-            "kum_mean": 16.5,
+            "kum_mean": 13.9,
             "kum_p10": 0.4,
-            "kum_p90": 34.1
+            "kum_p90": 25.5
           },
           {
             "tag": "06-13",
-            "kum_mean": 20.1,
+            "kum_mean": 17.5,
             "kum_p10": 0.4,
-            "kum_p90": 37.4
+            "kum_p90": 33.2
           },
           {
             "tag": "06-14",
-            "kum_mean": 22.2,
+            "kum_mean": 19.6,
             "kum_p10": 0.4,
-            "kum_p90": 39.3
+            "kum_p90": 37.1
           },
           {
             "tag": "06-15",
-            "kum_mean": 24.5,
-            "kum_p10": 1.9,
-            "kum_p90": 42.6
+            "kum_mean": 21.9,
+            "kum_p10": 1.8,
+            "kum_p90": 38.0
           },
           {
             "tag": "06-16",
-            "kum_mean": 26.8,
-            "kum_p10": 3.3,
-            "kum_p90": 44.8
+            "kum_mean": 24.2,
+            "kum_p10": 2.0,
+            "kum_p90": 39.8
           },
           {
             "tag": "06-17",
-            "kum_mean": 30.7,
-            "kum_p10": 3.3,
-            "kum_p90": 53.8
+            "kum_mean": 28.1,
+            "kum_p10": 2.0,
+            "kum_p90": 45.5
           },
           {
             "tag": "06-18",
-            "kum_mean": 32.6,
-            "kum_p10": 7.3,
-            "kum_p90": 56.0
+            "kum_mean": 30.0,
+            "kum_p10": 2.0,
+            "kum_p90": 51.9
           },
           {
             "tag": "06-19",
-            "kum_mean": 36.0,
-            "kum_p10": 7.3,
-            "kum_p90": 68.0
+            "kum_mean": 33.4,
+            "kum_p10": 2.0,
+            "kum_p90": 63.3
           },
           {
             "tag": "06-20",
-            "kum_mean": 39.8,
-            "kum_p10": 7.6,
-            "kum_p90": 68.5
+            "kum_mean": 37.2,
+            "kum_p10": 2.2,
+            "kum_p90": 63.9
           },
           {
             "tag": "06-21",
-            "kum_mean": 43.5,
-            "kum_p10": 9.2,
-            "kum_p90": 75.1
+            "kum_mean": 40.9,
+            "kum_p10": 8.1,
+            "kum_p90": 72.1
           },
           {
             "tag": "06-22",
-            "kum_mean": 45.2,
-            "kum_p10": 9.2,
-            "kum_p90": 75.2
+            "kum_mean": 42.6,
+            "kum_p10": 8.4,
+            "kum_p90": 74.2
           },
           {
             "tag": "06-23",
-            "kum_mean": 48.2,
-            "kum_p10": 13.3,
-            "kum_p90": 76.1
+            "kum_mean": 45.6,
+            "kum_p10": 8.4,
+            "kum_p90": 74.5
           },
           {
             "tag": "06-24",
-            "kum_mean": 51.0,
-            "kum_p10": 13.3,
-            "kum_p90": 77.4
+            "kum_mean": 48.4,
+            "kum_p10": 8.6,
+            "kum_p90": 75.2
           },
           {
             "tag": "06-25",
-            "kum_mean": 52.9,
-            "kum_p10": 15.0,
-            "kum_p90": 78.3
+            "kum_mean": 50.3,
+            "kum_p10": 10.0,
+            "kum_p90": 75.9
           },
           {
             "tag": "06-26",
-            "kum_mean": 57.7,
-            "kum_p10": 15.1,
-            "kum_p90": 91.2
+            "kum_mean": 55.1,
+            "kum_p10": 10.3,
+            "kum_p90": 87.8
           },
           {
             "tag": "06-27",
-            "kum_mean": 60.9,
-            "kum_p10": 15.1,
-            "kum_p90": 96.6
+            "kum_mean": 58.3,
+            "kum_p10": 10.3,
+            "kum_p90": 92.8
           },
           {
             "tag": "06-28",
-            "kum_mean": 65.3,
-            "kum_p10": 15.1,
-            "kum_p90": 102.2
+            "kum_mean": 62.7,
+            "kum_p10": 10.3,
+            "kum_p90": 100.0
           },
           {
             "tag": "06-29",
-            "kum_mean": 68.6,
-            "kum_p10": 15.9,
-            "kum_p90": 104.8
+            "kum_mean": 66.0,
+            "kum_p10": 10.5,
+            "kum_p90": 104.3
           },
           {
             "tag": "06-30",
-            "kum_mean": 70.7,
-            "kum_p10": 17.4,
-            "kum_p90": 106.5
+            "kum_mean": 68.1,
+            "kum_p10": 16.8,
+            "kum_p90": 106.1
           },
           {
             "tag": "07-01",
-            "kum_mean": 74.0,
-            "kum_p10": 17.5,
-            "kum_p90": 120.3
+            "kum_mean": 71.4,
+            "kum_p10": 16.9,
+            "kum_p90": 113.0
           },
           {
             "tag": "07-02",
-            "kum_mean": 76.3,
-            "kum_p10": 21.6,
-            "kum_p90": 120.4
+            "kum_mean": 73.7,
+            "kum_p10": 17.4,
+            "kum_p90": 113.9
           },
           {
             "tag": "07-03",
-            "kum_mean": 79.3,
-            "kum_p10": 23.6,
-            "kum_p90": 120.4
+            "kum_mean": 76.7,
+            "kum_p10": 18.2,
+            "kum_p90": 115.3
           },
           {
             "tag": "07-04",
-            "kum_mean": 81.1,
-            "kum_p10": 23.6,
-            "kum_p90": 122.8
+            "kum_mean": 78.5,
+            "kum_p10": 18.2,
+            "kum_p90": 116.5
           },
           {
             "tag": "07-05",
-            "kum_mean": 83.7,
-            "kum_p10": 28.4,
-            "kum_p90": 122.9
+            "kum_mean": 81.1,
+            "kum_p10": 27.8,
+            "kum_p90": 121.5
           },
           {
             "tag": "07-06",
-            "kum_mean": 84.9,
-            "kum_p10": 28.5,
-            "kum_p90": 122.9
+            "kum_mean": 82.3,
+            "kum_p10": 27.9,
+            "kum_p90": 121.5
+          },
+          {
+            "tag": "07-07",
+            "kum_mean": 85.5,
+            "kum_p10": 27.9,
+            "kum_p90": 128.4
           }
         ],
         "1991-2020": [
           {
-            "tag": "06-06",
-            "kum_mean": 2.0,
-            "kum_p10": 0.0,
-            "kum_p90": 6.1
-          },
-          {
             "tag": "06-07",
-            "kum_mean": 5.8,
+            "kum_mean": 3.8,
             "kum_p10": 0.0,
-            "kum_p90": 15.7
+            "kum_p90": 13.7
           },
           {
             "tag": "06-08",
-            "kum_mean": 7.6,
+            "kum_mean": 5.6,
             "kum_p10": 0.0,
-            "kum_p90": 17.2
+            "kum_p90": 16.5
           },
           {
             "tag": "06-09",
-            "kum_mean": 10.1,
+            "kum_mean": 8.1,
             "kum_p10": 0.0,
-            "kum_p90": 30.2
+            "kum_p90": 25.1
           },
           {
             "tag": "06-10",
-            "kum_mean": 13.5,
-            "kum_p10": 0.6,
-            "kum_p90": 34.9
+            "kum_mean": 11.5,
+            "kum_p10": 0.1,
+            "kum_p90": 29.9
           },
           {
             "tag": "06-11",
-            "kum_mean": 16.1,
-            "kum_p10": 1.0,
-            "kum_p90": 35.0
+            "kum_mean": 14.1,
+            "kum_p10": 0.6,
+            "kum_p90": 30.3
           },
           {
             "tag": "06-12",
-            "kum_mean": 18.6,
-            "kum_p10": 2.1,
-            "kum_p90": 38.5
+            "kum_mean": 16.6,
+            "kum_p10": 1.0,
+            "kum_p90": 33.0
           },
           {
             "tag": "06-13",
-            "kum_mean": 20.8,
-            "kum_p10": 2.1,
-            "kum_p90": 41.7
+            "kum_mean": 18.8,
+            "kum_p10": 1.0,
+            "kum_p90": 36.8
           },
           {
             "tag": "06-14",
-            "kum_mean": 22.9,
+            "kum_mean": 20.9,
             "kum_p10": 2.9,
-            "kum_p90": 41.7
+            "kum_p90": 38.0
           },
           {
             "tag": "06-15",
-            "kum_mean": 25.5,
+            "kum_mean": 23.5,
             "kum_p10": 2.9,
-            "kum_p90": 50.0
+            "kum_p90": 45.9
           },
           {
             "tag": "06-16",
-            "kum_mean": 26.7,
+            "kum_mean": 24.7,
             "kum_p10": 2.9,
-            "kum_p90": 53.0
+            "kum_p90": 47.2
           },
           {
             "tag": "06-17",
-            "kum_mean": 29.1,
+            "kum_mean": 27.1,
             "kum_p10": 4.5,
-            "kum_p90": 56.5
+            "kum_p90": 54.0
           },
           {
             "tag": "06-18",
-            "kum_mean": 30.1,
-            "kum_p10": 9.4,
-            "kum_p90": 58.2
+            "kum_mean": 28.1,
+            "kum_p10": 6.3,
+            "kum_p90": 56.3
           },
           {
             "tag": "06-19",
-            "kum_mean": 31.0,
-            "kum_p10": 9.6,
-            "kum_p90": 59.8
+            "kum_mean": 29.0,
+            "kum_p10": 6.9,
+            "kum_p90": 59.6
           },
           {
             "tag": "06-20",
-            "kum_mean": 34.1,
-            "kum_p10": 9.9,
-            "kum_p90": 64.9
+            "kum_mean": 32.1,
+            "kum_p10": 7.2,
+            "kum_p90": 62.8
           },
           {
             "tag": "06-21",
-            "kum_mean": 36.1,
-            "kum_p10": 9.9,
-            "kum_p90": 70.4
+            "kum_mean": 34.1,
+            "kum_p10": 8.0,
+            "kum_p90": 68.4
           },
           {
             "tag": "06-22",
-            "kum_mean": 38.7,
-            "kum_p10": 12.2,
-            "kum_p90": 73.6
+            "kum_mean": 36.7,
+            "kum_p10": 8.0,
+            "kum_p90": 70.2
           },
           {
             "tag": "06-23",
-            "kum_mean": 39.9,
-            "kum_p10": 13.4,
-            "kum_p90": 73.9
+            "kum_mean": 37.9,
+            "kum_p10": 8.5,
+            "kum_p90": 70.4
           },
           {
             "tag": "06-24",
-            "kum_mean": 41.6,
-            "kum_p10": 13.4,
-            "kum_p90": 77.8
+            "kum_mean": 39.6,
+            "kum_p10": 8.5,
+            "kum_p90": 77.4
           },
           {
             "tag": "06-25",
-            "kum_mean": 43.7,
-            "kum_p10": 14.6,
-            "kum_p90": 80.9
+            "kum_mean": 41.7,
+            "kum_p10": 13.9,
+            "kum_p90": 80.2
           },
           {
             "tag": "06-26",
-            "kum_mean": 44.6,
-            "kum_p10": 14.6,
-            "kum_p90": 82.5
+            "kum_mean": 42.6,
+            "kum_p10": 13.9,
+            "kum_p90": 80.5
           },
           {
             "tag": "06-27",
-            "kum_mean": 47.3,
-            "kum_p10": 14.6,
+            "kum_mean": 45.3,
+            "kum_p10": 14.0,
             "kum_p90": 83.8
           },
           {
             "tag": "06-28",
-            "kum_mean": 49.3,
-            "kum_p10": 14.9,
-            "kum_p90": 88.8
+            "kum_mean": 47.3,
+            "kum_p10": 14.8,
+            "kum_p90": 87.6
           },
           {
             "tag": "06-29",
-            "kum_mean": 50.1,
+            "kum_mean": 48.2,
             "kum_p10": 15.5,
-            "kum_p90": 93.7
+            "kum_p90": 91.6
           },
           {
             "tag": "06-30",
-            "kum_mean": 51.0,
+            "kum_mean": 49.0,
             "kum_p10": 15.6,
-            "kum_p90": 94.7
+            "kum_p90": 92.5
           },
           {
             "tag": "07-01",
-            "kum_mean": 54.0,
-            "kum_p10": 19.3,
-            "kum_p90": 98.5
+            "kum_mean": 52.0,
+            "kum_p10": 15.7,
+            "kum_p90": 95.9
           },
           {
             "tag": "07-02",
-            "kum_mean": 55.8,
-            "kum_p10": 19.3,
-            "kum_p90": 98.9
+            "kum_mean": 53.8,
+            "kum_p10": 15.7,
+            "kum_p90": 96.4
           },
           {
             "tag": "07-03",
-            "kum_mean": 59.4,
-            "kum_p10": 21.1,
-            "kum_p90": 101.0
+            "kum_mean": 57.4,
+            "kum_p10": 19.4,
+            "kum_p90": 99.1
           },
           {
             "tag": "07-04",
-            "kum_mean": 62.8,
-            "kum_p10": 22.9,
-            "kum_p90": 101.4
+            "kum_mean": 60.8,
+            "kum_p10": 19.4,
+            "kum_p90": 100.8
           },
           {
             "tag": "07-05",
-            "kum_mean": 66.6,
-            "kum_p10": 23.8,
-            "kum_p90": 127.2
+            "kum_mean": 64.6,
+            "kum_p10": 19.6,
+            "kum_p90": 122.3
           },
           {
             "tag": "07-06",
-            "kum_mean": 69.6,
-            "kum_p10": 23.8,
-            "kum_p90": 129.7
+            "kum_mean": 67.6,
+            "kum_p10": 19.7,
+            "kum_p90": 124.8
+          },
+          {
+            "tag": "07-07",
+            "kum_mean": 69.3,
+            "kum_p10": 19.7,
+            "kum_p90": 127.7
           }
         ]
       },
-      "letztes_tageswert_datum": "20260705",
+      "letztes_tageswert_datum": "20260706",
       "status": "ok",
       "fehler": null
     },
@@ -5586,14 +5586,14 @@
         "2023": 52,
         "2024": 38,
         "2025": 46,
-        "2026": 29
+        "2026": 30
       },
-      "sommertage_laufendes_jahr": 29,
-      "tageshoechstwert_heute_c": 25.4,
-      "niederschlag_letzte_30_tage_mm": 43.4,
+      "sommertage_laufendes_jahr": 30,
+      "tageshoechstwert_heute_c": 29.1,
+      "niederschlag_letzte_30_tage_mm": 42.8,
       "aktuelle_temperatur": {
-        "wert": 18.3,
-        "zeitpunkt": "2026070523"
+        "wert": 20.6,
+        "zeitpunkt": "2026070623"
       },
       "hourly_temp_distance_km": 0.0,
       "referenzperioden": {
@@ -5609,11 +5609,6 @@
         }
       },
       "tagesreihe_30d": [
-        {
-          "datum": "20260606",
-          "txk": 21.4,
-          "rsk": 0.6
-        },
         {
           "datum": "20260607",
           "txk": 19.3,
@@ -5758,16 +5753,15 @@
           "datum": "20260705",
           "txk": 25.4,
           "rsk": 0.0
+        },
+        {
+          "datum": "20260706",
+          "txk": 29.1,
+          "rsk": 0.0
         }
       ],
       "referenzband_temperatur": {
         "1961-1990": [
-          {
-            "tag": "06-06",
-            "mean": 18.1,
-            "p10": 12.7,
-            "p90": 24.6
-          },
           {
             "tag": "06-07",
             "mean": 17.1,
@@ -5947,15 +5941,15 @@
             "mean": 22.6,
             "p10": 17.4,
             "p90": 27.2
+          },
+          {
+            "tag": "07-07",
+            "mean": 22.0,
+            "p10": 15.3,
+            "p90": 26.6
           }
         ],
         "1991-2020": [
-          {
-            "tag": "06-06",
-            "mean": 20.5,
-            "p10": 14.8,
-            "p90": 27.2
-          },
           {
             "tag": "06-07",
             "mean": 21.6,
@@ -6135,388 +6129,394 @@
             "mean": 22.3,
             "p10": 16.7,
             "p90": 29.6
+          },
+          {
+            "tag": "07-07",
+            "mean": 22.1,
+            "p10": 18.2,
+            "p90": 27.6
           }
         ]
       },
       "referenzband_niederschlag": {
         "1961-1990": [
           {
-            "tag": "06-06",
-            "kum_mean": 3.5,
-            "kum_p10": 0.0,
-            "kum_p90": 10.9
-          },
-          {
             "tag": "06-07",
-            "kum_mean": 8.5,
+            "kum_mean": 5.0,
             "kum_p10": 0.0,
-            "kum_p90": 18.1
+            "kum_p90": 11.2
           },
           {
             "tag": "06-08",
-            "kum_mean": 10.1,
-            "kum_p10": 0.5,
-            "kum_p90": 20.9
+            "kum_mean": 6.6,
+            "kum_p10": 0.3,
+            "kum_p90": 14.4
           },
           {
             "tag": "06-09",
-            "kum_mean": 13.0,
-            "kum_p10": 0.5,
-            "kum_p90": 29.2
+            "kum_mean": 9.5,
+            "kum_p10": 0.3,
+            "kum_p90": 27.2
           },
           {
             "tag": "06-10",
-            "kum_mean": 14.6,
-            "kum_p10": 0.9,
-            "kum_p90": 31.3
+            "kum_mean": 11.1,
+            "kum_p10": 0.8,
+            "kum_p90": 29.6
           },
           {
             "tag": "06-11",
-            "kum_mean": 17.1,
-            "kum_p10": 0.9,
-            "kum_p90": 32.9
+            "kum_mean": 13.6,
+            "kum_p10": 0.8,
+            "kum_p90": 29.6
           },
           {
             "tag": "06-12",
-            "kum_mean": 19.2,
-            "kum_p10": 0.9,
-            "kum_p90": 35.9
+            "kum_mean": 15.7,
+            "kum_p10": 0.8,
+            "kum_p90": 30.4
           },
           {
             "tag": "06-13",
-            "kum_mean": 21.4,
-            "kum_p10": 0.9,
-            "kum_p90": 50.8
+            "kum_mean": 17.9,
+            "kum_p10": 0.8,
+            "kum_p90": 42.9
           },
           {
             "tag": "06-14",
-            "kum_mean": 23.6,
-            "kum_p10": 0.9,
-            "kum_p90": 51.1
+            "kum_mean": 20.1,
+            "kum_p10": 0.8,
+            "kum_p90": 47.2
           },
           {
             "tag": "06-15",
-            "kum_mean": 25.6,
-            "kum_p10": 3.1,
-            "kum_p90": 51.1
+            "kum_mean": 22.1,
+            "kum_p10": 1.5,
+            "kum_p90": 47.2
           },
           {
             "tag": "06-16",
-            "kum_mean": 27.4,
-            "kum_p10": 3.9,
-            "kum_p90": 51.2
+            "kum_mean": 23.9,
+            "kum_p10": 1.5,
+            "kum_p90": 47.2
           },
           {
             "tag": "06-17",
-            "kum_mean": 32.4,
-            "kum_p10": 6.2,
-            "kum_p90": 57.8
+            "kum_mean": 28.9,
+            "kum_p10": 1.5,
+            "kum_p90": 54.4
           },
           {
             "tag": "06-18",
-            "kum_mean": 34.2,
-            "kum_p10": 6.2,
-            "kum_p90": 62.2
+            "kum_mean": 30.7,
+            "kum_p10": 1.5,
+            "kum_p90": 61.0
           },
           {
             "tag": "06-19",
-            "kum_mean": 37.3,
-            "kum_p10": 6.2,
-            "kum_p90": 72.8
+            "kum_mean": 33.8,
+            "kum_p10": 1.5,
+            "kum_p90": 68.8
           },
           {
             "tag": "06-20",
-            "kum_mean": 38.7,
-            "kum_p10": 6.2,
-            "kum_p90": 74.3
+            "kum_mean": 35.2,
+            "kum_p10": 1.5,
+            "kum_p90": 70.4
           },
           {
             "tag": "06-21",
-            "kum_mean": 41.9,
-            "kum_p10": 10.8,
-            "kum_p90": 76.6
+            "kum_mean": 38.4,
+            "kum_p10": 6.1,
+            "kum_p90": 72.7
           },
           {
             "tag": "06-22",
-            "kum_mean": 44.3,
-            "kum_p10": 12.7,
-            "kum_p90": 78.8
+            "kum_mean": 40.8,
+            "kum_p10": 8.0,
+            "kum_p90": 74.8
           },
           {
             "tag": "06-23",
-            "kum_mean": 48.5,
-            "kum_p10": 13.4,
-            "kum_p90": 79.1
+            "kum_mean": 45.0,
+            "kum_p10": 8.8,
+            "kum_p90": 75.2
           },
           {
             "tag": "06-24",
-            "kum_mean": 51.6,
-            "kum_p10": 13.5,
-            "kum_p90": 89.5
+            "kum_mean": 48.1,
+            "kum_p10": 8.8,
+            "kum_p90": 85.8
           },
           {
             "tag": "06-25",
-            "kum_mean": 54.1,
-            "kum_p10": 19.4,
-            "kum_p90": 91.2
+            "kum_mean": 50.6,
+            "kum_p10": 13.1,
+            "kum_p90": 87.3
           },
           {
             "tag": "06-26",
-            "kum_mean": 56.2,
-            "kum_p10": 19.4,
-            "kum_p90": 93.1
+            "kum_mean": 52.7,
+            "kum_p10": 13.1,
+            "kum_p90": 89.7
           },
           {
             "tag": "06-27",
-            "kum_mean": 59.3,
-            "kum_p10": 23.2,
-            "kum_p90": 94.6
+            "kum_mean": 55.8,
+            "kum_p10": 17.1,
+            "kum_p90": 90.1
           },
           {
             "tag": "06-28",
-            "kum_mean": 63.3,
-            "kum_p10": 23.4,
-            "kum_p90": 113.5
+            "kum_mean": 59.8,
+            "kum_p10": 17.7,
+            "kum_p90": 108.1
           },
           {
             "tag": "06-29",
-            "kum_mean": 66.3,
-            "kum_p10": 25.7,
-            "kum_p90": 113.8
+            "kum_mean": 62.8,
+            "kum_p10": 21.0,
+            "kum_p90": 108.4
           },
           {
             "tag": "06-30",
-            "kum_mean": 69.0,
-            "kum_p10": 28.1,
-            "kum_p90": 117.5
+            "kum_mean": 65.5,
+            "kum_p10": 22.5,
+            "kum_p90": 111.3
           },
           {
             "tag": "07-01",
-            "kum_mean": 71.8,
-            "kum_p10": 31.3,
-            "kum_p90": 121.5
+            "kum_mean": 68.2,
+            "kum_p10": 25.7,
+            "kum_p90": 111.3
           },
           {
             "tag": "07-02",
-            "kum_mean": 74.0,
-            "kum_p10": 33.0,
-            "kum_p90": 124.1
+            "kum_mean": 70.5,
+            "kum_p10": 27.4,
+            "kum_p90": 116.7
           },
           {
             "tag": "07-03",
-            "kum_mean": 78.1,
-            "kum_p10": 35.3,
-            "kum_p90": 131.8
+            "kum_mean": 74.6,
+            "kum_p10": 30.7,
+            "kum_p90": 124.7
           },
           {
             "tag": "07-04",
-            "kum_mean": 80.0,
-            "kum_p10": 35.3,
-            "kum_p90": 131.8
+            "kum_mean": 76.4,
+            "kum_p10": 30.7,
+            "kum_p90": 124.7
           },
           {
             "tag": "07-05",
-            "kum_mean": 84.0,
-            "kum_p10": 37.8,
-            "kum_p90": 134.2
+            "kum_mean": 80.5,
+            "kum_p10": 33.2,
+            "kum_p90": 126.8
           },
           {
             "tag": "07-06",
-            "kum_mean": 85.1,
-            "kum_p10": 38.0,
-            "kum_p90": 135.7
+            "kum_mean": 81.6,
+            "kum_p10": 33.3,
+            "kum_p90": 128.3
+          },
+          {
+            "tag": "07-07",
+            "kum_mean": 83.9,
+            "kum_p10": 33.4,
+            "kum_p90": 131.8
           }
         ],
         "1991-2020": [
           {
-            "tag": "06-06",
-            "kum_mean": 4.1,
-            "kum_p10": 0.0,
-            "kum_p90": 10.4
-          },
-          {
             "tag": "06-07",
-            "kum_mean": 6.9,
+            "kum_mean": 2.9,
             "kum_p10": 0.0,
-            "kum_p90": 14.3
+            "kum_p90": 8.9
           },
           {
             "tag": "06-08",
-            "kum_mean": 8.5,
+            "kum_mean": 4.4,
             "kum_p10": 0.0,
-            "kum_p90": 15.3
+            "kum_p90": 11.9
           },
           {
             "tag": "06-09",
-            "kum_mean": 10.9,
+            "kum_mean": 6.8,
             "kum_p10": 0.0,
-            "kum_p90": 21.2
+            "kum_p90": 16.1
           },
           {
             "tag": "06-10",
-            "kum_mean": 13.7,
-            "kum_p10": 0.3,
-            "kum_p90": 26.8
+            "kum_mean": 9.6,
+            "kum_p10": 0.0,
+            "kum_p90": 19.1
           },
           {
             "tag": "06-11",
-            "kum_mean": 17.6,
-            "kum_p10": 0.7,
-            "kum_p90": 33.5
+            "kum_mean": 13.5,
+            "kum_p10": 0.3,
+            "kum_p90": 27.8
           },
           {
             "tag": "06-12",
-            "kum_mean": 20.5,
-            "kum_p10": 1.1,
-            "kum_p90": 51.8
+            "kum_mean": 16.4,
+            "kum_p10": 0.3,
+            "kum_p90": 39.8
           },
           {
             "tag": "06-13",
-            "kum_mean": 22.9,
-            "kum_p10": 1.6,
-            "kum_p90": 63.5
+            "kum_mean": 18.8,
+            "kum_p10": 1.1,
+            "kum_p90": 45.6
           },
           {
             "tag": "06-14",
-            "kum_mean": 25.1,
+            "kum_mean": 21.0,
             "kum_p10": 1.6,
-            "kum_p90": 63.7
+            "kum_p90": 49.0
           },
           {
             "tag": "06-15",
-            "kum_mean": 27.6,
+            "kum_mean": 23.5,
             "kum_p10": 1.6,
-            "kum_p90": 64.8
+            "kum_p90": 57.0
           },
           {
             "tag": "06-16",
-            "kum_mean": 29.6,
+            "kum_mean": 25.5,
             "kum_p10": 1.6,
-            "kum_p90": 69.5
+            "kum_p90": 58.0
           },
           {
             "tag": "06-17",
-            "kum_mean": 32.5,
+            "kum_mean": 28.5,
             "kum_p10": 4.2,
-            "kum_p90": 72.6
+            "kum_p90": 63.1
           },
           {
             "tag": "06-18",
-            "kum_mean": 33.4,
-            "kum_p10": 8.2,
-            "kum_p90": 72.6
+            "kum_mean": 29.3,
+            "kum_p10": 6.0,
+            "kum_p90": 63.1
           },
           {
             "tag": "06-19",
-            "kum_mean": 34.4,
-            "kum_p10": 10.1,
-            "kum_p90": 74.1
+            "kum_mean": 30.3,
+            "kum_p10": 8.4,
+            "kum_p90": 68.8
           },
           {
             "tag": "06-20",
-            "kum_mean": 38.6,
-            "kum_p10": 10.6,
-            "kum_p90": 74.7
+            "kum_mean": 34.5,
+            "kum_p10": 9.3,
+            "kum_p90": 72.4
           },
           {
             "tag": "06-21",
-            "kum_mean": 39.7,
-            "kum_p10": 11.0,
-            "kum_p90": 75.0
+            "kum_mean": 35.6,
+            "kum_p10": 10.7,
+            "kum_p90": 72.6
           },
           {
             "tag": "06-22",
-            "kum_mean": 42.8,
-            "kum_p10": 12.5,
-            "kum_p90": 81.6
+            "kum_mean": 38.7,
+            "kum_p10": 12.3,
+            "kum_p90": 77.9
           },
           {
             "tag": "06-23",
-            "kum_mean": 44.9,
-            "kum_p10": 14.7,
-            "kum_p90": 85.5
+            "kum_mean": 40.8,
+            "kum_p10": 13.2,
+            "kum_p90": 79.1
           },
           {
             "tag": "06-24",
-            "kum_mean": 46.2,
-            "kum_p10": 14.7,
-            "kum_p90": 92.3
+            "kum_mean": 42.1,
+            "kum_p10": 13.2,
+            "kum_p90": 85.9
           },
           {
             "tag": "06-25",
-            "kum_mean": 48.7,
-            "kum_p10": 15.0,
-            "kum_p90": 93.8
+            "kum_mean": 44.6,
+            "kum_p10": 13.3,
+            "kum_p90": 87.4
           },
           {
             "tag": "06-26",
-            "kum_mean": 49.9,
-            "kum_p10": 15.0,
-            "kum_p90": 94.0
+            "kum_mean": 45.9,
+            "kum_p10": 13.3,
+            "kum_p90": 87.6
           },
           {
             "tag": "06-27",
-            "kum_mean": 51.7,
-            "kum_p10": 16.8,
-            "kum_p90": 94.0
+            "kum_mean": 47.6,
+            "kum_p10": 14.7,
+            "kum_p90": 87.6
           },
           {
             "tag": "06-28",
-            "kum_mean": 53.7,
-            "kum_p10": 18.4,
-            "kum_p90": 111.8
+            "kum_mean": 49.7,
+            "kum_p10": 16.2,
+            "kum_p90": 105.4
           },
           {
             "tag": "06-29",
-            "kum_mean": 54.8,
-            "kum_p10": 19.0,
-            "kum_p90": 112.5
+            "kum_mean": 50.7,
+            "kum_p10": 17.7,
+            "kum_p90": 106.1
           },
           {
             "tag": "06-30",
-            "kum_mean": 56.2,
-            "kum_p10": 19.0,
-            "kum_p90": 114.1
+            "kum_mean": 52.1,
+            "kum_p10": 17.8,
+            "kum_p90": 107.7
           },
           {
             "tag": "07-01",
-            "kum_mean": 58.9,
-            "kum_p10": 24.4,
-            "kum_p90": 114.4
+            "kum_mean": 54.8,
+            "kum_p10": 21.1,
+            "kum_p90": 108.0
           },
           {
             "tag": "07-02",
-            "kum_mean": 61.7,
-            "kum_p10": 24.6,
-            "kum_p90": 115.4
+            "kum_mean": 57.6,
+            "kum_p10": 21.6,
+            "kum_p90": 109.0
           },
           {
             "tag": "07-03",
-            "kum_mean": 64.9,
-            "kum_p10": 27.5,
-            "kum_p90": 115.5
+            "kum_mean": 60.8,
+            "kum_p10": 24.7,
+            "kum_p90": 109.1
           },
           {
             "tag": "07-04",
-            "kum_mean": 67.3,
-            "kum_p10": 34.1,
-            "kum_p90": 115.6
+            "kum_mean": 63.2,
+            "kum_p10": 24.7,
+            "kum_p90": 109.2
           },
           {
             "tag": "07-05",
-            "kum_mean": 71.1,
-            "kum_p10": 35.2,
-            "kum_p90": 116.3
+            "kum_mean": 67.0,
+            "kum_p10": 25.3,
+            "kum_p90": 109.9
           },
           {
             "tag": "07-06",
-            "kum_mean": 74.2,
-            "kum_p10": 35.8,
-            "kum_p90": 116.3
+            "kum_mean": 70.1,
+            "kum_p10": 26.0,
+            "kum_p90": 111.4
+          },
+          {
+            "tag": "07-07",
+            "kum_mean": 73.4,
+            "kum_p10": 28.9,
+            "kum_p90": 114.3
           }
         ]
       },
-      "letztes_tageswert_datum": "20260705",
+      "letztes_tageswert_datum": "20260706",
       "status": "ok",
       "fehler": null
     },
@@ -6552,14 +6552,14 @@
         "2023": 68,
         "2024": 49,
         "2025": 60,
-        "2026": 33
+        "2026": 34
       },
-      "sommertage_laufendes_jahr": 33,
-      "tageshoechstwert_heute_c": 25.7,
-      "niederschlag_letzte_30_tage_mm": 35.2,
+      "sommertage_laufendes_jahr": 34,
+      "tageshoechstwert_heute_c": 30.0,
+      "niederschlag_letzte_30_tage_mm": 34.9,
       "aktuelle_temperatur": {
-        "wert": 17.4,
-        "zeitpunkt": "2026070523"
+        "wert": 22.3,
+        "zeitpunkt": "2026070623"
       },
       "hourly_temp_distance_km": 0.0,
       "referenzperioden": {
@@ -6575,11 +6575,6 @@
         }
       },
       "tagesreihe_30d": [
-        {
-          "datum": "20260606",
-          "txk": 21.6,
-          "rsk": 0.3
-        },
         {
           "datum": "20260607",
           "txk": 21.0,
@@ -6724,16 +6719,15 @@
           "datum": "20260705",
           "txk": 25.7,
           "rsk": 0.0
+        },
+        {
+          "datum": "20260706",
+          "txk": 30.0,
+          "rsk": 0.0
         }
       ],
       "referenzband_temperatur": {
         "1961-1990": [
-          {
-            "tag": "06-06",
-            "mean": 19.0,
-            "p10": 12.5,
-            "p90": 23.8
-          },
           {
             "tag": "06-07",
             "mean": 18.1,
@@ -6913,15 +6907,15 @@
             "mean": 21.9,
             "p10": 15.2,
             "p90": 27.2
+          },
+          {
+            "tag": "07-07",
+            "mean": 22.1,
+            "p10": 17.3,
+            "p90": 27.1
           }
         ],
         "1991-2020": [
-          {
-            "tag": "06-06",
-            "mean": 20.9,
-            "p10": 14.1,
-            "p90": 27.7
-          },
           {
             "tag": "06-07",
             "mean": 21.8,
@@ -7101,388 +7095,394 @@
             "mean": 22.7,
             "p10": 17.1,
             "p90": 29.1
+          },
+          {
+            "tag": "07-07",
+            "mean": 22.6,
+            "p10": 18.3,
+            "p90": 27.6
           }
         ]
       },
       "referenzband_niederschlag": {
         "1961-1990": [
           {
-            "tag": "06-06",
-            "kum_mean": 2.6,
-            "kum_p10": 0.0,
-            "kum_p90": 8.2
-          },
-          {
             "tag": "06-07",
-            "kum_mean": 7.4,
+            "kum_mean": 4.8,
             "kum_p10": 0.0,
-            "kum_p90": 19.7
+            "kum_p90": 13.5
           },
           {
             "tag": "06-08",
-            "kum_mean": 10.1,
+            "kum_mean": 7.5,
             "kum_p10": 0.0,
-            "kum_p90": 22.4
+            "kum_p90": 20.2
           },
           {
             "tag": "06-09",
-            "kum_mean": 13.7,
+            "kum_mean": 11.1,
             "kum_p10": 0.0,
-            "kum_p90": 31.1
+            "kum_p90": 28.2
           },
           {
             "tag": "06-10",
-            "kum_mean": 15.3,
+            "kum_mean": 12.7,
             "kum_p10": 0.2,
-            "kum_p90": 42.7
+            "kum_p90": 38.8
           },
           {
             "tag": "06-11",
-            "kum_mean": 17.9,
-            "kum_p10": 0.3,
-            "kum_p90": 43.2
+            "kum_mean": 15.3,
+            "kum_p10": 0.2,
+            "kum_p90": 39.0
           },
           {
             "tag": "06-12",
-            "kum_mean": 19.7,
+            "kum_mean": 17.1,
+            "kum_p10": 0.2,
+            "kum_p90": 42.5
+          },
+          {
+            "tag": "06-13",
+            "kum_mean": 20.0,
             "kum_p10": 0.9,
             "kum_p90": 47.1
           },
           {
-            "tag": "06-13",
-            "kum_mean": 22.6,
-            "kum_p10": 0.9,
-            "kum_p90": 48.6
-          },
-          {
             "tag": "06-14",
-            "kum_mean": 24.9,
+            "kum_mean": 22.3,
             "kum_p10": 0.9,
-            "kum_p90": 55.6
+            "kum_p90": 55.3
           },
           {
             "tag": "06-15",
-            "kum_mean": 28.1,
-            "kum_p10": 2.2,
-            "kum_p90": 62.1
+            "kum_mean": 25.4,
+            "kum_p10": 1.0,
+            "kum_p90": 55.5
           },
           {
             "tag": "06-16",
-            "kum_mean": 31.1,
-            "kum_p10": 2.2,
-            "kum_p90": 72.1
+            "kum_mean": 28.5,
+            "kum_p10": 1.0,
+            "kum_p90": 61.9
           },
           {
             "tag": "06-17",
-            "kum_mean": 33.9,
-            "kum_p10": 2.2,
-            "kum_p90": 76.4
+            "kum_mean": 31.3,
+            "kum_p10": 1.0,
+            "kum_p90": 66.5
           },
           {
             "tag": "06-18",
-            "kum_mean": 36.8,
-            "kum_p10": 2.2,
-            "kum_p90": 85.0
+            "kum_mean": 34.2,
+            "kum_p10": 1.0,
+            "kum_p90": 67.6
           },
           {
             "tag": "06-19",
-            "kum_mean": 40.1,
-            "kum_p10": 2.2,
-            "kum_p90": 90.8
+            "kum_mean": 37.5,
+            "kum_p10": 1.0,
+            "kum_p90": 81.2
           },
           {
             "tag": "06-20",
-            "kum_mean": 43.3,
-            "kum_p10": 4.6,
-            "kum_p90": 96.5
+            "kum_mean": 40.7,
+            "kum_p10": 2.2,
+            "kum_p90": 89.4
           },
           {
             "tag": "06-21",
-            "kum_mean": 46.5,
-            "kum_p10": 7.6,
-            "kum_p90": 97.0
+            "kum_mean": 43.9,
+            "kum_p10": 7.0,
+            "kum_p90": 89.6
           },
           {
             "tag": "06-22",
-            "kum_mean": 48.6,
-            "kum_p10": 12.3,
-            "kum_p90": 98.7
+            "kum_mean": 46.0,
+            "kum_p10": 8.9,
+            "kum_p90": 92.4
           },
           {
             "tag": "06-23",
-            "kum_mean": 51.3,
-            "kum_p10": 13.7,
-            "kum_p90": 104.4
+            "kum_mean": 48.7,
+            "kum_p10": 10.5,
+            "kum_p90": 92.9
           },
           {
             "tag": "06-24",
-            "kum_mean": 54.7,
-            "kum_p10": 13.9,
-            "kum_p90": 114.0
+            "kum_mean": 52.1,
+            "kum_p10": 10.8,
+            "kum_p90": 106.0
           },
           {
             "tag": "06-25",
-            "kum_mean": 57.4,
-            "kum_p10": 14.0,
-            "kum_p90": 118.2
+            "kum_mean": 54.8,
+            "kum_p10": 11.8,
+            "kum_p90": 109.2
           },
           {
             "tag": "06-26",
-            "kum_mean": 61.9,
-            "kum_p10": 14.0,
-            "kum_p90": 118.7
+            "kum_mean": 59.3,
+            "kum_p10": 11.8,
+            "kum_p90": 114.0
           },
           {
             "tag": "06-27",
-            "kum_mean": 66.3,
-            "kum_p10": 15.5,
-            "kum_p90": 132.0
+            "kum_mean": 63.7,
+            "kum_p10": 14.3,
+            "kum_p90": 121.8
           },
           {
             "tag": "06-28",
-            "kum_mean": 72.2,
-            "kum_p10": 21.3,
-            "kum_p90": 132.4
+            "kum_mean": 69.5,
+            "kum_p10": 20.9,
+            "kum_p90": 125.1
           },
           {
             "tag": "06-29",
-            "kum_mean": 75.2,
-            "kum_p10": 21.3,
-            "kum_p90": 132.5
+            "kum_mean": 72.6,
+            "kum_p10": 20.9,
+            "kum_p90": 125.2
           },
           {
             "tag": "06-30",
-            "kum_mean": 78.5,
-            "kum_p10": 21.3,
-            "kum_p90": 133.2
+            "kum_mean": 75.8,
+            "kum_p10": 20.9,
+            "kum_p90": 133.0
           },
           {
             "tag": "07-01",
-            "kum_mean": 80.8,
-            "kum_p10": 21.6,
-            "kum_p90": 133.2
+            "kum_mean": 78.2,
+            "kum_p10": 21.2,
+            "kum_p90": 133.0
           },
           {
             "tag": "07-02",
-            "kum_mean": 85.2,
-            "kum_p10": 21.9,
-            "kum_p90": 136.4
+            "kum_mean": 82.6,
+            "kum_p10": 21.5,
+            "kum_p90": 136.1
           },
           {
             "tag": "07-03",
-            "kum_mean": 88.6,
-            "kum_p10": 23.0,
-            "kum_p90": 145.1
+            "kum_mean": 86.0,
+            "kum_p10": 21.6,
+            "kum_p90": 144.0
           },
           {
             "tag": "07-04",
-            "kum_mean": 91.2,
-            "kum_p10": 23.0,
-            "kum_p90": 150.1
+            "kum_mean": 88.6,
+            "kum_p10": 22.0,
+            "kum_p90": 150.0
           },
           {
             "tag": "07-05",
-            "kum_mean": 95.1,
-            "kum_p10": 23.5,
-            "kum_p90": 158.6
+            "kum_mean": 92.5,
+            "kum_p10": 23.1,
+            "kum_p90": 154.7
           },
           {
             "tag": "07-06",
-            "kum_mean": 97.1,
+            "kum_mean": 94.5,
+            "kum_p10": 25.1,
+            "kum_p90": 157.5
+          },
+          {
+            "tag": "07-07",
+            "kum_mean": 96.1,
             "kum_p10": 25.4,
-            "kum_p90": 164.0
+            "kum_p90": 169.0
           }
         ],
         "1991-2020": [
           {
-            "tag": "06-06",
-            "kum_mean": 2.9,
-            "kum_p10": 0.0,
-            "kum_p90": 9.5
-          },
-          {
             "tag": "06-07",
-            "kum_mean": 6.3,
+            "kum_mean": 3.4,
             "kum_p10": 0.0,
-            "kum_p90": 15.0
+            "kum_p90": 7.3
           },
           {
             "tag": "06-08",
-            "kum_mean": 8.5,
+            "kum_mean": 5.6,
+            "kum_p10": 0.0,
+            "kum_p90": 13.7
+          },
+          {
+            "tag": "06-09",
+            "kum_mean": 7.8,
             "kum_p10": 0.0,
             "kum_p90": 18.1
           },
           {
-            "tag": "06-09",
-            "kum_mean": 10.7,
-            "kum_p10": 0.0,
-            "kum_p90": 23.9
-          },
-          {
             "tag": "06-10",
-            "kum_mean": 13.5,
+            "kum_mean": 10.6,
             "kum_p10": 0.0,
-            "kum_p90": 37.9
+            "kum_p90": 26.3
           },
           {
             "tag": "06-11",
-            "kum_mean": 17.1,
-            "kum_p10": 0.8,
-            "kum_p90": 38.5
+            "kum_mean": 14.2,
+            "kum_p10": 0.0,
+            "kum_p90": 33.1
           },
           {
             "tag": "06-12",
-            "kum_mean": 19.4,
-            "kum_p10": 0.8,
-            "kum_p90": 41.5
+            "kum_mean": 16.5,
+            "kum_p10": 0.1,
+            "kum_p90": 37.4
           },
           {
             "tag": "06-13",
-            "kum_mean": 20.8,
-            "kum_p10": 1.2,
-            "kum_p90": 41.9
+            "kum_mean": 17.9,
+            "kum_p10": 1.1,
+            "kum_p90": 37.8
           },
           {
             "tag": "06-14",
-            "kum_mean": 22.6,
+            "kum_mean": 19.7,
             "kum_p10": 1.3,
-            "kum_p90": 53.4
+            "kum_p90": 45.8
           },
           {
             "tag": "06-15",
-            "kum_mean": 24.6,
+            "kum_mean": 21.7,
             "kum_p10": 1.3,
-            "kum_p90": 54.9
+            "kum_p90": 54.4
           },
           {
             "tag": "06-16",
-            "kum_mean": 26.2,
+            "kum_mean": 23.3,
             "kum_p10": 1.3,
-            "kum_p90": 58.8
+            "kum_p90": 58.4
           },
           {
             "tag": "06-17",
-            "kum_mean": 28.6,
-            "kum_p10": 4.5,
-            "kum_p90": 62.9
+            "kum_mean": 25.7,
+            "kum_p10": 3.3,
+            "kum_p90": 59.0
           },
           {
             "tag": "06-18",
-            "kum_mean": 29.6,
-            "kum_p10": 6.4,
-            "kum_p90": 63.6
+            "kum_mean": 26.7,
+            "kum_p10": 4.5,
+            "kum_p90": 59.4
           },
           {
             "tag": "06-19",
-            "kum_mean": 31.4,
-            "kum_p10": 6.8,
-            "kum_p90": 64.0
+            "kum_mean": 28.5,
+            "kum_p10": 4.5,
+            "kum_p90": 59.4
           },
           {
             "tag": "06-20",
-            "kum_mean": 35.4,
-            "kum_p10": 8.9,
-            "kum_p90": 72.6
+            "kum_mean": 32.4,
+            "kum_p10": 4.5,
+            "kum_p90": 66.6
           },
           {
             "tag": "06-21",
-            "kum_mean": 36.2,
-            "kum_p10": 9.3,
-            "kum_p90": 73.2
+            "kum_mean": 33.3,
+            "kum_p10": 4.5,
+            "kum_p90": 72.2
           },
           {
             "tag": "06-22",
-            "kum_mean": 38.7,
-            "kum_p10": 9.3,
-            "kum_p90": 81.0
+            "kum_mean": 35.8,
+            "kum_p10": 4.5,
+            "kum_p90": 80.7
           },
           {
             "tag": "06-23",
-            "kum_mean": 41.7,
-            "kum_p10": 9.3,
-            "kum_p90": 84.6
+            "kum_mean": 38.8,
+            "kum_p10": 4.7,
+            "kum_p90": 81.2
           },
           {
             "tag": "06-24",
-            "kum_mean": 43.2,
-            "kum_p10": 9.4,
-            "kum_p90": 86.7
+            "kum_mean": 40.3,
+            "kum_p10": 4.7,
+            "kum_p90": 86.2
           },
           {
             "tag": "06-25",
-            "kum_mean": 45.0,
-            "kum_p10": 9.7,
-            "kum_p90": 87.2
+            "kum_mean": 42.1,
+            "kum_p10": 5.2,
+            "kum_p90": 86.7
           },
           {
             "tag": "06-26",
-            "kum_mean": 46.6,
-            "kum_p10": 10.1,
-            "kum_p90": 87.2
+            "kum_mean": 43.7,
+            "kum_p10": 5.2,
+            "kum_p90": 86.7
           },
           {
             "tag": "06-27",
-            "kum_mean": 49.1,
-            "kum_p10": 11.7,
-            "kum_p90": 89.3
+            "kum_mean": 46.2,
+            "kum_p10": 11.6,
+            "kum_p90": 87.2
           },
           {
             "tag": "06-28",
-            "kum_mean": 51.4,
+            "kum_mean": 48.5,
             "kum_p10": 12.5,
-            "kum_p90": 103.7
+            "kum_p90": 103.4
           },
           {
             "tag": "06-29",
-            "kum_mean": 53.7,
+            "kum_mean": 50.8,
             "kum_p10": 14.2,
             "kum_p90": 104.5
           },
           {
             "tag": "06-30",
-            "kum_mean": 54.6,
-            "kum_p10": 17.3,
+            "kum_mean": 51.7,
+            "kum_p10": 16.0,
             "kum_p90": 104.5
           },
           {
             "tag": "07-01",
-            "kum_mean": 56.7,
-            "kum_p10": 20.3,
+            "kum_mean": 53.8,
+            "kum_p10": 19.2,
             "kum_p90": 104.5
           },
           {
             "tag": "07-02",
-            "kum_mean": 59.1,
-            "kum_p10": 23.2,
+            "kum_mean": 56.2,
+            "kum_p10": 19.5,
             "kum_p90": 110.3
           },
           {
             "tag": "07-03",
-            "kum_mean": 62.2,
-            "kum_p10": 23.2,
+            "kum_mean": 59.2,
+            "kum_p10": 20.3,
             "kum_p90": 121.9
           },
           {
             "tag": "07-04",
-            "kum_mean": 64.7,
-            "kum_p10": 23.5,
-            "kum_p90": 122.1
+            "kum_mean": 61.7,
+            "kum_p10": 20.7,
+            "kum_p90": 122.0
           },
           {
             "tag": "07-05",
-            "kum_mean": 68.4,
-            "kum_p10": 24.7,
+            "kum_mean": 65.5,
+            "kum_p10": 24.4,
             "kum_p90": 123.5
           },
           {
             "tag": "07-06",
-            "kum_mean": 71.4,
-            "kum_p10": 31.3,
-            "kum_p90": 124.2
+            "kum_mean": 68.5,
+            "kum_p10": 27.8,
+            "kum_p90": 124.1
+          },
+          {
+            "tag": "07-07",
+            "kum_mean": 70.9,
+            "kum_p10": 27.8,
+            "kum_p90": 125.1
           }
         ]
       },
-      "letztes_tageswert_datum": "20260705",
+      "letztes_tageswert_datum": "20260706",
       "status": "ok",
       "fehler": null
     },
@@ -7517,14 +7517,14 @@
         "2023": 90,
         "2024": 67,
         "2025": 72,
-        "2026": 36
+        "2026": 37
       },
-      "sommertage_laufendes_jahr": 36,
-      "tageshoechstwert_heute_c": 27.8,
-      "niederschlag_letzte_30_tage_mm": 38.7,
+      "sommertage_laufendes_jahr": 37,
+      "tageshoechstwert_heute_c": 31.8,
+      "niederschlag_letzte_30_tage_mm": 38.3,
       "aktuelle_temperatur": {
-        "wert": 17.5,
-        "zeitpunkt": "2026070523"
+        "wert": 17.2,
+        "zeitpunkt": "2026070623"
       },
       "hourly_temp_distance_km": 0.0,
       "referenzperioden": {
@@ -7540,11 +7540,6 @@
         }
       },
       "tagesreihe_30d": [
-        {
-          "datum": "20260606",
-          "txk": 25.0,
-          "rsk": 0.4
-        },
         {
           "datum": "20260607",
           "txk": 23.0,
@@ -7689,16 +7684,15 @@
           "datum": "20260705",
           "txk": 27.8,
           "rsk": 0.0
+        },
+        {
+          "datum": "20260706",
+          "txk": 31.8,
+          "rsk": 0.0
         }
       ],
       "referenzband_temperatur": {
         "1961-1990": [
-          {
-            "tag": "06-06",
-            "mean": null,
-            "p10": null,
-            "p90": null
-          },
           {
             "tag": "06-07",
             "mean": null,
@@ -7878,15 +7872,15 @@
             "mean": null,
             "p10": null,
             "p90": null
+          },
+          {
+            "tag": "07-07",
+            "mean": null,
+            "p10": null,
+            "p90": null
           }
         ],
         "1991-2020": [
-          {
-            "tag": "06-06",
-            "mean": 23.2,
-            "p10": 17.7,
-            "p90": 29.1
-          },
           {
             "tag": "06-07",
             "mean": 23.9,
@@ -8066,17 +8060,17 @@
             "mean": 26.1,
             "p10": 21.3,
             "p90": 31.3
+          },
+          {
+            "tag": "07-07",
+            "mean": 25.5,
+            "p10": 21.5,
+            "p90": 29.5
           }
         ]
       },
       "referenzband_niederschlag": {
         "1961-1990": [
-          {
-            "tag": "06-06",
-            "kum_mean": null,
-            "kum_p10": null,
-            "kum_p90": null
-          },
           {
             "tag": "06-07",
             "kum_mean": null,
@@ -8253,6 +8247,12 @@
           },
           {
             "tag": "07-06",
+            "kum_mean": null,
+            "kum_p10": null,
+            "kum_p90": null
+          },
+          {
+            "tag": "07-07",
             "kum_mean": null,
             "kum_p10": null,
             "kum_p90": null
@@ -8260,194 +8260,194 @@
         ],
         "1991-2020": [
           {
-            "tag": "06-06",
-            "kum_mean": 3.9,
-            "kum_p10": 0.0,
-            "kum_p90": 10.9
-          },
-          {
             "tag": "06-07",
-            "kum_mean": 6.8,
+            "kum_mean": 2.9,
             "kum_p10": 0.0,
-            "kum_p90": 19.8
+            "kum_p90": 6.8
           },
           {
             "tag": "06-08",
-            "kum_mean": 8.6,
+            "kum_mean": 4.6,
             "kum_p10": 0.0,
-            "kum_p90": 21.0
+            "kum_p90": 12.6
           },
           {
             "tag": "06-09",
-            "kum_mean": 11.8,
+            "kum_mean": 7.8,
             "kum_p10": 0.0,
-            "kum_p90": 33.4
+            "kum_p90": 21.2
           },
           {
             "tag": "06-10",
-            "kum_mean": 14.2,
-            "kum_p10": 0.5,
-            "kum_p90": 34.3
+            "kum_mean": 10.3,
+            "kum_p10": 0.0,
+            "kum_p90": 28.9
           },
           {
             "tag": "06-11",
-            "kum_mean": 16.7,
-            "kum_p10": 0.5,
-            "kum_p90": 36.0
+            "kum_mean": 12.8,
+            "kum_p10": 0.1,
+            "kum_p90": 29.7
           },
           {
             "tag": "06-12",
-            "kum_mean": 19.2,
-            "kum_p10": 2.8,
-            "kum_p90": 44.0
+            "kum_mean": 15.2,
+            "kum_p10": 1.3,
+            "kum_p90": 39.0
           },
           {
             "tag": "06-13",
-            "kum_mean": 20.2,
-            "kum_p10": 2.8,
-            "kum_p90": 47.8
+            "kum_mean": 16.3,
+            "kum_p10": 1.3,
+            "kum_p90": 39.4
           },
           {
             "tag": "06-14",
-            "kum_mean": 22.0,
-            "kum_p10": 3.8,
-            "kum_p90": 50.1
+            "kum_mean": 18.1,
+            "kum_p10": 1.8,
+            "kum_p90": 39.7
           },
           {
             "tag": "06-15",
-            "kum_mean": 24.5,
-            "kum_p10": 4.4,
-            "kum_p90": 58.7
+            "kum_mean": 20.6,
+            "kum_p10": 2.0,
+            "kum_p90": 50.2
           },
           {
             "tag": "06-16",
-            "kum_mean": 26.1,
-            "kum_p10": 4.4,
-            "kum_p90": 59.5
+            "kum_mean": 22.1,
+            "kum_p10": 2.0,
+            "kum_p90": 55.0
           },
           {
             "tag": "06-17",
-            "kum_mean": 29.3,
-            "kum_p10": 4.5,
-            "kum_p90": 61.5
+            "kum_mean": 25.4,
+            "kum_p10": 3.0,
+            "kum_p90": 55.2
           },
           {
             "tag": "06-18",
-            "kum_mean": 30.6,
-            "kum_p10": 5.3,
-            "kum_p90": 62.1
+            "kum_mean": 26.7,
+            "kum_p10": 4.6,
+            "kum_p90": 55.2
           },
           {
             "tag": "06-19",
-            "kum_mean": 31.6,
-            "kum_p10": 5.5,
-            "kum_p90": 63.2
+            "kum_mean": 27.7,
+            "kum_p10": 5.3,
+            "kum_p90": 55.2
           },
           {
             "tag": "06-20",
-            "kum_mean": 33.9,
-            "kum_p10": 5.5,
-            "kum_p90": 63.5
+            "kum_mean": 30.0,
+            "kum_p10": 5.3,
+            "kum_p90": 55.2
           },
           {
             "tag": "06-21",
-            "kum_mean": 34.7,
-            "kum_p10": 5.5,
-            "kum_p90": 65.1
+            "kum_mean": 30.8,
+            "kum_p10": 5.3,
+            "kum_p90": 58.3
           },
           {
             "tag": "06-22",
-            "kum_mean": 39.0,
-            "kum_p10": 5.8,
-            "kum_p90": 72.1
+            "kum_mean": 35.1,
+            "kum_p10": 5.3,
+            "kum_p90": 63.0
           },
           {
             "tag": "06-23",
-            "kum_mean": 39.9,
-            "kum_p10": 5.8,
-            "kum_p90": 72.3
+            "kum_mean": 36.0,
+            "kum_p10": 5.3,
+            "kum_p90": 69.4
           },
           {
             "tag": "06-24",
-            "kum_mean": 40.5,
-            "kum_p10": 5.8,
-            "kum_p90": 73.7
+            "kum_mean": 36.6,
+            "kum_p10": 5.3,
+            "kum_p90": 70.6
           },
           {
             "tag": "06-25",
-            "kum_mean": 42.0,
-            "kum_p10": 7.0,
-            "kum_p90": 82.9
+            "kum_mean": 38.1,
+            "kum_p10": 5.8,
+            "kum_p90": 78.2
           },
           {
             "tag": "06-26",
-            "kum_mean": 42.7,
-            "kum_p10": 7.0,
-            "kum_p90": 82.9
+            "kum_mean": 38.8,
+            "kum_p10": 5.8,
+            "kum_p90": 78.3
           },
           {
             "tag": "06-27",
-            "kum_mean": 45.1,
-            "kum_p10": 14.0,
-            "kum_p90": 83.1
+            "kum_mean": 41.2,
+            "kum_p10": 10.6,
+            "kum_p90": 78.4
           },
           {
             "tag": "06-28",
-            "kum_mean": 47.3,
-            "kum_p10": 14.4,
-            "kum_p90": 83.7
+            "kum_mean": 43.4,
+            "kum_p10": 10.7,
+            "kum_p90": 78.9
           },
           {
             "tag": "06-29",
-            "kum_mean": 48.4,
-            "kum_p10": 15.7,
-            "kum_p90": 86.9
+            "kum_mean": 44.5,
+            "kum_p10": 10.7,
+            "kum_p90": 83.6
           },
           {
             "tag": "06-30",
-            "kum_mean": 49.5,
-            "kum_p10": 15.7,
-            "kum_p90": 86.9
+            "kum_mean": 45.5,
+            "kum_p10": 10.7,
+            "kum_p90": 83.6
           },
           {
             "tag": "07-01",
-            "kum_mean": 51.8,
-            "kum_p10": 16.2,
-            "kum_p90": 91.9
+            "kum_mean": 47.9,
+            "kum_p10": 11.6,
+            "kum_p90": 88.7
           },
           {
             "tag": "07-02",
-            "kum_mean": 53.6,
-            "kum_p10": 16.2,
-            "kum_p90": 93.3
+            "kum_mean": 49.7,
+            "kum_p10": 13.0,
+            "kum_p90": 88.9
           },
           {
             "tag": "07-03",
-            "kum_mean": 56.0,
-            "kum_p10": 17.0,
-            "kum_p90": 94.2
+            "kum_mean": 52.1,
+            "kum_p10": 16.0,
+            "kum_p90": 92.8
           },
           {
             "tag": "07-04",
-            "kum_mean": 57.9,
-            "kum_p10": 17.0,
-            "kum_p90": 96.4
+            "kum_mean": 54.0,
+            "kum_p10": 16.0,
+            "kum_p90": 93.1
           },
           {
             "tag": "07-05",
-            "kum_mean": 59.9,
-            "kum_p10": 26.2,
-            "kum_p90": 99.3
+            "kum_mean": 56.0,
+            "kum_p10": 17.8,
+            "kum_p90": 95.0
           },
           {
             "tag": "07-06",
-            "kum_mean": 62.5,
-            "kum_p10": 26.8,
-            "kum_p90": 104.9
+            "kum_mean": 58.6,
+            "kum_p10": 17.9,
+            "kum_p90": 96.6
+          },
+          {
+            "tag": "07-07",
+            "kum_mean": 59.7,
+            "kum_p10": 18.8,
+            "kum_p90": 96.9
           }
         ]
       },
-      "letztes_tageswert_datum": "20260705",
+      "letztes_tageswert_datum": "20260706",
       "status": "ok",
       "fehler": null
     }
