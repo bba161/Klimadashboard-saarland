@@ -9,16 +9,6 @@
     "hourly_precip_station_id": "00460",
     "hourly_precip_distance_km": 0.0
   },
-  "02331": {
-    "name": "Homburg",
-    "lat": 49.3278,
-    "lon": 7.3533,
-    "hoehe": 235.0,
-    "hourly_temp_station_id": "03545",
-    "hourly_temp_distance_km": 9.1,
-    "hourly_precip_station_id": "02331",
-    "hourly_precip_distance_km": 0.0
-  },
   "03545": {
     "name": "Neunkirchen-Wellesweiler",
     "lat": 49.344,
@@ -47,16 +37,6 @@
     "hourly_temp_station_id": "04336",
     "hourly_temp_distance_km": 0.0,
     "hourly_precip_station_id": "04336",
-    "hourly_precip_distance_km": 0.0
-  },
-  "04490": {
-    "name": "Schmelz-Hüttersdorf",
-    "lat": 49.4149,
-    "lon": 6.836,
-    "hoehe": 223.0,
-    "hourly_temp_station_id": null,
-    "hourly_temp_distance_km": 15.5,
-    "hourly_precip_station_id": "04490",
     "hourly_precip_distance_km": 0.0
   },
   "05029": {
