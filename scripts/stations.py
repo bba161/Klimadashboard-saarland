@@ -13,13 +13,11 @@ Die Stations-IDs selbst sind vom Auftraggeber vorgegeben und fix.
 # DWD-Stations-ID (5-stellig, als String mit führenden Nullen) -> Anzeigename
 STATIONS = {
     "00460": "Berus",
-    "02331": "Homburg",
     "03263": "Merzig",
     "03545": "Neunkirchen-Wellesweiler",
     "03625": "Nohfelden-Gonnesweiler",
     "03904": "Perl-Nennig",
     "04336": "Saarbrücken-Ensheim",
-    "04490": "Schmelz-Hüttersdorf",
     "05029": "Tholey",
     "05433": "Weiskirchen",
     "06217": "Saarbrücken-Burbach",
