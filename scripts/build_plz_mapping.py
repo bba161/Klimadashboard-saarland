@@ -1,20 +1,9 @@
 #!/usr/bin/env python3
 """
-build_plz_mapping.py
+build_plz_mapping.py - FINALE KORRIGIERTE VERSION
 ======================
 Erzeugt data/plz_mapping.json: für jede Saarland-Postleitzahl die
-nächstgelegene der 11 DWD-Stationen (per Luftlinie).
-
-Primärquelle ist der "postal-codes-json-xml-csv"-Datensatz von zauberware
-(github.com/zauberware/postal-codes-json-xml-csv, CC BY 4.0), da dessen
-URL nachweislich funktioniert (ZIP-Archiv mit JSON).
-
-Als Fallback dient das Opendatasoft-Dataset "georef-germany-postleitzahl"
-(data.opendatasoft.com, ODbL-Lizenz).
-
-Das Skript benötigt die DWD-Stationskoordinaten, die bereits von
-update_data.py in data/stations_meta.json abgelegt wurden. Es sollte
-deshalb NACH update_data.py ausgeführt werden (siehe GitHub Workflow).
+nächstgelegene der DWD-Stationen (per Luftlinie).
 """
 
 from __future__ import annotations
@@ -39,13 +28,11 @@ DATA_DIR = Path(__file__).parent.parent / "data"
 STATIONS_META_CACHE = DATA_DIR / "stations_meta.json"
 OUTPUT_FILE = DATA_DIR / "plz_mapping.json"
 
-# Primär: zauberware ZIP-Archiv (verifiziert funktionierend)
 ZAUBERWARE_PRIMARY_URL = (
     "https://raw.githubusercontent.com/zauberware/postal-codes-json-xml-csv/"
     "master/data/DE.zip"
 )
 
-# Fallback: Opendatasoft (korrigierte Domain + @public-Suffix)
 OPENDATASOFT_FALLBACK_URL = (
     "https://data.opendatasoft.com/api/explore/v2.1/catalog/datasets/"
     "georef-germany-postleitzahl@public/records"
@@ -54,7 +41,22 @@ OPENDATASOFT_FALLBACK_URL = (
 
 REQUEST_TIMEOUT = 60
 session = requests.Session()
-session.headers.update({"User-Agent": "saarland-klimadashboard/1.0 (Zeitungsprojekt)"})
+session.headers.update({"User-Agent": "saarland-klimadashboard/1.0"})
+
+# BLACKLIST: Diese PLZ werden IMMER entfernt
+PLZ_BLACKLIST = {
+    "50424", "66087", "66088", "66090", "66094", "66097", "66098", "66099",
+    "66100", "66101", "66102", "66103", "66104", "66106", "66108", "66109", "66150"
+}
+
+# Firmen-Keywords
+FIRMEN_KEYWORDS = [
+    "AG", "GmbH", "KG", "Media", "IHK", "Landesamt", "AOK", "Versicherung",
+    "Agentur", "Bank", "Post", "Direkt", "Service", "Regio", "Deutsche",
+    "Universität", "Universitätskliniken", "Klinik", "Rundfunk", "Lotterie",
+    "reha", "Rentenversicherung", "HUK", "Innungskrankenkasse", "UKV",
+    "Saarländischer", "Praktiker", "Bundeszentralamt", "Assist", "Cosmos"
+]
 
 
 def haversine_km(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
@@ -79,15 +81,6 @@ def load_saarland_plz_zauberware() -> list[dict]:
 
     seen: dict[str, dict] = {}
     
-    # Firmen-Keywords, die wir rausfiltern wollen
-    firmen_keywords = [
-        "AG", "Media", "IHK", "Landesamt", "AOK", "GmbH", "KG", "Versicherung", 
-        "Agentur", "Bank", "Post", "Direkt", "Service", "Regio", "Deutsche", 
-        "Universität", "Universitätskliniken", "Klinik", "Rundfunk", "Lotterie", 
-        "reha", "Rentenversicherung", "HUK", "Innungskrankenkasse", "UKV", 
-        "Saarländischer", "Praktiker", "Bundeszentralamt", "Assist", "Cosmos"
-    ]
-    
     for d in data:
         if d.get("state") != "Saarland":
             continue
@@ -95,13 +88,18 @@ def load_saarland_plz_zauberware() -> list[dict]:
         plz = str(d["zipcode"]).zfill(5)
         ort = d.get("place", "")
         
-        # Filtere Firmennamen raus
-        ist_firma = any(keyword in ort for keyword in firmen_keywords)
-        if ist_firma:
+        # 1. Blacklist-Check
+        if plz in PLZ_BLACKLIST:
+            log.info("PLZ %s (%s) durch Blacklist gefiltert", plz, ort)
             continue
         
-        # Filtere PLZ < 66000 (bundesweite Großkunden-PLZ)
-        if int(plz) < 66000:
+        # 2. Firmen-Check
+        if any(keyword in ort for keyword in FIRMEN_KEYWORDS):
+            log.info("PLZ %s (%s) durch Firmen-Keyword gefiltert", plz, ort)
+            continue
+        
+        # 3. Nur Saarland-PLZ (66xxx)
+        if not plz.startswith("66"):
             continue
         
         if plz not in seen:
@@ -118,18 +116,10 @@ def load_saarland_plz_zauberware() -> list[dict]:
 
 
 def load_saarland_plz_opendatasoft() -> list[dict]:
-    """Fallback: Opendatasoft-Dataset mit korrigierter URL."""
+    """Fallback: Opendatasoft-Dataset."""
     resp = session.get(OPENDATASOFT_FALLBACK_URL, timeout=REQUEST_TIMEOUT)
     resp.raise_for_status()
     payload = resp.json()
-    
-    firmen_keywords = [
-        "AG", "Media", "AOK", "IHK", "Landesamt", "GmbH", "KG", "Versicherung", 
-        "Agentur", "Bank", "Post", "Direkt", "Service", "Regio", "Deutsche", 
-        "Universität", "Klinik", "Rundfunk", "Lotterie", "reha", 
-        "Rentenversicherung", "HUK", "Innungskrankenkasse", "UKV", 
-        "Saarländischer", "Praktiker", "Bundeszentralamt", "Assist"
-    ]
     
     results = []
     for rec in payload.get("results", []):
@@ -138,17 +128,24 @@ def load_saarland_plz_opendatasoft() -> list[dict]:
         lat, lon = geo.get("lat"), geo.get("lon")
         ort = rec.get("name") or rec.get("plz_name") or ""
         
-        # Filtere Firmen
-        ist_firma = any(keyword in ort for keyword in firmen_keywords)
-        if ist_firma:
+        if not plz or lat is None or lon is None:
             continue
         
-        # Filtere PLZ < 66000
-        if plz and int(str(plz).zfill(5)) < 66000:
+        plz = str(plz).zfill(5)
+        
+        # Blacklist
+        if plz in PLZ_BLACKLIST:
             continue
         
-        if plz and lat is not None and lon is not None:
-            results.append({"plz": str(plz).zfill(5), "ort": ort, "lat": float(lat), "lon": float(lon)})
+        # Firmen
+        if any(keyword in ort for keyword in FIRMEN_KEYWORDS):
+            continue
+        
+        # Nur 66xxx
+        if not plz.startswith("66"):
+            continue
+        
+        results.append({"plz": plz, "ort": ort, "lat": float(lat), "lon": float(lon)})
     
     if not results:
         raise ValueError("Opendatasoft-Antwort enthielt keine verwertbaren PLZ-Datensätze")
@@ -157,30 +154,26 @@ def load_saarland_plz_opendatasoft() -> list[dict]:
 
 def load_station_coords() -> dict[str, dict]:
     if not STATIONS_META_CACHE.exists():
-        raise FileNotFoundError(
-            f"{STATIONS_META_CACHE} fehlt. Bitte zuerst update_data.py ausführen, "
-            "das die Stationskoordinaten von DWD lädt und cached."
-        )
+        raise FileNotFoundError(f"{STATIONS_META_CACHE} fehlt.")
     return json.loads(STATIONS_META_CACHE.read_text(encoding="utf-8"))
 
 
 def main() -> None:
     station_coords = load_station_coords()
     if not station_coords:
-        log.error("Keine Stationskoordinaten verfügbar, breche ab.")
+        log.error("Keine Stationskoordinaten verfügbar.")
         sys.exit(1)
 
-    # Primär: zauberware (verifiziert), Fallback: Opendatasoft
     try:
         plz_list = load_saarland_plz_zauberware()
         quelle = "zauberware_zip"
-    except Exception as e:  # noqa: BLE001
-        log.warning("zauberware-Quelle fehlgeschlagen (%s), nutze Opendatasoft-Fallback.", e)
+    except Exception as e:
+        log.warning("zauberware fehlgeschlagen (%s), Fallback.", e)
         try:
             plz_list = load_saarland_plz_opendatasoft()
             quelle = "opendatasoft_fallback"
-        except Exception as e2:  # noqa: BLE001
-            log.error("Auch Opendatasoft-Fallback fehlgeschlagen (%s). Abbruch.", e2)
+        except Exception as e2:
+            log.error("Auch Fallback fehlgeschlagen (%s).", e2)
             sys.exit(1)
 
     log.info("%d Saarland-PLZ geladen (Quelle: %s)", len(plz_list), quelle)
@@ -205,19 +198,11 @@ def main() -> None:
             "distanz_km": round(best_dist, 1),
         }
 
-    # ATOMARE BLACKLIST: Diese PLZ werden garantiert entfernt
-    blacklist = [
-        "66104",  # IHK Saarbrücken
-        "50424",  # COSMOS Lebensversicherungs-AG
-        "66088", "66090", "66094", "66097", "66098", "66099", 
-        "66100", "66101", "66102", "66103", "66106", "66108", 
-        "66109", "66150"  # Weitere Firmen-PLZ
-    ]
-    
-    for plz in blacklist:
-        if plz in mapping:
+    # SICHERHEITS-CHECK: Blacklist nochmal durchgehen
+    for plz in list(mapping.keys()):
+        if plz in PLZ_BLACKLIST:
+            log.warning("PLZ %s war im Mapping, wird jetzt entfernt!", plz)
             del mapping[plz]
-            log.info("PLZ %s entfernt (Blacklist)", plz)
 
     output = {
         "quelle": quelle,
