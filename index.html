@@ -46,19 +46,13 @@
       padding: 32px 20px 48px;
     }
 
+    /* Header */
     h1 {
       font-size: 1.65rem;
       font-weight: 800;
       text-align: center;
       margin-bottom: 28px;
       letter-spacing: -0.01em;
-    }
-
-    @media (max-width: 640px) {
-      h1 {
-        font-size: 1.35rem;
-        margin-bottom: 20px;
-      }
     }
 
     .ort-zeile {
@@ -68,14 +62,6 @@
       align-items: baseline;
       gap: 12px 32px;
       margin-bottom: 12px;
-    }
-
-    @media (max-width: 640px) {
-      .ort-zeile {
-        flex-direction: column;
-        gap: 8px;
-        align-items: stretch;
-      }
     }
 
     .ort-zeile label {
@@ -102,23 +88,9 @@
       padding-right: 24px;
     }
 
-    @media (max-width: 640px) {
-      .ort-zeile select {
-        min-width: 100%;
-        font-size: 0.95rem;
-      }
-    }
-
     .station-info {
       font-weight: 700;
       font-size: 0.95rem;
-    }
-
-    @media (max-width: 640px) {
-      .station-info {
-        font-size: 0.85rem;
-        text-align: center;
-      }
     }
 
     .hinweis-text {
@@ -131,277 +103,221 @@
       margin-right: auto;
     }
 
-    @media (max-width: 640px) {
-      .hinweis-text {
-        font-size: 0.85rem;
-        margin-bottom: 20px;
-      }
-    }
-
+    /* Grid: Kacheln links, Charts rechts */
     .dashboard-grid {
       display: grid;
-      gap: 24px;
+      grid-template-columns: minmax(240px, 380px) 1fr;
+      border: 1px solid var(--line);
     }
 
-    /* DESKTOP: Alle Sections sichtbar */
-    @media (min-width: 641px) {
-      .chart-section {
-        background: var(--panel-bg);
-        border-radius: 4px;
-        padding: 24px;
-      }
-      
-      .section-header {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        margin-bottom: 16px;
-        cursor: default;
-      }
-      
-      .section-icon {
-        font-size: 1.5rem;
-      }
-      
-      .section-title {
-        font-size: 1.15rem;
-        font-weight: 700;
-      }
-      
-      .chevron {
-        display: none; /* Keine Chevrons auf Desktop */
-      }
-      
-      .section-content {
-        display: block !important; /* Immer sichtbar */
+    @media (max-width: 760px) {
+      .dashboard-grid {
+        grid-template-columns: 1fr;
       }
     }
 
-    /* MOBILE: Akkordeon-Layout */
-    @media (max-width: 640px) {
-      .chart-section {
-        background: var(--paper);
-        border: 1px solid var(--line);
-        border-radius: 0;
-        padding: 0;
-        margin-bottom: 8px;
-      }
-      
-      .section-header {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        padding: 16px;
-        cursor: pointer;
-        user-select: none;
-        -webkit-tap-highlight-color: transparent;
-      }
-      
-      .section-header:active {
-        background: var(--panel-bg);
-      }
-      
-      .section-icon {
-        font-size: 1.35rem;
-        flex-shrink: 0;
-      }
-      
-      .section-title {
-        font-size: 1.05rem;
-        font-weight: 700;
-        flex: 1;
-      }
-      
-      .chevron {
-        font-size: 1.2rem;
-        color: var(--muted);
-        transition: transform 0.25s ease;
-        flex-shrink: 0;
-      }
-      
-      .chart-section.open .chevron {
-        transform: rotate(180deg);
-      }
-      
-      .section-content {
-        display: none;
-        padding: 0 16px 20px;
-      }
-      
-      .chart-section.open .section-content {
-        display: block;
-      }
-      
-      /* Erste Section standardmäßig geöffnet */
-      .chart-section:first-of-type {
-        border-top: 2px solid var(--accent);
-      }
-      
-      .chart-section:first-of-type .section-content {
-        display: block;
-      }
-      
-      .chart-section:first-of-type .chevron {
-        transform: rotate(180deg);
-      }
+    /* Kacheln (links gestapelt) */
+    .kacheln {
+      display: flex;
+      flex-direction: column;
     }
 
-    .bewertung {
-      font-size: 1.15rem;
-      font-weight: 600;
-      margin-bottom: 16px;
-      padding: 14px;
+    .kachel {
+      display: flex;
+      gap: 16px;
+      padding: 28px 24px;
+      background: var(--panel-bg);
+      border-bottom: 1px solid var(--line);
+      align-items: flex-start;
+      cursor: pointer;
+      transition: background 0.15s;
+      position: relative;
+    }
+
+    .kachel:last-child {
+      border-bottom: none;
+    }
+
+    .kachel.active {
       background: var(--paper);
-      border-radius: 3px;
-      border-left: 4px solid var(--muted);
     }
 
-    @media (max-width: 640px) {
-      .bewertung {
-        font-size: 1rem;
-        padding: 12px;
-      }
+    .kachel.active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: var(--accent);
     }
 
-    .bewertung .highlight {
-      font-weight: 800;
+    .kachel .icon {
+      flex: 0 0 48px;
+      height: 48px;
     }
 
-    .chart-title {
+    .kachel .icon svg {
+      width: 48px;
+      height: 48px;
+    }
+
+    .kachel h2 {
       font-size: 1rem;
       font-weight: 700;
-      margin-bottom: 8px;
+      margin-bottom: 4px;
     }
 
-    @media (max-width: 640px) {
-      .chart-title {
-        font-size: 0.95rem;
+    .kachel p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .wert {
+      font-weight: 700;
+      color: var(--accent-dark);
+    }
+
+    .einordnung {
+      font-weight: 600;
+    }
+
+    .einordnung.warm {
+      color: var(--red);
+    }
+
+    .einordnung.kalt {
+      color: #2980b9;
+    }
+
+    .einordnung.viel {
+      color: var(--red);
+    }
+
+    .einordnung.wenig {
+      color: var(--accent-dark);
+    }
+
+    .einordnung.normal {
+      color: var(--ok);
+    }
+
+    .einordnung.mehr {
+      color: var(--red);
+    }
+
+    /* Chart-Panel (rechts) */
+    .chart-panel {
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      border-left: 1px solid var(--line);
+      min-height: 420px;
+    }
+
+    @media (max-width: 760px) {
+      .chart-panel {
+        border-left: none;
+        border-top: 1px solid var(--line);
       }
     }
 
-    .chart-sub {
+    .chart-panel h2 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .chart-panel .sub {
       font-size: 0.85rem;
       color: var(--muted);
       margin-bottom: 16px;
-      line-height: 1.4;
-    }
-
-    @media (max-width: 640px) {
-      .chart-sub {
-        font-size: 0.8rem;
-      }
-    }
-
-    .referenz-toggle {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 16px;
-      flex-wrap: wrap;
-    }
-
-    @media (max-width: 640px) {
-      .referenz-toggle {
-        gap: 6px;
-      }
-    }
-
-    .referenz-toggle button {
-      font-family: 'Inter', sans-serif;
-      padding: 7px 14px;
-      border: 2px solid var(--line);
-      background: var(--paper);
-      color: var(--ink);
-      font-size: 0.85rem;
-      font-weight: 600;
-      border-radius: 3px;
-      cursor: pointer;
-      transition: all 0.15s ease;
-    }
-
-    @media (max-width: 640px) {
-      .referenz-toggle button {
-        padding: 6px 12px;
-        font-size: 0.8rem;
-      }
-    }
-
-    .referenz-toggle button:hover {
-      border-color: var(--accent);
-    }
-
-    .referenz-toggle button.active {
-      background: var(--accent);
-      color: var(--paper);
-      border-color: var(--accent);
+      line-height: 1.45;
     }
 
     .chart-container {
       position: relative;
-      height: 320px;
-      margin-bottom: 12px;
+      flex: 1;
+      min-height: 280px;
     }
 
-    @media (max-width: 640px) {
-      .chart-container {
-        height: 260px;
-      }
+    .referenz-toggle {
+      display: inline-flex;
+      border: 1.5px solid var(--ink);
+      border-radius: 0;
+      overflow: hidden;
+      margin-top: 14px;
+      align-self: flex-start;
     }
 
-    .chart-note {
-      font-size: 0.8rem;
+    .referenz-toggle button {
+      border: none;
+      border-right: 1.5px solid var(--ink);
+      background: var(--paper);
+      color: var(--ink);
+      padding: 6px 14px;
+      font-size: 0.82rem;
+      cursor: pointer;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .referenz-toggle button:last-child {
+      border-right: none;
+    }
+
+    .referenz-toggle button.active {
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    .referenz-toggle button:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 20px;
+      font-size: 0.78rem;
       color: var(--muted);
-      font-style: italic;
-      line-height: 1.3;
+      text-align: right;
     }
 
-    @media (max-width: 640px) {
-      .chart-note {
-        font-size: 0.75rem;
-      }
+    footer a {
+      color: var(--muted);
+    }
+
+    /* Stale warning */
+    .stale-warnung {
+      background: #fdf1e6;
+      border: 1px solid #f5cc6a;
+      color: var(--accent-dark);
+      padding: 10px 14px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      margin-bottom: 18px;
+      display: none;
+    }
+
+    .stale-warnung.sichtbar {
+      display: block;
     }
 
     .lade-hinweis {
+      padding: 40px;
       text-align: center;
-      padding: 48px 20px;
       color: var(--muted);
-      font-size: 0.95rem;
     }
 
-    .methodik-link {
-      margin-top: 32px;
-      padding: 18px 24px;
-      border: 2px solid #d4a04f;
-      background: #fffbf0;
-      border-radius: 4px;
-      text-align: center;
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: #8b6914;
-      cursor: default;
-    }
-
-    @media (max-width: 640px) {
-      .methodik-link {
-        font-size: 0.95rem;
-        padding: 16px 20px;
-      }
-    }
-
-    .data-missing {
-      padding: 14px;
+    .daten-warnung {
       background: #fff3cd;
       border-left: 4px solid #ffc107;
-      border-radius: 3px;
-      font-size: 0.9rem;
-      margin-bottom: 12px;
+      padding: 12px 16px;
+      margin-bottom: 16px;
+      font-size: 0.85rem;
       color: #856404;
-    }
-
-    @media (max-width: 640px) {
-      .data-missing {
-        font-size: 0.85rem;
-        padding: 12px;
-      }
     }
   </style>
 </head>
@@ -411,312 +327,391 @@
 
     <div class="ort-zeile">
       <label for="plz-select">Ihr Ort:</label>
-      <select id="plz-select"></select>
+      <select id="plz-select">
+        <option>Lade…</option>
+      </select>
+      <span class="station-info" id="station-info"></span>
     </div>
 
-    <div class="ort-zeile">
-      <div class="station-info" id="station-info"></div>
-    </div>
+    <p class="hinweis-text" id="hinweis-text">
+      Nicht alle Orte im Saarland erheben Klimadaten mit einer eigenen Wetterstation. 
+      Wir ordnen Ihren Standort der nächstgelegenen Station zu.
+    </p>
 
-    <p class="hinweis-text" id="hinweis-text"></p>
+    <div class="stale-warnung" id="stale-warnung"></div>
 
     <div class="dashboard-grid" id="dashboard-grid">
-      <div class="lade-hinweis">Klimadaten werden geladen...</div>
+      <div class="lade-hinweis">Lade Klimadaten vom Deutschen Wetterdienst…</div>
     </div>
 
-    <div class="methodik-link">
-      Quellen und Methodik
-    </div>
+    <footer>
+      Datenquelle: <a href="https://opendata.dwd.de" target="_blank" rel="noopener">Deutscher Wetterdienst (DWD) Open Data</a> · 
+      Stand: <span id="stand-zeit">–</span>
+    </footer>
   </div>
 
   <script>
-    (() => {
-      const $ = id => document.getElementById(id);
-      let klimaDaten = null;
+    (function () {
+      const DATA_URL = "data/saarland.json";
+      const PLZ_MAPPING_URL = "data/plz_mapping.json";
+
+      let klimaData = null;
       let plzMapping = null;
       let chart = null;
+      let aktuelleReferenz = "1961-1990";
+      let aktuellerTab = "temperatur";
+      let aktuelleStation = null;
 
+      const $ = (id) => document.getElementById(id);
+
+      // --- SVG Icons ---
+      const ICON_TEMP = `<svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="18" y="4" width="12" height="30" rx="6" stroke="#1a1a1a" stroke-width="2.5" fill="none"/>
+        <circle cx="24" cy="36" r="7" stroke="#1a1a1a" stroke-width="2.5" fill="none"/>
+        <line x1="24" y1="20" x2="24" y2="33" stroke="#c0392b" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="24" cy="36" r="4" fill="#c0392b"/>
+        <line x1="10" y1="14" x2="16" y2="14" stroke="#1a1a1a" stroke-width="1.5"/>
+        <line x1="10" y1="20" x2="16" y2="20" stroke="#1a1a1a" stroke-width="1.5"/>
+        <line x1="10" y1="26" x2="16" y2="26" stroke="#1a1a1a" stroke-width="1.5"/>
+      </svg>`;
+
+      const ICON_RAIN = `<svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M14 28c-4 0-7-3-7-7s3-7 7-7c0-5 4-9 10-9s10 4 10 9c4 0 7 3 7 7s-3 7-7 7H14z" stroke="#888" stroke-width="2.5" fill="#e8e8e8"/>
+        <line x1="16" y1="34" x2="14" y2="40" stroke="#888" stroke-width="2" stroke-linecap="round"/>
+        <line x1="24" y1="34" x2="22" y2="40" stroke="#888" stroke-width="2" stroke-linecap="round"/>
+        <line x1="32" y1="34" x2="30" y2="40" stroke="#888" stroke-width="2" stroke-linecap="round"/>
+      </svg>`;
+
+      const ICON_SUN = `<svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="24" cy="24" r="8" stroke="#c8962e" stroke-width="2.5" fill="none"/>
+        <g stroke="#c8962e" stroke-width="2" stroke-linecap="round">
+          <line x1="24" y1="4" x2="24" y2="10"/>
+          <line x1="24" y1="38" x2="24" y2="44"/>
+          <line x1="4" y1="24" x2="10" y2="24"/>
+          <line x1="38" y1="24" x2="44" y2="24"/>
+          <line x1="9.9" y1="9.9" x2="14.1" y2="14.1"/>
+          <line x1="33.9" y1="33.9" x2="38.1" y2="38.1"/>
+          <line x1="9.9" y1="38.1" x2="14.1" y2="33.9"/>
+          <line x1="33.9" y1="14.1" x2="38.1" y2="9.9"/>
+        </g>
+      </svg>`;
+
+      // --- Data loading ---
       async function ladeDaten() {
-        const [daten, mapping] = await Promise.all([
-          fetch("saarland.json").then(r => r.json()),
-          fetch("plz_mapping.json").then(r => r.json())
+        const [klimaResp, plzResp] = await Promise.all([
+          fetch(DATA_URL, { cache: "no-store" }),
+          fetch(PLZ_MAPPING_URL, { cache: "no-store" }),
         ]);
-        klimaDaten = daten;
-        plzMapping = mapping;
+        if (!klimaResp.ok) throw new Error("Klimadaten: " + klimaResp.status);
+        if (!plzResp.ok) throw new Error("PLZ-Zuordnung: " + plzResp.status);
+        klimaData = await klimaResp.json();
+        plzMapping = await plzResp.json();
       }
 
       function pruefeAktualitaet() {
-        const updatedAt = klimaDaten.updated_at;
-        if (!updatedAt) return;
-        const diff = Date.now() - new Date(updatedAt).getTime();
-        const tage = Math.floor(diff / 86400000);
-        if (tage > 2) {
-          $("hinweis-text").textContent = `Letzte Aktualisierung vor ${tage} Tagen – Daten möglicherweise veraltet.`;
+        const warnung = $("stale-warnung");
+        if (!klimaData || !klimaData.generated_at) return;
+        const gen = new Date(klimaData.generated_at);
+        const h = (Date.now() - gen.getTime()) / 36e5;
+        if (h > 36) {
+          warnung.textContent = "Hinweis: Die Daten wurden zuletzt vor über " + Math.floor(h) + " Stunden aktualisiert.";
+          warnung.classList.add("sichtbar");
         }
+        $("stand-zeit").textContent = gen.toLocaleString("de-DE", {
+          day: "2-digit",
+          month: "2-digit",
+          year: "numeric",
+          hour: "2-digit",
+          minute: "2-digit"
+        });
       }
 
       function befuelleOrtsAuswahl() {
-        const sel = $("plz-select");
-        const sortiert = Object.entries(plzMapping.mapping).sort((a, b) => {
-          const ortA = a[1].ort.toLowerCase();
-          const ortB = b[1].ort.toLowerCase();
-          return ortA.localeCompare(ortB, 'de');
-        });
-        sortiert.forEach(([plz, info]) => {
+        const select = $("plz-select");
+        select.innerHTML = "";
+        const liste = Object.entries(plzMapping.mapping).sort((a, b) => a[0].localeCompare(b[0]));
+        for (const [plz, info] of liste) {
           const opt = document.createElement("option");
           opt.value = plz;
-          opt.textContent = `${plz} ${info.ort}`;
-          sel.appendChild(opt);
-        });
-        sel.addEventListener("change", e => renderFuerPLZ(e.target.value));
+          opt.textContent = plz + " " + info.ort;
+          select.appendChild(opt);
+        }
+        select.addEventListener("change", () => renderFuerPLZ(select.value));
       }
 
+      function fmt(v, d = 0) {
+        if (v == null || isNaN(v)) return "–";
+        return v.toLocaleString("de-DE", {
+          minimumFractionDigits: d,
+          maximumFractionDigits: d
+        });
+      }
+
+      // --- VERBESSERTE Einordnung mit Nuancen ---
+      function tempEinordnung(txk, refBand) {
+        if (txk == null) return { text: "keine Daten verfügbar", cls: "" };
+        if (!refBand || refBand.length === 0) {
+          // Fallback ohne Referenz
+          if (txk >= 30) return { text: "ungewöhnlich warm", cls: "warm" };
+          if (txk <= 5) return { text: "ungewöhnlich kalt", cls: "kalt" };
+          return { text: "", cls: "" };
+        }
+        
+        // Letzter Tag = heute
+        const heuteRef = refBand[refBand.length - 1];
+        if (!heuteRef || heuteRef.p10 == null || heuteRef.p90 == null) {
+          return { text: "", cls: "" };
+        }
+        
+        const mean = heuteRef.mean || ((heuteRef.p10 + heuteRef.p90) / 2);
+        const abweichung = txk - mean;
+        
+        // Über P90 = klar außerhalb
+        if (txk > heuteRef.p90) {
+          return { text: "ungewöhnlich warm", cls: "warm" };
+        }
+        // Unter P10 = klar außerhalb
+        if (txk < heuteRef.p10) {
+          return { text: "ungewöhnlich kalt", cls: "kalt" };
+        }
+        
+        // Innerhalb P10-P90, aber nah an Grenze
+        const naheP90 = (heuteRef.p90 - txk) < (heuteRef.p90 - mean) * 0.2;
+        const naheP10 = (txk - heuteRef.p10) < (mean - heuteRef.p10) * 0.2;
+        
+        if (naheP90) {
+          return { text: "warm, aber im Normalbereich", cls: "normal" };
+        }
+        if (naheP10) {
+          return { text: "kühl, aber im Normalbereich", cls: "normal" };
+        }
+        
+        return { text: "im normalen Bereich", cls: "normal" };
+      }
+
+      function regenEinordnung(mm30, refBand) {
+        if (mm30 == null) return { text: "Keine aktuellen Daten verfügbar.", cls: "" };
+        if (!refBand || refBand.length === 0) return { text: fmt(mm30, 1) + " mm", cls: "" };
+        
+        const heuteRef = refBand[refBand.length - 1];
+        if (!heuteRef) return { text: "", cls: "" };
+        
+        const mean = heuteRef.kum_mean;
+        const p10 = heuteRef.kum_p10;
+        const p90 = heuteRef.kum_p90;
+        
+        if (mean == null || p10 == null || p90 == null) {
+          return { text: "", cls: "" };
+        }
+        
+        // Über P90 = deutlich mehr
+        if (mm30 > p90) {
+          return { text: "ungewöhnlich viel", cls: "viel" };
+        }
+        // Unter P10 = deutlich weniger
+        if (mm30 < p10) {
+          return { text: "ungewöhnlich wenig", cls: "wenig" };
+        }
+        
+        // Innerhalb, aber nah an Grenze
+        const naheP90 = (p90 - mm30) < (p90 - mean) * 0.2;
+        const naheP10 = (mm30 - p10) < (mean - p10) * 0.2;
+        
+        if (naheP90) {
+          return { text: "viel, aber im Normalbereich", cls: "normal" };
+        }
+        if (naheP10) {
+          return { text: "wenig, aber im Normalbereich", cls: "normal" };
+        }
+        
+        return { text: "im normalen Bereich", cls: "normal" };
+      }
+
+      // --- Render ---
       function renderFuerPLZ(plz) {
-        const info = plzMapping.mapping[plz];
-        if (!info) return;
-        const station = klimaDaten.stationen[info.station_id];
-        if (!station) return;
-
-        $("station-info").innerHTML = `<strong>Wetterstation:</strong> ${station.name}`;
-        $("hinweis-text").textContent = `Nicht jeder Ort hat eine eigene Wetterstation, aber wir nutzen ein möglichst dichtes Stationsnetz. Die nächstgelegene Station ist ${station.name}.`;
-
+        const eintrag = plzMapping.mapping[plz];
+        if (!eintrag) return;
+        const station = klimaData.stations[eintrag.station_id];
+        if (!station || station.status === "error") {
+          $("station-info").textContent = "";
+          $("hinweis-text").textContent = "Für diese Station liegen keine Daten vor.";
+          $("dashboard-grid").innerHTML = '<div class="lade-hinweis">Keine Daten verfügbar.</div>';
+          return;
+        }
+        aktuelleStation = station;
+        $("station-info").innerHTML = "Nächstgelegene Wetterstation: " + station.name;
+        $("hinweis-text").innerHTML = "Nicht alle Orte im Saarland erheben Klimadaten mit einer eigenen Wetterstation. Wir ordnen Ihren Standort der nächstgelegenen Station zu. Die nächstgelegene Station ist " + station.name + ".";
         renderDashboard(station);
       }
 
       function renderDashboard(station) {
+        const ref = station.referenzperioden ? station.referenzperioden[aktuelleReferenz] : null;
+        const niederschlag30 = station.niederschlag_letzte_30_tage_mm;
+        const txk = station.tageshoechstwert_heute_c;
+        const sommBisher = station.sommertage_laufendes_jahr;
+
+        // Referenzbänder für Einordnung
+        const refBandTemp = station.referenzband_temperatur ? station.referenzband_temperatur[aktuelleReferenz] : [];
+        const refBandNied = station.referenzband_niederschlag ? station.referenzband_niederschlag[aktuelleReferenz] : [];
+        
+        const tE = tempEinordnung(txk, refBandTemp);
+        const rE = regenEinordnung(niederschlag30, refBandNied);
+
         const grid = $("dashboard-grid");
-        const hasRef1961 = station.referenzperioden && station.referenzperioden["1961-1990"];
-
         grid.innerHTML = `
-          <!-- TEMPERATUR -->
-          <div class="chart-section" data-section="temperatur">
-            <div class="section-header">
-              <span class="section-icon">🌡️</span>
-              <span class="section-title">Temperatur</span>
-              <span class="chevron">▼</span>
-            </div>
-            <div class="section-content">
-              <div id="temp-bewertung" class="bewertung"></div>
-              ${!hasRef1961 ? '<div class="data-missing">⚠️ Für diese Station liegen keine Referenzdaten von 1961–1990 vor. Vergleich daher nur mit 1991–2020.</div>' : ''}
-              <div class="chart-title" id="temp-chart-title"></div>
-              <div class="chart-sub" id="temp-chart-sub"></div>
-              <div class="referenz-toggle" id="temp-referenz-toggle"></div>
-              <div class="chart-container">
-                <canvas id="temp-chart"></canvas>
+          <div class="kacheln">
+            <div class="kachel ${aktuellerTab === 'temperatur' ? 'active' : ''}" data-tab="temperatur">
+              <div class="icon">${ICON_TEMP}</div>
+              <div>
+                <h2>Temperatur</h2>
+                <p>Temperatur heute: bis zu <span class="wert">${txk != null ? fmt(txk, 1) + ' °C' : '–'}</span>. ${tE.text !== '' ? ' Das ist <span class="einordnung ' + tE.cls + '">' + tE.text + '</span>.' : ''}</p>
               </div>
-              <div class="chart-note" id="temp-chart-note"></div>
+            </div>
+            <div class="kachel ${aktuellerTab === 'regen' ? 'active' : ''}" data-tab="regen">
+              <div class="icon">${ICON_RAIN}</div>
+              <div>
+                <h2>Regen</h2>
+                <p>${niederschlag30 != null ? '<span class="wert">' + fmt(niederschlag30, 1) + ' mm</span> in den letzten 30 Tagen. Das ist <span class="einordnung ' + rE.cls + '">' + rE.text + '</span>.' : 'Keine aktuellen Daten verfügbar.'}</p>
+              </div>
+            </div>
+            <div class="kachel ${aktuellerTab === 'sommertage' ? 'active' : ''}" data-tab="sommertage">
+              <div class="icon">${ICON_SUN}</div>
+              <div>
+                <h2>Sommertage</h2>
+                <p><span class="einordnung mehr">Sommertage</span> ab 25°C: <span class="wert">${sommBisher != null ? sommBisher : '–'}</span> seit März. In welchem Monat diese Tage auftreten, schwankt von Jahr zu Jahr, seit 2000 werden es aber <span class="einordnung mehr">immer mehr</span>.</p>
+              </div>
             </div>
           </div>
-
-          <!-- REGEN -->
-          <div class="chart-section" data-section="regen">
-            <div class="section-header">
-              <span class="section-icon">🌧️</span>
-              <span class="section-title">Regen</span>
-              <span class="chevron">▼</span>
+          <div class="chart-panel" id="chart-panel">
+            <h2 id="chart-title"></h2>
+            <p class="sub" id="chart-sub"></p>
+            <div class="referenz-toggle" id="referenz-toggle" style="display:none">
+              <button data-ref="1961-1990" class="${aktuelleReferenz === '1961-1990' ? 'active' : ''}">1961-1984*</button>
+              <button data-ref="1991-2020" class="${aktuelleReferenz === '1991-2020' ? 'active' : ''}">1991-2020</button>
             </div>
-            <div class="section-content">
-              <div id="regen-bewertung" class="bewertung"></div>
-              <div class="chart-title" id="regen-chart-title"></div>
-              <div class="chart-sub" id="regen-chart-sub"></div>
-              <div class="chart-container">
-                <canvas id="regen-chart"></canvas>
-              </div>
-              <div class="chart-note" id="regen-chart-note"></div>
-            </div>
-          </div>
-
-          <!-- SOMMERTAGE -->
-          <div class="chart-section" data-section="sommertage">
-            <div class="section-header">
-              <span class="section-icon">☀️</span>
-              <span class="section-title">Sommertage</span>
-              <span class="chevron">▼</span>
-            </div>
-            <div class="section-content">
-              <div class="chart-title" id="sommer-chart-title"></div>
-              <div class="chart-sub" id="sommer-chart-sub"></div>
-              <div class="chart-container">
-                <canvas id="sommer-chart"></canvas>
-              </div>
-            </div>
+            <div class="chart-container"><canvas id="main-chart"></canvas></div>
           </div>
         `;
 
-        // Mobile Akkordeon-Funktion aktivieren
-        if (window.innerWidth <= 640) {
-          aktiviereAkkordeon();
-        }
-
-        zeichneTemperaturChart(station, "1961-1990");
-        zeichneRegenChart(station);
-        zeichneSommertageChart(station);
-      }
-
-      function aktiviereAkkordeon() {
-        const sections = document.querySelectorAll('.chart-section');
-        
-        sections.forEach((section, index) => {
-          const header = section.querySelector('.section-header');
-          
-          // Erste Section initial öffnen
-          if (index === 0) {
-            section.classList.add('open');
-          }
-          
-          header.addEventListener('click', () => {
-            const wasOpen = section.classList.contains('open');
-            
-            // Alle anderen schließen
-            sections.forEach(s => s.classList.remove('open'));
-            
-            // Diese togglen
-            if (!wasOpen) {
-              section.classList.add('open');
-            }
+        // Tab-Klick
+        document.querySelectorAll(".kachel[data-tab]").forEach(k => {
+          k.addEventListener("click", () => {
+            aktuellerTab = k.dataset.tab;
+            renderDashboard(station);
           });
         });
+
+        // Referenz-Toggle
+        document.querySelectorAll("#referenz-toggle button").forEach(btn => {
+          btn.addEventListener("click", () => {
+            aktuelleReferenz = btn.dataset.ref;
+            renderDashboard(station);
+          });
+        });
+
+        zeichneChart(station);
       }
 
-      function fmt(zahl, nachkommastellen = 1) {
-        return zahl != null ? zahl.toFixed(nachkommastellen).replace(".", ",") : "–";
+      function zeichneChart(station) {
+        if (chart) chart.destroy();
+        if (aktuellerTab === "temperatur") zeichneTemperaturChart(station);
+        else if (aktuellerTab === "regen") zeichneRegenChart(station);
+        else zeichneSommertageChart(station);
       }
 
-      function zeichneTemperaturChart(station, aktiveRef) {
-        const bewertung = $("temp-bewertung");
-        const title = $("temp-chart-title");
-        const sub = $("temp-chart-sub");
-        const toggle = $("temp-referenz-toggle");
-        const note = $("temp-chart-note");
+      // --- Temperatur Chart ---
+      function zeichneTemperaturChart(station) {
+        const title = $("chart-title");
+        const sub = $("chart-sub");
+        const toggle = $("referenz-toggle");
 
-        const ref = station.referenzperioden?.[aktiveRef];
-        const ts = station.tagesreihe_30d;
+        title.innerHTML = `So <span style="background:#f5e6a0;padding:1px 4px">warm</span> wird es heute in ${station.name} im historischen Vergleich`;
+        
+        const ref = station.referenzperioden ? station.referenzperioden[aktuelleReferenz] : null;
+        const hatAlteDaten = ref && ref.jahre_verfuegbar >= 15;
+        
+        if (!hatAlteDaten && aktuelleReferenz === "1961-1990") {
+          sub.innerHTML = '<strong style="color:#856404">⚠️ Hinweis:</strong> Für die Referenzperiode 1961-1990 liegen für diese Station keine ausreichenden Daten vor.';
+        } else {
+          sub.innerHTML = `Der graue Bereich zeigt 80 % aller Tage in den Jahren ${aktuelleReferenz} (zwischen 10. und 90. Perzentil). Die gestrichelte Linie zeigt den Durchschnitt dieser Periode.`;
+        }
+        
+        toggle.style.display = "";
+        
+        // Buttons deaktivieren wenn keine Daten
+        document.querySelectorAll("#referenz-toggle button").forEach(btn => {
+          const periode = btn.dataset.ref;
+          const periodeRef = station.referenzperioden ? station.referenzperioden[periode] : null;
+          const hatDaten = periodeRef && periodeRef.jahre_verfuegbar >= 15;
+          btn.disabled = !hatDaten;
+        });
 
-        if (!ref || !ts || ts.length === 0) {
-          bewertung.innerHTML = "Keine Daten verfügbar.";
+        const reihe = station.tagesreihe_30d || [];
+        const refBand = station.referenzband_temperatur ? station.referenzband_temperatur[aktuelleReferenz] : [];
+
+        if (reihe.length === 0) {
+          document.getElementById("chart-panel").innerHTML = '<div class="lade-hinweis">Für diese Station liegen keine aktuellen Tageswerte vor.</div>';
           return;
         }
 
-        const letzter = ts[ts.length - 1];
-        const letzteTemp = letzter.temp_max;
-        const letztesDatum = new Date(letzter.datum);
-        const monat = letztesDatum.getMonth() + 1;
-        const tag = letztesDatum.getDate();
-        const key = `${String(monat).padStart(2, "0")}-${String(tag).padStart(2, "0")}`;
-        const p10 = ref.p10?.[key];
-        const p90 = ref.p90?.[key];
-        const avg = ref.avg?.[key];
-
-        let einordnung = "normal";
-        if (p10 != null && p90 != null && letzteTemp != null) {
-          if (letzteTemp < p10) einordnung = "kalt";
-          else if (letzteTemp > p90) einordnung = "warm";
-        }
-
-        const highlightMap = {
-          "kalt": `<span class="highlight" style="color:var(--green-line);">ungewöhnlich kalt</span>`,
-          "warm": `<span class="highlight" style="color:var(--red-line);">ungewöhnlich warm</span>`,
-          "normal": `<span class="highlight" style="color:var(--ok);">im Normalbereich</span>`
-        };
-
-        const nuance = letzteTemp != null && avg != null
-          ? (letzteTemp < avg ? "etwas kühler als der Durchschnitt" : letzteTemp > avg ? "etwas wärmer als der Durchschnitt" : "genau im Durchschnitt")
-          : "";
-
-        bewertung.innerHTML = `Tageshöchsttemperatur heute: bis zu <strong>${fmt(letzteTemp, 1)} °C</strong>. Das ist ${highlightMap[einordnung]}${einordnung === "normal" && nuance ? ", aber " + nuance : ""}.`;
-
-        title.innerHTML = `So <span style="text-decoration:underline;">${einordnung === "warm" ? "warm" : einordnung === "kalt" ? "kalt" : "normal"}</span> wird es heute in ${station.name} im historischen Vergleich`;
-        sub.textContent = `Im grauen Bereich lagen die meisten Tage in den Jahren ${aktiveRef}, als der Klimawandel sich noch wenig ausgewirkt hat. Die gestrichelte Linie stellt den Durchschnitt dar.`;
-
-        const hasRef1961 = station.referenzperioden && station.referenzperioden["1961-1990"];
-        toggle.innerHTML = "";
-        if (hasRef1961) {
-          ["1961-1990", "1991-2020"].forEach(periode => {
-            const btn = document.createElement("button");
-            btn.textContent = periode;
-            btn.className = periode === aktiveRef ? "active" : "";
-            btn.addEventListener("click", () => {
-              if (chart) chart.destroy();
-              zeichneTemperaturChart(station, periode);
-            });
-            toggle.appendChild(btn);
-          });
-          toggle.style.display = "flex";
-        } else {
-          toggle.style.display = "none";
-        }
-
-        note.textContent = `P10 und P90 markieren die 10 %- und 90 %-Perzentile: An 80 % der Tage lag die Temperatur in diesem Bereich, an 10 % war es kälter, an 10 % wärmer.`;
-
-        const labels = ts.map(d => new Date(d.datum).toLocaleDateString("de-DE", { day: "2-digit", month: "2-digit" }));
-        const tempWerte = ts.map(d => d.temp_max);
-
-        const refBandUpper = ts.map(d => {
-          const dt = new Date(d.datum);
-          const k = `${String(dt.getMonth() + 1).padStart(2, "0")}-${String(dt.getDate()).padStart(2, "0")}`;
-          return ref.p90?.[k] ?? null;
-        });
-        const refBandLower = ts.map(d => {
-          const dt = new Date(d.datum);
-          const k = `${String(dt.getMonth() + 1).padStart(2, "0")}-${String(dt.getDate()).padStart(2, "0")}`;
-          return ref.p10?.[k] ?? null;
-        });
-        const avgWerte = ts.map(d => {
-          const dt = new Date(d.datum);
-          const k = `${String(dt.getMonth() + 1).padStart(2, "0")}-${String(dt.getDate()).padStart(2, "0")}`;
-          return ref.avg?.[k] ?? null;
+        const labels = reihe.map(r => {
+          const m = parseInt(r.datum.substring(4, 6));
+          const d = parseInt(r.datum.substring(6, 8));
+          return d + "." + m + ".";
         });
 
-        const ctx = document.getElementById("temp-chart");
+        const txkWerte = reihe.map(r => r.txk);
+        const refMean = refBand.map(r => r ? r.mean : null);
+        const refP10 = refBand.map(r => r ? r.p10 : null);
+        const refP90 = refBand.map(r => r ? r.p90 : null);
+
+        const ctx = document.getElementById("main-chart");
         chart = new Chart(ctx, {
           data: {
             labels,
             datasets: [
               {
                 type: "line",
-                label: "Obere Grenze (P90)",
-                data: refBandUpper,
-                borderColor: "rgba(0,0,0,0.15)",
+                label: "90. Perzentil",
+                data: refP90,
+                borderColor: "transparent",
                 backgroundColor: "rgba(0,0,0,0.08)",
-                borderWidth: 0,
-                pointRadius: 0,
                 fill: "+1",
-                tension: 0.3,
-                order: 4
-              },
-              {
-                type: "line",
-                label: "Untere Grenze (P10)",
-                data: refBandLower,
-                borderColor: "rgba(0,0,0,0.15)",
-                backgroundColor: "rgba(0,0,0,0.08)",
-                borderWidth: 0,
                 pointRadius: 0,
-                fill: false,
-                tension: 0.3,
-                order: 4
-              },
-              {
-                type: "line",
-                label: "Durchschnitt",
-                data: avgWerte,
-                borderColor: "rgba(0,0,0,0.25)",
-                borderWidth: 1.5,
-                borderDash: [4, 4],
-                pointRadius: 0,
-                fill: false,
                 tension: 0.3,
                 order: 3
               },
               {
                 type: "line",
+                label: "10. Perzentil",
+                data: refP10,
+                borderColor: "transparent",
+                backgroundColor: "transparent",
+                fill: false,
+                pointRadius: 0,
+                tension: 0.3,
+                order: 3
+              },
+              {
+                type: "line",
+                label: "Durchschnitt " + aktuelleReferenz,
+                data: refMean,
+                borderColor: "rgba(0,0,0,0.3)",
+                borderWidth: 1.5,
+                borderDash: [4, 4],
+                pointRadius: 0,
+                fill: false,
+                tension: 0.3,
+                order: 2
+              },
+              {
+                type: "line",
                 label: "Tageshöchsttemperatur",
-                data: tempWerte,
+                data: txkWerte,
                 borderColor: "#c0392b",
                 borderWidth: 2.5,
-                pointRadius: 0,
-                pointHoverRadius: 5,
-                pointHoverBackgroundColor: "#c0392b",
+                pointRadius: txkWerte.map((v, i) => i === txkWerte.length - 1 && v != null ? 5 : 0),
+                pointBackgroundColor: "#c0392b",
                 fill: false,
                 tension: 0.2,
                 order: 1
@@ -726,9 +721,11 @@
           options: {
             responsive: true,
             maintainAspectRatio: false,
-            interaction: {
-              mode: 'index',
-              intersect: false,
+            onClick: (event, activeElements) => {
+              if (activeElements.length > 0) {
+                chart.tooltip.setActiveElements(activeElements);
+                chart.update();
+              }
             },
             plugins: {
               legend: { display: false },
@@ -740,9 +737,6 @@
                   label: item => {
                     if (item.dataset.label === "Tageshöchsttemperatur") {
                       return "Tageshöchsttemperatur: " + fmt(item.parsed.y, 1) + " °C";
-                    }
-                    if (item.dataset.label === "Durchschnitt") {
-                      return "Durchschnitt " + aktiveRef + ": " + fmt(item.parsed.y, 1) + " °C";
                     }
                     return item.dataset.label + ": " + fmt(item.parsed.y, 1) + " °C";
                   }
@@ -763,66 +757,81 @@
         });
       }
 
+      // --- Regen Chart (BLAU!) ---
       function zeichneRegenChart(station) {
-        const bewertung = $("regen-bewertung");
-        const title = $("regen-chart-title");
-        const sub = $("regen-chart-sub");
-        const note = $("regen-chart-note");
+        const title = $("chart-title");
+        const sub = $("chart-sub");
+        const toggle = $("referenz-toggle");
 
-        const ts = station.tagesreihe_30d;
-        if (!ts || ts.length === 0) {
-          bewertung.innerHTML = "Keine Daten verfügbar.";
+        title.innerHTML = `So viel hat es in den letzten 30 Tagen in ${station.name} <span style="background:#d4e6a0;padding:1px 4px">geregnet</span> – im historischen Vergleich`;
+        
+        const ref = station.referenzperioden ? station.referenzperioden[aktuelleReferenz] : null;
+        const hatAlteDaten = ref && ref.jahre_verfuegbar >= 15;
+        
+        if (!hatAlteDaten && aktuelleReferenz === "1961-1990") {
+          sub.innerHTML = '<strong style="color:#856404">⚠️ Hinweis:</strong> Für die Referenzperiode 1961-1990 liegen für diese Station keine ausreichenden Daten vor.';
+        } else {
+          sub.innerHTML = `Der graue Bereich zeigt 80 % aller historischen Werte in den Jahren ${aktuelleReferenz} (zwischen 10. und 90. Perzentil). Die gestrichelte Linie zeigt den Durchschnitt.`;
+        }
+        
+        toggle.style.display = "";
+
+        const reihe = station.tagesreihe_30d || [];
+        const refBand = station.referenzband_niederschlag ? station.referenzband_niederschlag[aktuelleReferenz] : [];
+
+        if (reihe.length === 0) {
+          document.getElementById("chart-panel").innerHTML = '<div class="lade-hinweis">Für diese Station liegen keine aktuellen Niederschlagswerte vor.</div>';
           return;
         }
 
-        const regenGesamt = ts.reduce((sum, d) => sum + (d.niederschlag || 0), 0);
-        const refRegen = station.referenzperioden?.["1991-2020"]?.regen_30d_avg;
-
-        let einordnung = "normal";
-        let highlightText = `<span class="highlight" style="color:var(--ok);">im Normalbereich</span>`;
-
-        if (refRegen != null) {
-          const abw = ((regenGesamt - refRegen) / refRegen) * 100;
-          if (abw < -30) {
-            einordnung = "trocken";
-            highlightText = `<span class="highlight" style="color:var(--red-line);">ungewöhnlich wenig</span>`;
-          } else if (abw > 30) {
-            einordnung = "nass";
-            highlightText = `<span class="highlight" style="color:var(--bar-fill);">ungewöhnlich viel</span>`;
-          } else if (abw < 0) {
-            highlightText = `<span class="highlight" style="color:var(--ok);">wenig, aber im Normalbereich</span>`;
-          } else if (abw > 0) {
-            highlightText = `<span class="highlight" style="color:var(--ok);">viel, aber im Normalbereich</span>`;
-          }
-        }
-
-        bewertung.innerHTML = `Regen der letzten 30 Tage: <strong>${fmt(regenGesamt, 1)} mm</strong>. Das ist ${highlightText}.`;
-
-        title.innerHTML = `So viel <span style="text-decoration:underline;">Regen</span> fiel in ${station.name} in den letzten 30 Tagen`;
-        sub.textContent = `Die blaue Linie zeigt die Entwicklung der letzten 30 Tage. Der Durchschnitt für diesen Zeitraum liegt bei etwa ${fmt(refRegen, 1)} mm (1991–2020).`;
-        note.textContent = ``;
-
-        const labels = ts.map(d => new Date(d.datum).toLocaleDateString("de-DE", { day: "2-digit", month: "2-digit" }));
-        const kumWerte = [];
-        let kum = 0;
-        ts.forEach(d => {
-          kum += d.niederschlag || 0;
-          kumWerte.push(kum);
+        const labels = reihe.map(r => {
+          const m = parseInt(r.datum.substring(4, 6));
+          const d = parseInt(r.datum.substring(6, 8));
+          return d + "." + m + ".";
         });
 
-        const avgLine = labels.map(() => refRegen);
+        let kum = 0;
+        const kumWerte = reihe.map(r => {
+          kum += (r.rsk || 0);
+          return Math.round(kum * 10) / 10;
+        });
 
-        const ctx = document.getElementById("regen-chart");
-        if (chart) chart.destroy();
+        const refMean = refBand.map(r => r ? r.kum_mean : null);
+        const refP10 = refBand.map(r => r ? r.kum_p10 : null);
+        const refP90 = refBand.map(r => r ? r.kum_p90 : null);
+
+        const ctx = document.getElementById("main-chart");
         chart = new Chart(ctx, {
           data: {
             labels,
             datasets: [
               {
                 type: "line",
-                label: "Durchschnitt 1991-2020",
-                data: avgLine,
-                borderColor: "rgba(0,0,0,0.25)",
+                label: "90. Perzentil",
+                data: refP90,
+                borderColor: "transparent",
+                backgroundColor: "rgba(0,0,0,0.08)",
+                fill: "+1",
+                pointRadius: 0,
+                tension: 0.3,
+                order: 3
+              },
+              {
+                type: "line",
+                label: "10. Perzentil",
+                data: refP10,
+                borderColor: "transparent",
+                backgroundColor: "transparent",
+                fill: false,
+                pointRadius: 0,
+                tension: 0.3,
+                order: 3
+              },
+              {
+                type: "line",
+                label: "Durchschnitt " + aktuelleReferenz,
+                data: refMean,
+                borderColor: "rgba(0,0,0,0.3)",
                 borderWidth: 1.5,
                 borderDash: [4, 4],
                 pointRadius: 0,
@@ -836,9 +845,8 @@
                 data: kumWerte,
                 borderColor: "#004d8b",
                 borderWidth: 2.5,
-                pointRadius: 0,
-                pointHoverRadius: 5,
-                pointHoverBackgroundColor: "#004d8b",
+                pointRadius: kumWerte.map((v, i) => i === kumWerte.length - 1 ? 5 : 0),
+                pointBackgroundColor: "#004d8b",
                 fill: false,
                 tension: 0.2,
                 order: 1
@@ -848,9 +856,11 @@
           options: {
             responsive: true,
             maintainAspectRatio: false,
-            interaction: {
-              mode: 'index',
-              intersect: false,
+            onClick: (event, activeElements) => {
+              if (activeElements.length > 0) {
+                chart.tooltip.setActiveElements(activeElements);
+                chart.update();
+              }
             },
             plugins: {
               legend: { display: false },
@@ -883,12 +893,15 @@
         });
       }
 
+      // --- Sommertage Chart ---
       function zeichneSommertageChart(station) {
-        const title = $("sommer-chart-title");
-        const sub = $("sommer-chart-sub");
+        const title = $("chart-title");
+        const sub = $("chart-sub");
+        const toggle = $("referenz-toggle");
 
         title.innerHTML = `So viele <span style="text-decoration:underline">Sommertage</span> gab es in ${station.name} von März bis Oktober`;
         sub.textContent = "Sommertag = Temperatur steigt auf 25 °C oder höher. Die Linie zeigt, wohin sich der langjährige Trend von 2000 bis zum vergangenen Jahr entwickelt hat.";
+        toggle.style.display = "none";
 
         const eintraege = Object.entries(station.sommertage_pro_jahr).sort((a, b) => Number(a[0]) - Number(b[0]));
         const jahre = eintraege.map(([j]) => Number(j));
@@ -896,8 +909,7 @@
 
         const trend = linearerTrend(jahre, werte);
 
-        const ctx = document.getElementById("sommer-chart");
-        if (chart) chart.destroy();
+        const ctx = document.getElementById("main-chart");
         chart = new Chart(ctx, {
           data: {
             labels: jahre,
@@ -925,9 +937,11 @@
           options: {
             responsive: true,
             maintainAspectRatio: false,
-            interaction: {
-              mode: 'index',
-              intersect: false,
+            onClick: (event, activeElements) => {
+              if (activeElements.length > 0) {
+                chart.tooltip.setActiveElements(activeElements);
+                chart.update();
+              }
             },
             plugins: {
               legend: { display: false },
@@ -974,6 +988,7 @@
         return jahre.map(j => Math.round((s * j + b) * 10) / 10);
       }
 
+      // --- Init ---
       async function init() {
         try {
           await ladeDaten();
