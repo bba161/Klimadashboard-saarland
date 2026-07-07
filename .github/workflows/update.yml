@@ -2,10 +2,8 @@ name: Klimadaten aktualisieren
 
 on:
   schedule:
-    # Stündlich zur vollen Stunde (UTC). DWD aktualisiert "recent" i.d.R.
-    # einmal täglich, Stundenwerte mehrfach täglich - stündlich ist ein
-    # guter Kompromiss zwischen Aktualität und Serverlast.
-    - cron: "5 * * * *"
+    # Viermal täglich: Morgens, Mittags, Nachmittags, Abends (UTC)
+    - cron: "15 5,11,15,20 * * *"
   workflow_dispatch: {}  # manuelles Auslösen über die GitHub-UI
 
 permissions:
