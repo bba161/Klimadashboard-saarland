@@ -272,6 +272,11 @@
       color: var(--paper);
     }
 
+    .referenz-toggle button:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
     /* Footer */
     footer {
       margin-top: 20px;
@@ -304,6 +309,15 @@
       padding: 40px;
       text-align: center;
       color: var(--muted);
+    }
+
+    .daten-warnung {
+      background: #fff3cd;
+      border-left: 4px solid #ffc107;
+      padding: 12px 16px;
+      margin-bottom: 16px;
+      font-size: 0.85rem;
+      color: #856404;
     }
   </style>
 </head>
@@ -433,7 +447,7 @@
         });
       }
 
-      // --- Einordnung VERBESSERT: Vergleich mit P10/P90 ---
+      // --- VERBESSERTE Einordnung mit Nuancen ---
       function tempEinordnung(txk, refBand) {
         if (txk == null) return { text: "keine Daten verfügbar", cls: "" };
         if (!refBand || refBand.length === 0) {
@@ -449,20 +463,68 @@
           return { text: "", cls: "" };
         }
         
-        if (txk > heuteRef.p90) return { text: "ungewöhnlich warm", cls: "warm" };
-        if (txk < heuteRef.p10) return { text: "ungewöhnlich kalt", cls: "kalt" };
+        const mean = heuteRef.mean || ((heuteRef.p10 + heuteRef.p90) / 2);
+        const abweichung = txk - mean;
+        
+        // Über P90 = klar außerhalb
+        if (txk > heuteRef.p90) {
+          return { text: "ungewöhnlich warm", cls: "warm" };
+        }
+        // Unter P10 = klar außerhalb
+        if (txk < heuteRef.p10) {
+          return { text: "ungewöhnlich kalt", cls: "kalt" };
+        }
+        
+        // Innerhalb P10-P90, aber nah an Grenze
+        const naheP90 = (heuteRef.p90 - txk) < (heuteRef.p90 - mean) * 0.2;
+        const naheP10 = (txk - heuteRef.p10) < (mean - heuteRef.p10) * 0.2;
+        
+        if (naheP90) {
+          return { text: "warm, aber im Normalbereich", cls: "normal" };
+        }
+        if (naheP10) {
+          return { text: "kühl, aber im Normalbereich", cls: "normal" };
+        }
+        
         return { text: "im normalen Bereich", cls: "normal" };
       }
 
-      function regenEinordnung(mm30, refJahr) {
+      function regenEinordnung(mm30, refBand) {
         if (mm30 == null) return { text: "Keine aktuellen Daten verfügbar.", cls: "" };
-        if (refJahr == null) return { text: fmt(mm30, 1) + " mm", cls: "" };
-        const refMonat = refJahr / 12;
-        const diff = mm30 - refMonat;
-        const rel = Math.abs(diff) / (refMonat || 1);
-        if (rel < 0.2) return { text: "im normalen Bereich", cls: "normal" };
-        if (diff > 0) return { text: "ungewöhnlich viel", cls: "viel" };
-        return { text: "ungewöhnlich wenig", cls: "wenig" };
+        if (!refBand || refBand.length === 0) return { text: fmt(mm30, 1) + " mm", cls: "" };
+        
+        const heuteRef = refBand[refBand.length - 1];
+        if (!heuteRef) return { text: "", cls: "" };
+        
+        const mean = heuteRef.kum_mean;
+        const p10 = heuteRef.kum_p10;
+        const p90 = heuteRef.kum_p90;
+        
+        if (mean == null || p10 == null || p90 == null) {
+          return { text: "", cls: "" };
+        }
+        
+        // Über P90 = deutlich mehr
+        if (mm30 > p90) {
+          return { text: "ungewöhnlich viel", cls: "viel" };
+        }
+        // Unter P10 = deutlich weniger
+        if (mm30 < p10) {
+          return { text: "ungewöhnlich wenig", cls: "wenig" };
+        }
+        
+        // Innerhalb, aber nah an Grenze
+        const naheP90 = (p90 - mm30) < (p90 - mean) * 0.2;
+        const naheP10 = (mm30 - p10) < (mean - p10) * 0.2;
+        
+        if (naheP90) {
+          return { text: "viel, aber im Normalbereich", cls: "normal" };
+        }
+        if (naheP10) {
+          return { text: "wenig, aber im Normalbereich", cls: "normal" };
+        }
+        
+        return { text: "im normalen Bereich", cls: "normal" };
       }
 
       // --- Render ---
@@ -484,16 +546,16 @@
 
       function renderDashboard(station) {
         const ref = station.referenzperioden ? station.referenzperioden[aktuelleReferenz] : null;
-        const refJahrNied = ref ? ref.niederschlag_jahresmittel_mm : null;
         const niederschlag30 = station.niederschlag_letzte_30_tage_mm;
         const txk = station.tageshoechstwert_heute_c;
         const sommBisher = station.sommertage_laufendes_jahr;
 
-        // Referenzband für heute
+        // Referenzbänder für Einordnung
         const refBandTemp = station.referenzband_temperatur ? station.referenzband_temperatur[aktuelleReferenz] : [];
+        const refBandNied = station.referenzband_niederschlag ? station.referenzband_niederschlag[aktuelleReferenz] : [];
         
         const tE = tempEinordnung(txk, refBandTemp);
-        const rE = regenEinordnung(niederschlag30, refJahrNied);
+        const rE = regenEinordnung(niederschlag30, refBandNied);
 
         const grid = $("dashboard-grid");
         grid.innerHTML = `
@@ -564,8 +626,25 @@
         const toggle = $("referenz-toggle");
 
         title.innerHTML = `So <span style="background:#f5e6a0;padding:1px 4px">warm</span> wird es heute in ${station.name} im historischen Vergleich`;
-        sub.textContent = "Im grauen Bereich lagen die meisten Tage in den Jahren " + aktuelleReferenz + ". Die gestrichelte Linie stellt den Durchschnitt dar.";
+        
+        const ref = station.referenzperioden ? station.referenzperioden[aktuelleReferenz] : null;
+        const hatAlteDaten = ref && ref.jahre_verfuegbar >= 15;
+        
+        if (!hatAlteDaten && aktuelleReferenz === "1961-1990") {
+          sub.innerHTML = '<strong style="color:#856404">⚠️ Hinweis:</strong> Für die Referenzperiode 1961-1990 liegen für diese Station keine ausreichenden Daten vor.';
+        } else {
+          sub.innerHTML = `Der graue Bereich zeigt 80 % aller Tage in den Jahren ${aktuelleReferenz} (zwischen 10. und 90. Perzentil). Die gestrichelte Linie zeigt den Durchschnitt dieser Periode.`;
+        }
+        
         toggle.style.display = "";
+        
+        // Buttons deaktivieren wenn keine Daten
+        document.querySelectorAll("#referenz-toggle button").forEach(btn => {
+          const periode = btn.dataset.ref;
+          const periodeRef = station.referenzperioden ? station.referenzperioden[periode] : null;
+          const hatDaten = periodeRef && periodeRef.jahre_verfuegbar >= 15;
+          btn.disabled = !hatDaten;
+        });
 
         const reihe = station.tagesreihe_30d || [];
         const refBand = station.referenzband_temperatur ? station.referenzband_temperatur[aktuelleReferenz] : [];
@@ -593,7 +672,7 @@
             datasets: [
               {
                 type: "line",
-                label: "P90",
+                label: "90. Perzentil",
                 data: refP90,
                 borderColor: "transparent",
                 backgroundColor: "rgba(0,0,0,0.08)",
@@ -604,7 +683,7 @@
               },
               {
                 type: "line",
-                label: "P10",
+                label: "10. Perzentil",
                 data: refP10,
                 borderColor: "transparent",
                 backgroundColor: "transparent",
@@ -615,7 +694,7 @@
               },
               {
                 type: "line",
-                label: "Referenz-Mittel",
+                label: "Durchschnitt " + aktuelleReferenz,
                 data: refMean,
                 borderColor: "rgba(0,0,0,0.3)",
                 borderWidth: 1.5,
@@ -643,7 +722,6 @@
             responsive: true,
             maintainAspectRatio: false,
             onClick: (event, activeElements) => {
-              // Klick aktiviert Tooltip
               if (activeElements.length > 0) {
                 chart.tooltip.setActiveElements(activeElements);
                 chart.update();
@@ -679,14 +757,23 @@
         });
       }
 
-      // --- Regen Chart (JETZT BLAU!) ---
+      // --- Regen Chart (BLAU!) ---
       function zeichneRegenChart(station) {
         const title = $("chart-title");
         const sub = $("chart-sub");
         const toggle = $("referenz-toggle");
 
         title.innerHTML = `So viel hat es in den letzten 30 Tagen in ${station.name} <span style="background:#d4e6a0;padding:1px 4px">geregnet</span> – im historischen Vergleich`;
-        sub.textContent = "Der graue Bereich zeigt, wie viel Regen im selben 30-Tages-Zeitraum in den Jahren " + aktuelleReferenz + " überlicherweise gefallen ist, als der Klimawandel sich noch weniger stark ausgewirkt hat.";
+        
+        const ref = station.referenzperioden ? station.referenzperioden[aktuelleReferenz] : null;
+        const hatAlteDaten = ref && ref.jahre_verfuegbar >= 15;
+        
+        if (!hatAlteDaten && aktuelleReferenz === "1961-1990") {
+          sub.innerHTML = '<strong style="color:#856404">⚠️ Hinweis:</strong> Für die Referenzperiode 1961-1990 liegen für diese Station keine ausreichenden Daten vor.';
+        } else {
+          sub.innerHTML = `Der graue Bereich zeigt 80 % aller historischen Werte in den Jahren ${aktuelleReferenz} (zwischen 10. und 90. Perzentil). Die gestrichelte Linie zeigt den Durchschnitt.`;
+        }
+        
         toggle.style.display = "";
 
         const reihe = station.tagesreihe_30d || [];
@@ -720,7 +807,7 @@
             datasets: [
               {
                 type: "line",
-                label: "P90",
+                label: "90. Perzentil",
                 data: refP90,
                 borderColor: "transparent",
                 backgroundColor: "rgba(0,0,0,0.08)",
@@ -731,7 +818,7 @@
               },
               {
                 type: "line",
-                label: "P10",
+                label: "10. Perzentil",
                 data: refP10,
                 borderColor: "transparent",
                 backgroundColor: "transparent",
@@ -742,7 +829,7 @@
               },
               {
                 type: "line",
-                label: "Referenz-Mittel",
+                label: "Durchschnitt " + aktuelleReferenz,
                 data: refMean,
                 borderColor: "rgba(0,0,0,0.3)",
                 borderWidth: 1.5,
