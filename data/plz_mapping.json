@@ -1,18 +1,12 @@
 {
   "quelle": "zauberware_zip",
-  "anzahl_plz": 71,
+  "anzahl_plz": 70,
   "mapping": {
-    "66103": {
-      "ort": "Saarbrücker Media Verkaufsgesellschaft",
-      "station_id": "06217",
-      "station_name": "Saarbrücken-Burbach",
-      "distanz_km": 4.0
-    },
     "66104": {
-      "ort": "AOK Rheinland-Pfalz/Saarland",
+      "ort": "Landesamt für Jugend, Soziales und Versorgung",
       "station_id": "06217",
       "station_name": "Saarbrücken-Burbach",
-      "distanz_km": 5.2
+      "distanz_km": 1.5
     },
     "66111": {
       "ort": "Saarbrücken",
