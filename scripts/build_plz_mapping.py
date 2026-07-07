@@ -81,21 +81,16 @@ def load_saarland_plz_zauberware() -> list[dict]:
     
     # Firmen-Keywords, die wir rausfiltern wollen
     firmen_keywords = [
-        "AG", "Media", "IHK", "Landesamt", "AOK", "GmbH", "KG", "Versicherung", "Agentur", "Bank", "Post",
-        "Direkt", "Service", "Regio", "Deutsche", "Universität", "Klinik",
-        "Rundfunk", "Lotterie", "reha", "Rentenversicherung", "HUK",
-        "Innungskrankenkasse", "UKV", "Saarländischer", "Praktiker",
-        "Bundeszentralamt", "Assist"
+        "AG", "Media", "IHK", "Landesamt", "AOK", "GmbH", "KG", "Versicherung", 
+        "Agentur", "Bank", "Post", "Direkt", "Service", "Regio", "Deutsche", 
+        "Universität", "Universitätskliniken", "Klinik", "Rundfunk", "Lotterie", 
+        "reha", "Rentenversicherung", "HUK", "Innungskrankenkasse", "UKV", 
+        "Saarländischer", "Praktiker", "Bundeszentralamt", "Assist", "Cosmos"
     ]
     
     for d in data:
         if d.get("state") != "Saarland":
             continue
-            
-# Bestimmte PLZ ausschließen
-plz = str(d["zipcode"]).zfill(5)
-if plz == "66104":
-    continue
         
         plz = str(d["zipcode"]).zfill(5)
         ort = d.get("place", "")
@@ -105,8 +100,8 @@ if plz == "66104":
         if ist_firma:
             continue
         
-        # Filtere PLZ < 66105 (das sind oft bundesweite Großkunden-PLZ)
-        if int(plz) < 66105:
+        # Filtere PLZ < 66000 (bundesweite Großkunden-PLZ)
+        if int(plz) < 66000:
             continue
         
         if plz not in seen:
@@ -129,11 +124,11 @@ def load_saarland_plz_opendatasoft() -> list[dict]:
     payload = resp.json()
     
     firmen_keywords = [
-        "AG", "Media", "AOK", "IHK", "Landesamt", "GmbH", "KG", "Versicherung", "Agentur", "Bank", "Post",
-        "Direkt", "Service", "Regio", "Deutsche", "Universität", "Klinik",
-        "Rundfunk", "Lotterie", "reha", "Rentenversicherung", "HUK",
-        "Innungskrankenkasse", "UKV", "Saarländischer", "Praktiker",
-        "Bundeszentralamt", "Assist"
+        "AG", "Media", "AOK", "IHK", "Landesamt", "GmbH", "KG", "Versicherung", 
+        "Agentur", "Bank", "Post", "Direkt", "Service", "Regio", "Deutsche", 
+        "Universität", "Klinik", "Rundfunk", "Lotterie", "reha", 
+        "Rentenversicherung", "HUK", "Innungskrankenkasse", "UKV", 
+        "Saarländischer", "Praktiker", "Bundeszentralamt", "Assist"
     ]
     
     results = []
@@ -148,8 +143,8 @@ def load_saarland_plz_opendatasoft() -> list[dict]:
         if ist_firma:
             continue
         
-        # Filtere PLZ < 66105
-        if plz and int(str(plz).zfill(5)) < 66105:
+        # Filtere PLZ < 66000
+        if plz and int(str(plz).zfill(5)) < 66000:
             continue
         
         if plz and lat is not None and lon is not None:
@@ -209,15 +204,20 @@ def main() -> None:
             "station_name": STATIONS.get(best_station_id, station_coords[best_station_id].get("name")),
             "distanz_km": round(best_dist, 1),
         }
-    # Manuelle Blacklist
-if "66104" in mapping:
-    del mapping["66104"]
 
-output = {
-    "quelle": quelle,
-    "anzahl_plz": len(mapping),
-    "mapping": mapping,
-}
+    # ATOMARE BLACKLIST: Diese PLZ werden garantiert entfernt
+    blacklist = [
+        "66104",  # IHK Saarbrücken
+        "50424",  # COSMOS Lebensversicherungs-AG
+        "66088", "66090", "66094", "66097", "66098", "66099", 
+        "66100", "66101", "66102", "66103", "66106", "66108", 
+        "66109", "66150"  # Weitere Firmen-PLZ
+    ]
+    
+    for plz in blacklist:
+        if plz in mapping:
+            del mapping[plz]
+            log.info("PLZ %s entfernt (Blacklist)", plz)
 
     output = {
         "quelle": quelle,
