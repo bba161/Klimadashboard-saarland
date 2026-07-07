@@ -3,10 +3,10 @@
   "anzahl_plz": 70,
   "mapping": {
     "66104": {
-      "ort": "Landesamt für Jugend, Soziales und Versorgung",
+      "ort": "IHK Saarland",
       "station_id": "06217",
       "station_name": "Saarbrücken-Burbach",
-      "distanz_km": 1.5
+      "distanz_km": 4.6
     },
     "66111": {
       "ort": "Saarbrücken",
