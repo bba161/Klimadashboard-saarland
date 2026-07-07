@@ -91,6 +91,11 @@ def load_saarland_plz_zauberware() -> list[dict]:
     for d in data:
         if d.get("state") != "Saarland":
             continue
+            
+# Bestimmte PLZ ausschließen
+plz = str(d["zipcode"]).zfill(5)
+if plz == "66104":
+    continue
         
         plz = str(d["zipcode"]).zfill(5)
         ort = d.get("place", "")
