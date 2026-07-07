@@ -209,6 +209,15 @@ def main() -> None:
             "station_name": STATIONS.get(best_station_id, station_coords[best_station_id].get("name")),
             "distanz_km": round(best_dist, 1),
         }
+    # Manuelle Blacklist
+if "66104" in mapping:
+    del mapping["66104"]
+
+output = {
+    "quelle": quelle,
+    "anzahl_plz": len(mapping),
+    "mapping": mapping,
+}
 
     output = {
         "quelle": quelle,
