@@ -72,24 +72,46 @@ def load_saarland_plz_zauberware() -> list[dict]:
     resp.raise_for_status()
 
     with zipfile.ZipFile(io.BytesIO(resp.content)) as zf:
-        # Die JSON-Datei im Archiv finden
         json_names = [n for n in zf.namelist() if n.endswith(".json")]
         if not json_names:
             raise ValueError("Kein JSON in DE.zip gefunden")
         data = json.loads(zf.read(json_names[0]))
 
     seen: dict[str, dict] = {}
+    
+    # Firmen-Keywords, die wir rausfiltern wollen
+    firmen_keywords = [
+        "AG", "GmbH", "KG", "Versicherung", "Agentur", "Bank", "Post",
+        "Direkt", "Service", "Regio", "Deutsche", "Universität", "Klinik",
+        "Rundfunk", "Lotterie", "reha", "Rentenversicherung", "HUK",
+        "Innungskrankenkasse", "UKV", "Saarländischer", "Praktiker",
+        "Bundeszentralamt", "Assist"
+    ]
+    
     for d in data:
         if d.get("state") != "Saarland":
             continue
+        
         plz = str(d["zipcode"]).zfill(5)
+        ort = d.get("place", "")
+        
+        # Filtere Firmennamen raus
+        ist_firma = any(keyword in ort for keyword in firmen_keywords)
+        if ist_firma:
+            continue
+        
+        # Filtere PLZ < 66000 (das sind oft bundesweite Großkunden-PLZ)
+        if int(plz) < 66000:
+            continue
+        
         if plz not in seen:
             seen[plz] = {
                 "plz": plz,
-                "ort": d.get("place", ""),
+                "ort": ort,
                 "lat": float(d["latitude"]),
                 "lon": float(d["longitude"]),
             }
+    
     if not seen:
         raise ValueError("zauberware-Datensatz enthielt keine Saarland-PLZ")
     return sorted(seen.values(), key=lambda x: x["plz"])
@@ -100,14 +122,31 @@ def load_saarland_plz_opendatasoft() -> list[dict]:
     resp = session.get(OPENDATASOFT_FALLBACK_URL, timeout=REQUEST_TIMEOUT)
     resp.raise_for_status()
     payload = resp.json()
+    
+    firmen_keywords = [
+        "AG", "GmbH", "KG", "Versicherung", "Agentur", "Bank", "Post",
+        "Direkt", "Service", "Regio", "Deutsche", "Universität", "Klinik"
+    ]
+    
     results = []
     for rec in payload.get("results", []):
         plz = rec.get("plz") or rec.get("name")
         geo = rec.get("geo_point_2d") or {}
         lat, lon = geo.get("lat"), geo.get("lon")
         ort = rec.get("name") or rec.get("plz_name") or ""
+        
+        # Filtere Firmen
+        ist_firma = any(keyword in ort for keyword in firmen_keywords)
+        if ist_firma:
+            continue
+        
+        # Filtere PLZ < 66000
+        if plz and int(str(plz).zfill(5)) < 66000:
+            continue
+        
         if plz and lat is not None and lon is not None:
             results.append({"plz": str(plz).zfill(5), "ort": ort, "lat": float(lat), "lon": float(lon)})
+    
     if not results:
         raise ValueError("Opendatasoft-Antwort enthielt keine verwertbaren PLZ-Datensätze")
     return results
