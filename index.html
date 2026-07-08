@@ -347,7 +347,7 @@
       const PLZ_MAPPING_URL = "data/plz_mapping.json";
       const LEGACY_URL = "data/saarland.json"; // nur noch Fallback
       const BRIGHTSKY_BASE = "https://api.brightsky.dev/weather";
-      const BRIGHTSKY_CACHE_TTL_MS = 60 * 60 * 1000; // 1 Stunde
+      const BRIGHTSKY_CACHE_TTL_MS = 15 * 60 * 1000; // 15 Minuten
 
       let referenzen = null;   // Inhalt von saarland_referenzen.json
       let plzMapping = null;
@@ -413,15 +413,18 @@
         if (stationBauCache.has(stationId)) return stationBauCache.get(stationId);
 
         const heute = new Date();
-        const vor30 = new Date(heute); vor30.setDate(heute.getDate() - 30);
+        const vor30 = new Date(heute);
+        vor30.setDate(heute.getDate() - 30);
         const jahresanfang = `${heute.getFullYear()}-01-01`;
+        const morgen = new Date(heute);
+        morgen.setDate(heute.getDate() + 1); // NEU
 
         let tagesreihe30d, sommertageLaufendesJahr, quelle = "BrightSky";
 
         try {
           const [letzte30, seitJahresanfang] = await Promise.all([
-            brightSkyAnfrage(refStation.lat, refStation.lon, isoDate(vor30), isoDate(heute), `bs30_${stationId}`),
-            brightSkyAnfrage(refStation.lat, refStation.lon, jahresanfang, isoDate(heute), `bsjahr_${stationId}`),
+            brightSkyAnfrage(refStation.lat, refStation.lon, isoDate(vor30), isoDate(morgen), `bs30_${stationId}`),
+            brightSkyAnfrage(refStation.lat, refStation.lon, jahresanfang, isoDate(morgen), `bsjahr_${stationId}`),
           ]);
           tagesreihe30d = aggregiereZuTageswerten(letzte30.weather);
           if (tagesreihe30d.length === 0) throw new Error("BrightSky lieferte keine Werte");
