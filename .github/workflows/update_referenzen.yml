@@ -1,0 +1,34 @@
+name: Update Referenzen
+
+on:
+  schedule:
+    - cron: "0 3 1 * *"   # 1. jeden Monats, 03:00 UTC
+  workflow_dispatch: {}    # manuell auslösbar über die Actions-Oberfläche
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Referenzdaten aktualisieren
+        run: python scripts/update_referenzen.py
+
+      - name: Änderungen committen
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/saarland_referenzen.json
+          git diff --cached --quiet && echo "Keine Änderungen." || git commit -m "Update Referenzen (monatlich, $(date -u +%Y-%m-%d))"
+          git push
