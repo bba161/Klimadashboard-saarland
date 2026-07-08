@@ -265,8 +265,8 @@ def load_hourly_temp_today(station_id: str) -> Optional[dict]:
     temps_heute = []
     
     for row in rows:
-        datum_str = row.get("MESS_DATUM", "")
-        if not datum_str.startswith(heute_str):
+        datum_str = row.get("MESS_DATUM", "").strip()
+        if len(datum_str) < 8 or datum_str[:8] != heute_str:
             continue
         
         temp = to_float_or_none(row.get("TT_TU", ""))
@@ -325,8 +325,8 @@ def load_hourly_precip_today(station_id: str) -> Optional[float]:
     precip_sum = 0.0
     
     for row in rows:
-        datum_str = row.get("MESS_DATUM", "")
-        if not datum_str.startswith(heute_str):
+        datum_str = row.get("MESS_DATUM", "").strip()
+        if len(datum_str) < 8 or datum_str[:8] != heute_str:
             continue
         
         precip = to_float_or_none(row.get("R1", ""))
