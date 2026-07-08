@@ -413,11 +413,9 @@
         if (stationBauCache.has(stationId)) return stationBauCache.get(stationId);
 
         const heute = new Date();
-        const vor30 = new Date(heute);
-        vor30.setDate(heute.getDate() - 30);
+        const morgen = new Date(heute); morgen.setDate(heute.getDate() + 1);
+        const vor30 = new Date(heute); vor30.setDate(heute.getDate() - 30);
         const jahresanfang = `${heute.getFullYear()}-01-01`;
-        const morgen = new Date(heute);
-        morgen.setDate(heute.getDate() + 1); // NEU
 
         let tagesreihe30d, sommertageLaufendesJahr, quelle = "BrightSky";
 
