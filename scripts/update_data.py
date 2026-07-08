@@ -20,6 +20,7 @@ import sys
 import zipfile
 import time
 from datetime import datetime, timedelta, timezone, date
+import zoneinfo
 from pathlib import Path
 from typing import Optional
 from statistics import mean as stat_mean
@@ -260,7 +261,7 @@ def load_hourly_temp_today(station_id: str) -> Optional[dict]:
         return None
     
     # Filtere nur HEUTE
-    heute_str = datetime.now(timezone.utc).strftime("%Y%m%d")
+    heute_str = datetime.now(zoneinfo.ZoneInfo("Europe/Berlin")).strftime("%Y%m%d")
     temps_heute = []
     
     for row in rows:
@@ -320,7 +321,7 @@ def load_hourly_precip_today(station_id: str) -> Optional[float]:
         return None
     
     # Filtere nur HEUTE
-    heute_str = datetime.now(timezone.utc).strftime("%Y%m%d")
+    heute_str = datetime.now(zoneinfo.ZoneInfo("Europe/Berlin")).strftime("%Y%m%d")
     precip_sum = 0.0
     
     for row in rows:
