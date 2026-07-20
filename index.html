@@ -313,6 +313,95 @@
       text-align: center;
       color: var(--muted);
     }
+
+    /* =====================================================
+       AKKORDEON – nur auf kleinen Bildschirmen aktiv
+       ===================================================== */
+    @media (max-width: 760px) {
+
+      .dashboard-grid { display: block; }
+      .kacheln { display: block; }
+
+      /* Desktop-Kachel-Inhalt (icon + div direkt in .kachel) ausblenden */
+      .kachel > .icon,
+      .kachel > div.kachel-desktop-text { display: none; }
+
+      .kachel {
+        flex-direction: column;
+        padding: 0;
+        cursor: default;
+        align-items: stretch;
+        background: var(--panel-bg);
+      }
+
+      /* Aktiv-Klasse hat auf Mobil keine Wirkung – open übernimmt das */
+      .kachel.active { background: var(--panel-bg); }
+      .kachel.active::after { display: none; }
+
+      /* Geöffneter Zustand */
+      .kachel.open { background: var(--paper); }
+
+      /* ---- Header-Zeile ---- */
+      .kachel-header {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        padding: 18px 18px;
+        cursor: pointer;
+        position: relative;
+      }
+
+      .kachel-header .icon { flex: 0 0 40px; height: 40px; }
+      .kachel-header .icon svg { width: 40px; height: 40px; }
+      .kachel-header-text h2 { font-size: 1rem; font-weight: 700; margin-bottom: 3px; }
+      .kachel-header-text p { font-size: 0.88rem; color: var(--muted); line-height: 1.5; }
+
+      .kachel-pfeil {
+        margin-left: auto;
+        flex-shrink: 0;
+        align-self: center;
+        transition: transform 0.22s ease;
+        color: var(--muted);
+      }
+
+      .kachel.open > .kachel-header .kachel-pfeil { transform: rotate(180deg); }
+
+      .kachel.open > .kachel-header::before {
+        content: "";
+        position: absolute;
+        left: 0; top: 0; bottom: 0;
+        width: 4px;
+        background: var(--accent);
+      }
+
+      /* ---- Ausgeklappter Bereich ---- */
+      .akkordeon-body {
+        display: none;
+        padding: 0 18px 20px;
+        border-top: 1px solid var(--line);
+        background: var(--paper);
+      }
+
+      .kachel.open > .akkordeon-body { display: block; }
+
+      .akkordeon-body .chart-panel {
+        border-left: none;
+        border-top: none;
+        padding: 14px 0 0;
+        min-height: 0;
+      }
+
+      .akkordeon-body .chart-container { min-height: 240px; }
+
+      /* Desktop-Chart-Spalte (rechts) verstecken */
+      .chart-panel-desktop { display: none !important; }
+    }
+
+    @media (min-width: 761px) {
+      .kachel-header  { display: none; }
+      .akkordeon-body { display: none !important; }
+      .chart-panel-desktop { display: flex; }
+    }
   </style>
 </head>
 <body>
@@ -697,31 +786,91 @@
         const rE = regenEinordnung(niederschlag30, refJahrNied1991, refBandNied1991);
 
         const grid = $("dashboard-grid");
+        // Hilfsfunktion: Chart-Panel HTML für Akkordeon und Desktop identisch bauen
+        function chartPanelHTML(idSuffix) {
+          const btn1990disabled = !station.referenzband_temperatur?.['1961-1990'];
+          return `
+            <div class="chart-panel" id="chart-panel${idSuffix}">
+              <h2 id="chart-title${idSuffix}"></h2>
+              <p class="sub" id="chart-sub${idSuffix}"></p>
+              <div class="referenz-toggle" id="referenz-toggle${idSuffix}" style="display:none">
+                <button data-ref="1961-1990" class="${aktuelleReferenz === '1961-1990' ? 'active' : ''}"${btn1990disabled ? ' disabled title="Für diese Station liegen keine Daten für diesen Zeitraum vor."' : ''}>1961-1990${btn1990disabled ? ' (keine Daten)' : ''}</button>
+                <button data-ref="1991-2020" class="${aktuelleReferenz === '1991-2020' ? 'active' : ''}">1991-2020</button>
+              </div>
+              <p class="sub" id="referenz-hinweis${idSuffix}" style="margin-top:6px;display:none"></p>
+              <div class="chart-container"><canvas id="main-chart${idSuffix}"></canvas></div>
+            </div>`;
+        }
+
+        const tempText = txk != null ? `Bis zu <span class="wert">${fmt(txk, 1)} °C</span>${tE.text !== '' ? '. Das ist <span class="einordnung ' + tE.cls + '">' + tE.text + '</span>' : ''}` : '–';
+        const regenText = niederschlag30 != null ? `<span class="wert">${fmt(niederschlag30, 1)} mm</span> in den letzten 30 Tagen. Das ist <span class="einordnung ${rE.cls}">${rE.text}</span>.` : 'Keine aktuellen Daten verfügbar.';
+        const sommText = `<span class="einordnung mehr">Sommertage</span> ab 25°C: <span class="wert">${sommBisher != null ? sommBisher : '–'}</span> seit März. In welchem Monat diese Tage auftreten, schwankt von Jahr zu Jahr, seit 2000 werden es aber <span class="einordnung mehr">immer mehr</span>.`;
+
         grid.innerHTML = `
           <div class="kacheln">
+            <!-- TEMPERATUR -->
             <div class="kachel ${aktuellerTab === 'temperatur' ? 'active' : ''}" data-tab="temperatur">
+              <!-- Desktop -->
               <div class="icon">${ICON_TEMP}</div>
-              <div>
+              <div class="kachel-desktop-text">
                 <h2>Temperatur</h2>
                 <p>Temperatur heute: bis zu <span class="wert">${txk != null ? fmt(txk, 1) + ' °C' : '–'}</span>. ${tE.text !== '' ? ' Das ist <span class="einordnung ' + tE.cls + '">' + tE.text + '</span>.' : ''}</p>
               </div>
+              <!-- Mobil: Akkordeon-Header -->
+              <div class="kachel-header">
+                <div class="icon">${ICON_TEMP}</div>
+                <div class="kachel-header-text">
+                  <h2>Temperatur</h2>
+                  <p>Temperatur heute: ${tempText}</p>
+                </div>
+                <span class="kachel-pfeil"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 5.5L8 10.5L13 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              </div>
+              <!-- Mobil: Akkordeon-Body -->
+              <div class="akkordeon-body">
+                ${chartPanelHTML('-temp')}
+              </div>
             </div>
+            <!-- REGEN -->
             <div class="kachel ${aktuellerTab === 'regen' ? 'active' : ''}" data-tab="regen">
               <div class="icon">${ICON_RAIN}</div>
-              <div>
+              <div class="kachel-desktop-text">
                 <h2>Regen</h2>
                 <p>${niederschlag30 != null ? '<span class="wert">' + fmt(niederschlag30, 1) + ' mm</span> in den letzten 30 Tagen. Das ist <span class="einordnung ' + rE.cls + '">' + rE.text + '</span>.' : 'Keine aktuellen Daten verfügbar.'}</p>
               </div>
+              <div class="kachel-header">
+                <div class="icon">${ICON_RAIN}</div>
+                <div class="kachel-header-text">
+                  <h2>Regen</h2>
+                  <p>${regenText}</p>
+                </div>
+                <span class="kachel-pfeil"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 5.5L8 10.5L13 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              </div>
+              <div class="akkordeon-body">
+                ${chartPanelHTML('-regen')}
+              </div>
             </div>
+            <!-- SOMMERTAGE -->
             <div class="kachel ${aktuellerTab === 'sommertage' ? 'active' : ''}" data-tab="sommertage">
               <div class="icon">${ICON_SUN}</div>
-              <div>
+              <div class="kachel-desktop-text">
                 <h2>Sommertage</h2>
                 <p><span class="einordnung mehr">Sommertage</span> ab 25°C: <span class="wert">${sommBisher != null ? sommBisher : '–'}</span> seit März. In welchem Monat diese Tage auftreten, schwankt von Jahr zu Jahr, seit 2000 werden es aber <span class="einordnung mehr">immer mehr</span>.</p>
               </div>
+              <div class="kachel-header">
+                <div class="icon">${ICON_SUN}</div>
+                <div class="kachel-header-text">
+                  <h2>Sommertage</h2>
+                  <p>${sommText}</p>
+                </div>
+                <span class="kachel-pfeil"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 5.5L8 10.5L13 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              </div>
+              <div class="akkordeon-body">
+                ${chartPanelHTML('-sommer')}
+              </div>
             </div>
           </div>
-          <div class="chart-panel" id="chart-panel">
+          <!-- Desktop: Chart-Panel rechts -->
+          <div class="chart-panel chart-panel-desktop" id="chart-panel">
             <h2 id="chart-title"></h2>
             <p class="sub" id="chart-sub"></p>
             <div class="referenz-toggle" id="referenz-toggle" style="display:none">
@@ -733,11 +882,55 @@
           </div>
         `;
 
-        // Tab-Klick
+        // Desktop Tab-Klick (auf Kachel-Body, nicht Header)
         document.querySelectorAll(".kachel[data-tab]").forEach(k => {
-          k.addEventListener("click", () => {
+          k.addEventListener("click", (e) => {
+            // Nur auf Desktop aktiv (kachel-header übernimmt das auf Mobil)
+            if (e.target.closest(".kachel-header") || e.target.closest(".akkordeon-body")) return;
             aktuellerTab = k.dataset.tab;
             renderDashboard(station);
+          });
+        });
+
+        // Mobil: Akkordeon-Header-Klick
+        document.querySelectorAll(".kachel-header").forEach(header => {
+          header.addEventListener("click", () => {
+            const kachel = header.closest(".kachel");
+            const tab = kachel.dataset.tab;
+            const isMobileOpen = kachel.classList.contains("open");
+
+            // Alle schließen
+            document.querySelectorAll(".kachel").forEach(k => k.classList.remove("open"));
+            // Alte mobile Charts zerstören
+            if (window._mobileCharts) {
+              Object.values(window._mobileCharts).forEach(c => { try { c.destroy(); } catch(e){} });
+              window._mobileCharts = {};
+            }
+
+            if (!isMobileOpen) {
+              kachel.classList.add("open");
+              aktuellerTab = tab;
+              // Chart im Akkordeon zeichnen
+              const suffixMap = { temperatur: '-temp', regen: '-regen', sommertage: '-sommer' };
+              const sfx = suffixMap[tab] || '';
+              zeichneChartInContainer(station, tab, sfx);
+              // Toggle-Buttons im Akkordeon verdrahten
+              kachel.querySelectorAll(".referenz-toggle button").forEach(btn => {
+                btn.addEventListener("click", (ev) => {
+                  ev.stopPropagation();
+                  if (btn.disabled) return;
+                  aktuelleReferenz = btn.dataset.ref;
+                  // Alle Akkordeon-Toggle-Buttons neu rendern
+                  renderDashboard(station);
+                  // Kachel wieder öffnen
+                  const thisKachel = document.querySelector(`.kachel[data-tab="${tab}"]`);
+                  if (thisKachel) {
+                    thisKachel.classList.add("open");
+                    zeichneChartInContainer(station, tab, sfx);
+                  }
+                });
+              });
+            }
           });
         });
 
@@ -770,6 +963,114 @@
         if (aktuellerTab === "temperatur") zeichneTemperaturChart(station);
         else if (aktuellerTab === "regen") zeichneRegenChart(station);
         else zeichneSommertageChart(station);
+      }
+
+      // Für Akkordeon: Chart in den eingebetteten canvas zeichnen
+      function zeichneChartInContainer(station, tab, suffix) {
+        if (!window._mobileCharts) window._mobileCharts = {};
+        if (window._mobileCharts[tab]) {
+          try { window._mobileCharts[tab].destroy(); } catch(e) {}
+        }
+        // IDs temporär ummappen
+        const idMap = {
+          'main-chart': 'main-chart' + suffix,
+          'chart-title': 'chart-title' + suffix,
+          'chart-sub': 'chart-sub' + suffix,
+          'referenz-toggle': 'referenz-toggle' + suffix,
+          'referenz-hinweis': 'referenz-hinweis' + suffix,
+          'chart-panel': 'chart-panel' + suffix,
+        };
+        const origGet = document.getElementById.bind(document);
+        const origQuery = document.querySelector.bind(document);
+        // Patche $ temporär
+        const origDollar = window.__dollarOrig || ((id) => origGet(id));
+        const tempDollar = (id) => origGet(idMap[id] || id);
+        // Da $ eine Closure ist, nutzen wir direkte Funktionen
+        const prevChart = chart;
+        chart = null;
+        // Direkt die passende Zeichenfunktion mit gepatchtem Canvas aufrufen
+        const canvasId = 'main-chart' + suffix;
+        const titleId = 'chart-title' + suffix;
+        const subId = 'chart-sub' + suffix;
+        const toggleId = 'referenz-toggle' + suffix;
+        const hinweisId = 'referenz-hinweis' + suffix;
+
+        // Mini-Render: setzt Titel/Sub/Toggle direkt
+        function getEl(id) { return document.getElementById(idMap[id] || id); }
+
+        if (tab === "temperatur") {
+          const title = getEl("chart-title");
+          const sub = getEl("chart-sub");
+          const toggle = getEl("referenz-toggle");
+          if (title) title.innerHTML = `So <span style="background:#f5e6a0;padding:1px 4px">warm</span> wird es heute in ${station.name} im historischen Vergleich`;
+          if (sub) sub.textContent = "Im grauen Bereich lagen die meisten Tage in den Jahren " + aktuelleReferenz + ". Die gestrichelte Linie stellt den Durchschnitt dar.";
+          if (toggle) toggle.style.display = "";
+          const reihe = station.tagesreihe_30d || [];
+          const refBand = station.referenzband_temperatur ? station.referenzband_temperatur[aktuelleReferenz] : [];
+          const labels = reihe.map(r => parseInt(r.datum.substring(6,8)) + "." + parseInt(r.datum.substring(4,6)) + ".");
+          const txkWerte = reihe.map(r => r.txk);
+          const refMean = refBand.map(r => r ? r.mean : null);
+          const refP10 = refBand.map(r => r ? r.p10 : null);
+          const refP90 = refBand.map(r => r ? r.p90 : null);
+          const ctx = document.getElementById(canvasId);
+          if (!ctx) { chart = prevChart; return; }
+          window._mobileCharts[tab] = new Chart(ctx, {
+            data: { labels, datasets: [
+              { type:"line", label:"P90", data:refP90, borderColor:"transparent", backgroundColor:"rgba(0,0,0,0.08)", fill:"+1", pointRadius:0, tension:0.3, order:3 },
+              { type:"line", label:"P10", data:refP10, borderColor:"transparent", backgroundColor:"transparent", fill:false, pointRadius:0, tension:0.3, order:3 },
+              { type:"line", label:"Referenz-Mittel", data:refMean, borderColor:"rgba(0,0,0,0.3)", borderWidth:1.5, borderDash:[4,4], pointRadius:0, fill:false, tension:0.3, order:2 },
+              { type:"line", label:"Tageshöchsttemperatur", data:txkWerte, borderColor:"#c0392b", borderWidth:2.5, pointRadius:txkWerte.map((v,i)=>i===txkWerte.length-1&&v!=null?5:0), pointBackgroundColor:"#c0392b", fill:false, tension:0.2, order:1 },
+            ]},
+            options: { responsive:true, maintainAspectRatio:false, plugins:{ legend:{display:false}, tooltip:{ enabled:true, mode:'index', intersect:false, callbacks:{ label: item => { if(item.dataset.label==="P10"||item.dataset.label==="P90") return null; if(item.dataset.label==="Tageshöchsttemperatur") return "Tageshöchsttemperatur: "+fmt(item.parsed.y,1)+" °C"; return item.dataset.label+": "+fmt(item.parsed.y,1)+" °C"; }}}}, scales:{ x:{grid:{display:false},ticks:{maxTicksLimit:6,font:{size:11}}}, y:{title:{display:true,text:"°C"},grid:{color:"#eee"}} } }
+          });
+        } else if (tab === "regen") {
+          const title = getEl("chart-title");
+          const sub = getEl("chart-sub");
+          const toggle = getEl("referenz-toggle");
+          if (title) title.innerHTML = `So viel hat es in den letzten 30 Tagen in ${station.name} <span style="background:#d4e6a0;padding:1px 4px">geregnet</span> – im historischen Vergleich`;
+          if (sub) sub.textContent = "Der graue Bereich zeigt, wie viel Regen im selben 30-Tages-Zeitraum in den Jahren " + aktuelleReferenz + " üblicherweise gefallen ist.";
+          if (toggle) toggle.style.display = "";
+          const reihe = station.tagesreihe_30d || [];
+          const refBand = station.referenzband_niederschlag ? station.referenzband_niederschlag[aktuelleReferenz] : [];
+          const labels = reihe.map(r => parseInt(r.datum.substring(6,8)) + "." + parseInt(r.datum.substring(4,6)) + ".");
+          let kum = 0;
+          const kumWerte = reihe.map(r => { kum += (r.rsk||0); return Math.round(kum*10)/10; });
+          const refMean = refBand.map(r => r ? r.kum_mean : null);
+          const refP10 = refBand.map(r => r ? r.kum_p10 : null);
+          const refP90 = refBand.map(r => r ? r.kum_p90 : null);
+          const ctx = document.getElementById(canvasId);
+          if (!ctx) { chart = prevChart; return; }
+          window._mobileCharts[tab] = new Chart(ctx, {
+            data: { labels, datasets: [
+              { type:"line", label:"P90", data:refP90, borderColor:"transparent", backgroundColor:"rgba(0,0,0,0.08)", fill:"+1", pointRadius:0, tension:0.3, order:3 },
+              { type:"line", label:"P10", data:refP10, borderColor:"transparent", backgroundColor:"transparent", fill:false, pointRadius:0, tension:0.3, order:3 },
+              { type:"line", label:"Referenz-Mittel", data:refMean, borderColor:"rgba(0,0,0,0.3)", borderWidth:1.5, borderDash:[4,4], pointRadius:0, fill:false, tension:0.3, order:2 },
+              { type:"line", label:"Regen der letzten 30 Tage", data:kumWerte, borderColor:"#004d8b", borderWidth:2.5, pointRadius:kumWerte.map((v,i)=>i===kumWerte.length-1?5:0), pointBackgroundColor:"#004d8b", fill:false, tension:0.2, order:1 },
+            ]},
+            options: { responsive:true, maintainAspectRatio:false, plugins:{ legend:{display:false}, tooltip:{ enabled:true, mode:'index', intersect:false, callbacks:{ label: item => { if(item.dataset.label==="Regen der letzten 30 Tage") return "Regen der letzten 30 Tage: "+fmt(item.parsed.y,1)+" mm"; return item.dataset.label+": "+fmt(item.parsed.y,1)+" mm"; }}}}, scales:{ x:{grid:{display:false},ticks:{maxTicksLimit:6,font:{size:11}}}, y:{beginAtZero:true,title:{display:true,text:"mm"},grid:{color:"#eee"}} } }
+          });
+        } else {
+          const title = getEl("chart-title");
+          const sub = getEl("chart-sub");
+          const toggle = getEl("referenz-toggle");
+          if (title) title.innerHTML = `So viele <span style="text-decoration:underline">Sommertage</span> gab es in ${station.name} von März bis Oktober`;
+          if (sub) sub.textContent = "Sommertag = Temperatur steigt auf 25 °C oder höher. Die Linie zeigt, wohin sich der langjährige Trend von 2000 bis zum vergangenen Jahr entwickelt hat.";
+          if (toggle) toggle.style.display = "none";
+          const eintraege = Object.entries(station.sommertage_pro_jahr).sort((a,b)=>Number(a[0])-Number(b[0]));
+          const jahre = eintraege.map(([j])=>Number(j));
+          const werte = eintraege.map(([,w])=>w);
+          const trend = linearerTrend(jahre, werte);
+          const ctx = document.getElementById(canvasId);
+          if (!ctx) { chart = prevChart; return; }
+          window._mobileCharts[tab] = new Chart(ctx, {
+            data: { labels:jahre, datasets: [
+              { type:"bar", label:"Sommertage ab 25 °C", data:werte, backgroundColor:"#f5cc6a", borderRadius:1, order:2 },
+              { type:"line", label:"Trend", data:trend, borderColor:"#4a4a4a", borderWidth:2, pointRadius:0, tension:0, order:1 },
+            ]},
+            options: { responsive:true, maintainAspectRatio:false, plugins:{ legend:{display:false}, tooltip:{ enabled:true, mode:'index', intersect:false, callbacks:{ label: item => { if(item.dataset.type==="bar") return "Sommertage ab 25 °C: "+item.parsed.y; return "Trend: "+item.parsed.y.toFixed(1); }}}}, scales:{ x:{grid:{display:false},ticks:{font:{size:11}}}, y:{beginAtZero:true,grid:{color:"#eee"}} } }
+          });
+        }
+        chart = prevChart; // Desktop-Chart-Referenz wiederherstellen
       }
 
       // --- Temperatur Chart ---
