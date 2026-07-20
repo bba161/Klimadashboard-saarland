@@ -875,6 +875,7 @@
                     if (item.dataset.label === "Tageshöchsttemperatur") {
                       return "Tageshöchsttemperatur: " + fmt(item.parsed.y, 1) + " °C";
                     }
+                    if (item.dataset.label === "P10" || item.dataset.label === "P90") return null;
                     return item.dataset.label + ": " + fmt(item.parsed.y, 1) + " °C";
                   }
                 }
@@ -901,7 +902,7 @@
         const toggle = $("referenz-toggle");
 
         title.innerHTML = `So viel hat es in den letzten 30 Tagen in ${station.name} <span style="background:#d4e6a0;padding:1px 4px">geregnet</span> – im historischen Vergleich`;
-        sub.textContent = "Der graue Bereich zeigt, wie viel Regen im selben 30-Tages-Zeitraum in den Jahren " + aktuelleReferenz + " überlicherweise gefallen ist, als der Klimawandel sich noch weniger stark ausgewirkt hat.";
+        sub.textContent = "Der graue Bereich zeigt, wie viel Regen im selben 30-Tages-Zeitraum in den Jahren " + aktuelleReferenz + " üblicherweise gefallen ist.";
         toggle.style.display = "";
 
         const reihe = station.tagesreihe_30d || [];
