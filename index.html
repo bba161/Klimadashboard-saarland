@@ -199,6 +199,14 @@
       color: var(--accent-dark);
     }
 
+    .einordnung.wenig-leicht {
+      color: var(--accent);
+    }
+
+    .einordnung.viel-leicht {
+      color: #2e7d4f;
+    }
+
     .einordnung.normal {
       color: var(--ok);
     }
@@ -599,15 +607,34 @@
         return { text: "im normalen Bereich", cls: "normal" };
       }
 
-      function regenEinordnung(mm30, refJahr) {
+      // Regen-Einordnung: Vergleich mit P10/P90 aus Referenzband (1991-2020),
+      // Fallback auf Jahresmittel falls kein Band vorhanden.
+      function regenEinordnung(mm30, refJahr, refBandNied) {
         if (mm30 == null) return { text: "Keine aktuellen Daten verfügbar.", cls: "" };
-        if (refJahr == null) return { text: fmt(mm30, 1) + " mm", cls: "" };
+
+        // Primär: P10/P90 aus dem Referenzband (letzter Tag = heutiger Stand)
+        if (refBandNied && refBandNied.length > 0) {
+          const heuteRef = refBandNied[refBandNied.length - 1];
+          if (heuteRef && heuteRef.kum_p10 != null && heuteRef.kum_p90 != null) {
+            if (mm30 < heuteRef.kum_p10) return { text: "ungewöhnlich wenig", cls: "wenig" };
+            if (mm30 > heuteRef.kum_p90) return { text: "ungewöhnlich viel", cls: "viel" };
+            // Innerhalb des Bandes: vergleich mit Mittelwert
+            if (heuteRef.kum_mean != null) {
+              if (mm30 < heuteRef.kum_mean) return { text: "weniger als der historische Durchschnitt", cls: "wenig-leicht" };
+              if (mm30 > heuteRef.kum_mean) return { text: "mehr als der historische Durchschnitt", cls: "viel-leicht" };
+            }
+            return { text: "im normalen Bereich", cls: "normal" };
+          }
+        }
+
+        // Fallback: Jahresmittel
+        if (refJahr == null) return { text: "", cls: "" };
         const refMonat = refJahr / 12;
         const diff = mm30 - refMonat;
         const rel = Math.abs(diff) / (refMonat || 1);
         if (rel < 0.2) return { text: "im normalen Bereich", cls: "normal" };
-        if (diff > 0) return { text: "ungewöhnlich viel", cls: "viel" };
-        return { text: "ungewöhnlich wenig", cls: "wenig" };
+        if (diff > 0) return { text: "mehr als der historische Durchschnitt", cls: "viel-leicht" };
+        return { text: "weniger als der historische Durchschnitt", cls: "wenig-leicht" };
       }
 
       // --- Render ---
@@ -660,9 +687,14 @@
 
         // Referenzband für heute
         const refBandTemp = station.referenzband_temperatur ? station.referenzband_temperatur[aktuelleReferenz] : [];
-        
+
+        // Regen-Einordnung immer anhand 1991-2020 (fester Vergleichswert)
+        const ref1991 = station.referenzperioden ? station.referenzperioden["1991-2020"] : null;
+        const refJahrNied1991 = ref1991 ? ref1991.niederschlag_jahresmittel_mm : null;
+        const refBandNied1991 = station.referenzband_niederschlag ? station.referenzband_niederschlag["1991-2020"] : null;
+
         const tE = tempEinordnung(txk, refBandTemp);
-        const rE = regenEinordnung(niederschlag30, refJahrNied);
+        const rE = regenEinordnung(niederschlag30, refJahrNied1991, refBandNied1991);
 
         const grid = $("dashboard-grid");
         grid.innerHTML = `
@@ -693,9 +725,10 @@
             <h2 id="chart-title"></h2>
             <p class="sub" id="chart-sub"></p>
             <div class="referenz-toggle" id="referenz-toggle" style="display:none">
-              <button data-ref="1961-1990" class="${aktuelleReferenz === '1961-1990' ? 'active' : ''}">1961-1984*</button>
+              <button data-ref="1961-1990" class="${aktuelleReferenz === '1961-1990' ? 'active' : ''}"${!station.referenzband_temperatur?.['1961-1990'] ? ' disabled title="Für diese Station liegen keine Daten für diesen Zeitraum vor."' : ''}>1961-1990${!station.referenzband_temperatur?.['1961-1990'] ? ' (keine Daten)' : ''}</button>
               <button data-ref="1991-2020" class="${aktuelleReferenz === '1991-2020' ? 'active' : ''}">1991-2020</button>
             </div>
+            <p class="sub" id="referenz-hinweis" style="margin-top:6px;display:none"></p>
             <div class="chart-container"><canvas id="main-chart"></canvas></div>
           </div>
         `;
@@ -711,6 +744,19 @@
         // Referenz-Toggle
         document.querySelectorAll("#referenz-toggle button").forEach(btn => {
           btn.addEventListener("click", () => {
+            if (btn.disabled) return;
+            const hatDaten = aktuellerTab === "temperatur"
+              ? station.referenzband_temperatur?.[btn.dataset.ref]?.some(r => r && r.mean != null)
+              : aktuellerTab === "regen"
+              ? station.referenzband_niederschlag?.[btn.dataset.ref]?.some(r => r && r.kum_mean != null)
+              : true;
+            const hinweis = $("referenz-hinweis");
+            if (!hatDaten) {
+              hinweis.textContent = "Für diese Station liegen für den Zeitraum " + btn.dataset.ref + " keine ausreichenden Referenzdaten vor.";
+              hinweis.style.display = "";
+            } else {
+              hinweis.style.display = "none";
+            }
             aktuelleReferenz = btn.dataset.ref;
             renderDashboard(station);
           });
