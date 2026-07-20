@@ -377,7 +377,7 @@
       async function brightSkyAnfrage(lat, lon, vonDatum, bisDatum, cacheKey) {
         const cached = cacheGet(cacheKey);
         if (cached) return cached;
-        const url = `${BRIGHTSKY_BASE}?lat=${lat}&lon=${lon}&date=${vonDatum}&last_date=${bisDatum}`;
+        const url = `${BRIGHTSKY_BASE}?lat=${lat}&lon=${lon}&date=${vonDatum}T00:00&last_date=${bisDatum}T23:59`;
         const resp = await fetch(url);
         if (!resp.ok) throw new Error("BrightSky HTTP " + resp.status);
         const data = await resp.json();
