@@ -686,16 +686,23 @@
           if (txk <= 5) return { text: "ungewöhnlich kalt", cls: "kalt" };
           return { text: "", cls: "" };
         }
-        
+
         // Letzter Tag = heute
         const heuteRef = refBand[refBand.length - 1];
         if (!heuteRef || heuteRef.p10 == null || heuteRef.p90 == null) {
           return { text: "", cls: "" };
         }
-        
+
+        // Außerhalb des grauen Bandes
         if (txk > heuteRef.p90) return { text: "ungewöhnlich warm", cls: "warm" };
         if (txk < heuteRef.p10) return { text: "ungewöhnlich kalt", cls: "kalt" };
-        return { text: "im normalen Bereich", cls: "normal" };
+
+        // Innerhalb des Bandes: Vergleich mit Mittelwert
+        if (heuteRef.mean != null) {
+          if (txk < heuteRef.mean) return { text: "kühler als im historischen Durchschnitt", cls: "wenig-leicht" };
+          if (txk > heuteRef.mean) return { text: "wärmer als im historischen Durchschnitt", cls: "viel-leicht" };
+        }
+        return { text: "im historischen Durchschnitt", cls: "normal" };
       }
 
       // Regen-Einordnung: Vergleich mit P10/P90 aus Referenzband (1991-2020),
