@@ -1051,15 +1051,33 @@
           const refP90 = refBand.map(r => r ? r.p90 : null);
           const ctx = document.getElementById(canvasId);
           if (!ctx) { chart = prevChart; return; }
-          window._mobileCharts[tab] = new Chart(ctx, {
+          const mobTempChart = new Chart(ctx, {
             data: { labels, datasets: [
               { type:"line", label:"P90", data:refP90, borderColor:"transparent", backgroundColor:"rgba(0,0,0,0.08)", fill:"+1", pointRadius:0, tension:0.3, order:3 },
               { type:"line", label:"P10", data:refP10, borderColor:"transparent", backgroundColor:"transparent", fill:false, pointRadius:0, tension:0.3, order:3 },
               { type:"line", label:"Referenz-Mittel", data:refMean, borderColor:"rgba(0,0,0,0.3)", borderWidth:1.5, borderDash:[4,4], pointRadius:0, fill:false, tension:0.3, order:2 },
-              { type:"line", label:"Tageshöchsttemperatur", data:txkWerte, borderColor:"#c0392b", borderWidth:2.5, pointRadius:txkWerte.map((v,i)=>i===txkWerte.length-1&&v!=null?5:0), pointBackgroundColor:"#c0392b", fill:false, tension:0.2, order:1 },
+              { type:"line", label:"Tageshöchsttemperatur", data:txkWerte, borderColor:"#c0392b", borderWidth:2.5,
+                pointRadius:txkWerte.map((v,i)=>i===txkWerte.length-1&&v!=null?5:0),
+                pointHoverRadius:7, pointHitRadius:30, pointBackgroundColor:"#c0392b", fill:false, tension:0.2, order:1 },
             ]},
-            options: { responsive:true, maintainAspectRatio:false, plugins:{ legend:{display:false}, tooltip:{ enabled:true, mode:'index', intersect:false, callbacks:{ label: item => { if(item.dataset.label==="P10"||item.dataset.label==="P90") return null; if(item.dataset.label==="Tageshöchsttemperatur") return "Tageshöchsttemperatur: "+fmt(item.parsed.y,1)+" °C"; return item.dataset.label+": "+fmt(item.parsed.y,1)+" °C"; }}}}, scales:{ x:{grid:{display:false},ticks:{maxTicksLimit:6,font:{size:11}}}, y:{title:{display:true,text:"°C"},grid:{color:"#eee"}} } }
+            options: { responsive:true, maintainAspectRatio:false,
+              interaction:{ mode:'index', intersect:false },
+              onClick:(event, _elems, ch) => {
+                const pts = ch.getElementsAtEventForMode(event,'index',{intersect:false},true);
+                if(pts.length>0){
+                  const pt=pts[0]; const meta=ch.getDatasetMeta(pt.datasetIndex); const el=meta.data[pt.index];
+                  const pos=el?{x:el.x,y:el.y}:{x:0,y:0};
+                  if(ch._tooltipLocked){ch._tooltipLocked=false;ch.tooltip.setActiveElements([]);}
+                  else{ch._tooltipLocked=true;ch.tooltip.setActiveElements(ch.data.datasets.map((_,di)=>({datasetIndex:di,index:pt.index})),pos);}
+                  ch.update();
+                }
+              },
+              plugins:{ legend:{display:false}, tooltip:{ enabled:true, mode:'index', intersect:false, callbacks:{ label: item => { if(item.dataset.label==="P10"||item.dataset.label==="P90") return null; if(item.dataset.label==="Tageshöchsttemperatur") return "Tageshöchsttemperatur: "+fmt(item.parsed.y,1)+" °C"; return item.dataset.label+": "+fmt(item.parsed.y,1)+" °C"; }}}},
+              scales:{ x:{grid:{display:false},ticks:{maxTicksLimit:6,font:{size:11}}}, y:{title:{display:true,text:"°C"},grid:{color:"#eee"}} } }
           });
+          window._mobileCharts[tab] = mobTempChart;
+          // Touch-Support für Mobil
+          ctx.addEventListener('touchstart', (e) => { e.preventDefault(); const t=e.touches[0]; const rect=ctx.getBoundingClientRect(); const nativeEvent={clientX:t.clientX,clientY:t.clientY,type:'click'}; const pts=mobTempChart.getElementsAtEventForMode(nativeEvent,'index',{intersect:false},true); if(pts.length>0){const pt=pts[0];const meta=mobTempChart.getDatasetMeta(pt.datasetIndex);const el=meta.data[pt.index];const pos=el?{x:el.x,y:el.y}:{x:0,y:0};if(mobTempChart._tooltipLocked){mobTempChart._tooltipLocked=false;mobTempChart.tooltip.setActiveElements([]);}else{mobTempChart._tooltipLocked=true;mobTempChart.tooltip.setActiveElements(mobTempChart.data.datasets.map((_,di)=>({datasetIndex:di,index:pt.index})),pos);}mobTempChart.update();} }, {passive:false});
         } else if (tab === "regen") {
           const title = getEl("chart-title");
           const sub = getEl("chart-sub");
@@ -1077,15 +1095,32 @@
           const refP90 = refBand.map(r => r ? r.kum_p90 : null);
           const ctx = document.getElementById(canvasId);
           if (!ctx) { chart = prevChart; return; }
-          window._mobileCharts[tab] = new Chart(ctx, {
+          const mobRegenChart = new Chart(ctx, {
             data: { labels, datasets: [
               { type:"line", label:"P90", data:refP90, borderColor:"transparent", backgroundColor:"rgba(0,0,0,0.08)", fill:"+1", pointRadius:0, tension:0.3, order:3 },
               { type:"line", label:"P10", data:refP10, borderColor:"transparent", backgroundColor:"transparent", fill:false, pointRadius:0, tension:0.3, order:3 },
               { type:"line", label:"Referenz-Mittel", data:refMean, borderColor:"rgba(0,0,0,0.3)", borderWidth:1.5, borderDash:[4,4], pointRadius:0, fill:false, tension:0.3, order:2 },
-              { type:"line", label:"Regen der letzten 30 Tage", data:kumWerte, borderColor:"#004d8b", borderWidth:2.5, pointRadius:kumWerte.map((v,i)=>i===kumWerte.length-1?5:0), pointBackgroundColor:"#004d8b", fill:false, tension:0.2, order:1 },
+              { type:"line", label:"Regen der letzten 30 Tage", data:kumWerte, borderColor:"#004d8b", borderWidth:2.5,
+                pointRadius:kumWerte.map((v,i)=>i===kumWerte.length-1?5:0),
+                pointHoverRadius:7, pointHitRadius:30, pointBackgroundColor:"#004d8b", fill:false, tension:0.2, order:1 },
             ]},
-            options: { responsive:true, maintainAspectRatio:false, plugins:{ legend:{display:false}, tooltip:{ enabled:true, mode:'index', intersect:false, callbacks:{ label: item => { if(item.dataset.label==="Regen der letzten 30 Tage") return "Regen der letzten 30 Tage: "+fmt(item.parsed.y,1)+" mm"; return item.dataset.label+": "+fmt(item.parsed.y,1)+" mm"; }}}}, scales:{ x:{grid:{display:false},ticks:{maxTicksLimit:6,font:{size:11}}}, y:{beginAtZero:true,title:{display:true,text:"mm"},grid:{color:"#eee"}} } }
+            options: { responsive:true, maintainAspectRatio:false,
+              interaction:{ mode:'index', intersect:false },
+              onClick:(event, _elems, ch) => {
+                const pts=ch.getElementsAtEventForMode(event,'index',{intersect:false},true);
+                if(pts.length>0){
+                  const pt=pts[0];const meta=ch.getDatasetMeta(pt.datasetIndex);const el=meta.data[pt.index];
+                  const pos=el?{x:el.x,y:el.y}:{x:0,y:0};
+                  if(ch._tooltipLocked){ch._tooltipLocked=false;ch.tooltip.setActiveElements([]);}
+                  else{ch._tooltipLocked=true;ch.tooltip.setActiveElements(ch.data.datasets.map((_,di)=>({datasetIndex:di,index:pt.index})),pos);}
+                  ch.update();
+                }
+              },
+              plugins:{ legend:{display:false}, tooltip:{ enabled:true, mode:'index', intersect:false, callbacks:{ label: item => { if(item.dataset.label==="Regen der letzten 30 Tage") return "Regen der letzten 30 Tage: "+fmt(item.parsed.y,1)+" mm"; return item.dataset.label+": "+fmt(item.parsed.y,1)+" mm"; }}}},
+              scales:{ x:{grid:{display:false},ticks:{maxTicksLimit:6,font:{size:11}}}, y:{beginAtZero:true,title:{display:true,text:"mm"},grid:{color:"#eee"}} } }
           });
+          window._mobileCharts[tab] = mobRegenChart;
+          ctx.addEventListener('touchstart', (e) => { e.preventDefault(); const t=e.touches[0]; const nativeEvent={clientX:t.clientX,clientY:t.clientY,type:'click'}; const pts=mobRegenChart.getElementsAtEventForMode(nativeEvent,'index',{intersect:false},true); if(pts.length>0){const pt=pts[0];const meta=mobRegenChart.getDatasetMeta(pt.datasetIndex);const el=meta.data[pt.index];const pos=el?{x:el.x,y:el.y}:{x:0,y:0};if(mobRegenChart._tooltipLocked){mobRegenChart._tooltipLocked=false;mobRegenChart.tooltip.setActiveElements([]);}else{mobRegenChart._tooltipLocked=true;mobRegenChart.tooltip.setActiveElements(mobRegenChart.data.datasets.map((_,di)=>({datasetIndex:di,index:pt.index})),pos);}mobRegenChart.update();} }, {passive:false});
         } else {
           const title = getEl("chart-title");
           const sub = getEl("chart-sub");
@@ -1099,13 +1134,28 @@
           const trend = linearerTrend(jahre, werte);
           const ctx = document.getElementById(canvasId);
           if (!ctx) { chart = prevChart; return; }
-          window._mobileCharts[tab] = new Chart(ctx, {
+          const mobSommChart = new Chart(ctx, {
             data: { labels:jahre, datasets: [
               { type:"bar", label:"Sommertage ab 25 °C", data:werte, backgroundColor:"#f5cc6a", borderRadius:1, order:2 },
               { type:"line", label:"Trend", data:trend, borderColor:"#4a4a4a", borderWidth:2, pointRadius:0, tension:0, order:1 },
             ]},
-            options: { responsive:true, maintainAspectRatio:false, plugins:{ legend:{display:false}, tooltip:{ enabled:true, mode:'index', intersect:false, callbacks:{ label: item => { if(item.dataset.type==="bar") return "Sommertage ab 25 °C: "+item.parsed.y; return "Trend: "+item.parsed.y.toFixed(1); }}}}, scales:{ x:{grid:{display:false},ticks:{font:{size:11}}}, y:{beginAtZero:true,grid:{color:"#eee"}} } }
+            options: { responsive:true, maintainAspectRatio:false,
+              interaction:{ mode:'index', intersect:false },
+              onClick:(event, _elems, ch) => {
+                const pts=ch.getElementsAtEventForMode(event,'index',{intersect:false},true);
+                if(pts.length>0){
+                  const pt=pts[0];const meta=ch.getDatasetMeta(pt.datasetIndex);const el=meta.data[pt.index];
+                  const pos=el?{x:el.x,y:el.y}:{x:0,y:0};
+                  if(ch._tooltipLocked){ch._tooltipLocked=false;ch.tooltip.setActiveElements([]);}
+                  else{ch._tooltipLocked=true;ch.tooltip.setActiveElements(ch.data.datasets.map((_,di)=>({datasetIndex:di,index:pt.index})),pos);}
+                  ch.update();
+                }
+              },
+              plugins:{ legend:{display:false}, tooltip:{ enabled:true, mode:'index', intersect:false, callbacks:{ label: item => { if(item.dataset.type==="bar") return "Sommertage ab 25 °C: "+item.parsed.y; return "Trend: "+item.parsed.y.toFixed(1); }}}},
+              scales:{ x:{grid:{display:false},ticks:{font:{size:11}}}, y:{beginAtZero:true,grid:{color:"#eee"}} } }
           });
+          window._mobileCharts[tab] = mobSommChart;
+          ctx.addEventListener('touchstart', (e) => { e.preventDefault(); const t=e.touches[0]; const nativeEvent={clientX:t.clientX,clientY:t.clientY,type:'click'}; const pts=mobSommChart.getElementsAtEventForMode(nativeEvent,'index',{intersect:false},true); if(pts.length>0){const pt=pts[0];const meta=mobSommChart.getDatasetMeta(pt.datasetIndex);const el=meta.data[pt.index];const pos=el?{x:el.x,y:el.y}:{x:0,y:0};if(mobSommChart._tooltipLocked){mobSommChart._tooltipLocked=false;mobSommChart.tooltip.setActiveElements([]);}else{mobSommChart._tooltipLocked=true;mobSommChart.tooltip.setActiveElements(mobSommChart.data.datasets.map((_,di)=>({datasetIndex:di,index:pt.index})),pos);}mobSommChart.update();} }, {passive:false});
         }
         chart = prevChart; // Desktop-Chart-Referenz wiederherstellen
       }
@@ -1186,6 +1236,8 @@
                 borderColor: "#c0392b",
                 borderWidth: 2.5,
                 pointRadius: txkWerte.map((v, i) => i === txkWerte.length - 1 && v != null ? 5 : 0),
+                pointHoverRadius: 7,
+                pointHitRadius: 30,
                 pointBackgroundColor: "#c0392b",
                 fill: false,
                 tension: 0.2,
@@ -1200,14 +1252,18 @@
             onClick: (event) => {
               const points = chart.getElementsAtEventForMode(event, 'index', { intersect: false }, true);
               if (points.length > 0) {
+                const pt = points[0];
+                const meta = chart.getDatasetMeta(pt.datasetIndex);
+                const el = meta.data[pt.index];
+                const pos = el ? { x: el.x, y: el.y } : { x: 0, y: 0 };
                 if (chart._tooltipLocked) {
                   chart._tooltipLocked = false;
                   chart.tooltip.setActiveElements([]);
                 } else {
                   chart._tooltipLocked = true;
                   chart.tooltip.setActiveElements(
-                    chart.data.datasets.map((_, di) => ({ datasetIndex: di, index: points[0].index })),
-                    { x: 0, y: 0 }
+                    chart.data.datasets.map((_, di) => ({ datasetIndex: di, index: pt.index })),
+                    pos
                   );
                 }
                 chart.update();
@@ -1343,14 +1399,18 @@
             onClick: (event) => {
               const points = chart.getElementsAtEventForMode(event, 'index', { intersect: false }, true);
               if (points.length > 0) {
+                const pt = points[0];
+                const meta = chart.getDatasetMeta(pt.datasetIndex);
+                const el = meta.data[pt.index];
+                const pos = el ? { x: el.x, y: el.y } : { x: 0, y: 0 };
                 if (chart._tooltipLocked) {
                   chart._tooltipLocked = false;
                   chart.tooltip.setActiveElements([]);
                 } else {
                   chart._tooltipLocked = true;
                   chart.tooltip.setActiveElements(
-                    chart.data.datasets.map((_, di) => ({ datasetIndex: di, index: points[0].index })),
-                    { x: 0, y: 0 }
+                    chart.data.datasets.map((_, di) => ({ datasetIndex: di, index: pt.index })),
+                    pos
                   );
                 }
                 chart.update();
@@ -1438,14 +1498,18 @@
             onClick: (event) => {
               const points = chart.getElementsAtEventForMode(event, 'index', { intersect: false }, true);
               if (points.length > 0) {
+                const pt = points[0];
+                const meta = chart.getDatasetMeta(pt.datasetIndex);
+                const el = meta.data[pt.index];
+                const pos = el ? { x: el.x, y: el.y } : { x: 0, y: 0 };
                 if (chart._tooltipLocked) {
                   chart._tooltipLocked = false;
                   chart.tooltip.setActiveElements([]);
                 } else {
                   chart._tooltipLocked = true;
                   chart.tooltip.setActiveElements(
-                    chart.data.datasets.map((_, di) => ({ datasetIndex: di, index: points[0].index })),
-                    { x: 0, y: 0 }
+                    chart.data.datasets.map((_, di) => ({ datasetIndex: di, index: pt.index })),
+                    pos
                   );
                 }
                 chart.update();
