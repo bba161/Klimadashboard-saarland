@@ -1116,7 +1116,7 @@
                   ch.update();
                 }
               },
-              plugins:{ legend:{display:false}, tooltip:{ enabled:true, mode:'index', intersect:false, callbacks:{ label: item => { if(item.dataset.label==="Regen der letzten 30 Tage") return "Regen der letzten 30 Tage: "+fmt(item.parsed.y,1)+" mm"; return item.dataset.label+": "+fmt(item.parsed.y,1)+" mm"; }}}},
+              plugins:{ legend:{display:false}, tooltip:{ enabled:true, mode:'index', intersect:false, callbacks:{ label: item => { if(item.dataset.label==="P10"||item.dataset.label==="P90") return null; if(item.dataset.label==="Regen der letzten 30 Tage") return "Regen der letzten 30 Tage: "+fmt(item.parsed.y,1)+" mm"; return item.dataset.label+": "+fmt(item.parsed.y,1)+" mm"; }}}},
               scales:{ x:{grid:{display:false},ticks:{maxTicksLimit:6,font:{size:11}}}, y:{beginAtZero:true,title:{display:true,text:"mm"},grid:{color:"#eee"}} } }
           });
           window._mobileCharts[tab] = mobRegenChart;
@@ -1252,17 +1252,18 @@
             onClick: (event) => {
               const points = chart.getElementsAtEventForMode(event, 'index', { intersect: false }, true);
               if (points.length > 0) {
-                const pt = points[0];
-                const meta = chart.getDatasetMeta(pt.datasetIndex);
-                const el = meta.data[pt.index];
-                const pos = el ? { x: el.x, y: el.y } : { x: 0, y: 0 };
+                const idx = points[0].index;
+                // Ankerpunkt: Hauptlinie (letztes Dataset)
+                const mainMeta = chart.getDatasetMeta(chart.data.datasets.length - 1);
+                const el = mainMeta.data[idx];
+                const pos = el ? { x: el.x, y: el.y } : { x: points[0].element.x, y: points[0].element.y };
                 if (chart._tooltipLocked) {
                   chart._tooltipLocked = false;
                   chart.tooltip.setActiveElements([]);
                 } else {
                   chart._tooltipLocked = true;
                   chart.tooltip.setActiveElements(
-                    chart.data.datasets.map((_, di) => ({ datasetIndex: di, index: pt.index })),
+                    chart.data.datasets.map((_, di) => ({ datasetIndex: di, index: idx })),
                     pos
                   );
                 }
@@ -1399,17 +1400,18 @@
             onClick: (event) => {
               const points = chart.getElementsAtEventForMode(event, 'index', { intersect: false }, true);
               if (points.length > 0) {
-                const pt = points[0];
-                const meta = chart.getDatasetMeta(pt.datasetIndex);
-                const el = meta.data[pt.index];
-                const pos = el ? { x: el.x, y: el.y } : { x: 0, y: 0 };
+                const idx = points[0].index;
+                // Ankerpunkt: Hauptlinie (letztes Dataset)
+                const mainMeta = chart.getDatasetMeta(chart.data.datasets.length - 1);
+                const el = mainMeta.data[idx];
+                const pos = el ? { x: el.x, y: el.y } : { x: points[0].element.x, y: points[0].element.y };
                 if (chart._tooltipLocked) {
                   chart._tooltipLocked = false;
                   chart.tooltip.setActiveElements([]);
                 } else {
                   chart._tooltipLocked = true;
                   chart.tooltip.setActiveElements(
-                    chart.data.datasets.map((_, di) => ({ datasetIndex: di, index: pt.index })),
+                    chart.data.datasets.map((_, di) => ({ datasetIndex: di, index: idx })),
                     pos
                   );
                 }
@@ -1427,6 +1429,7 @@
                 intersect: false,
                 callbacks: {
                   label: item => {
+                    if (item.dataset.label === "P10" || item.dataset.label === "P90") return null;
                     if (item.dataset.label === "Regen der letzten 30 Tage") {
                       return "Regen der letzten 30 Tage: " + fmt(item.parsed.y, 1) + " mm";
                     }
@@ -1498,17 +1501,18 @@
             onClick: (event) => {
               const points = chart.getElementsAtEventForMode(event, 'index', { intersect: false }, true);
               if (points.length > 0) {
-                const pt = points[0];
-                const meta = chart.getDatasetMeta(pt.datasetIndex);
-                const el = meta.data[pt.index];
-                const pos = el ? { x: el.x, y: el.y } : { x: 0, y: 0 };
+                const idx = points[0].index;
+                // Ankerpunkt: Hauptlinie (letztes Dataset)
+                const mainMeta = chart.getDatasetMeta(chart.data.datasets.length - 1);
+                const el = mainMeta.data[idx];
+                const pos = el ? { x: el.x, y: el.y } : { x: points[0].element.x, y: points[0].element.y };
                 if (chart._tooltipLocked) {
                   chart._tooltipLocked = false;
                   chart.tooltip.setActiveElements([]);
                 } else {
                   chart._tooltipLocked = true;
                   chart.tooltip.setActiveElements(
-                    chart.data.datasets.map((_, di) => ({ datasetIndex: di, index: pt.index })),
+                    chart.data.datasets.map((_, di) => ({ datasetIndex: di, index: idx })),
                     pos
                   );
                 }
