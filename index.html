@@ -1196,21 +1196,25 @@
           options: {
             responsive: true,
             maintainAspectRatio: false,
-            onClick: (event, activeElements) => {
-              if (activeElements.length > 0) {
+            interaction: { mode: 'index', intersect: false },
+            onClick: (event) => {
+              const points = chart.getElementsAtEventForMode(event, 'index', { intersect: false }, true);
+              if (points.length > 0) {
                 if (chart._tooltipLocked) {
                   chart._tooltipLocked = false;
                   chart.tooltip.setActiveElements([]);
-                  chart.update();
                 } else {
                   chart._tooltipLocked = true;
-                  chart.tooltip.setActiveElements(activeElements, { x: 0, y: 0 });
-                  chart.update();
+                  chart.tooltip.setActiveElements(
+                    chart.data.datasets.map((_, di) => ({ datasetIndex: di, index: points[0].index })),
+                    { x: 0, y: 0 }
+                  );
                 }
+                chart.update();
               }
             },
-            onHover: (event, activeElements) => {
-              if (chart._tooltipLocked) return;
+            onHover: (event, activeElements, ch) => {
+              if (ch._tooltipLocked) return;
             },
             plugins: {
               legend: { display: false },
@@ -1325,6 +1329,7 @@
                 pointRadius: kumWerte.map((v, i) => i === kumWerte.length - 1 ? 5 : 0),
                 pointBackgroundColor: "#004d8b",
                 pointHoverRadius: 6,
+                pointHitRadius: 30,
                 fill: false,
                 tension: 0.2,
                 order: 1
@@ -1334,21 +1339,25 @@
           options: {
             responsive: true,
             maintainAspectRatio: false,
-            onClick: (event, activeElements) => {
-              if (activeElements.length > 0) {
+            interaction: { mode: 'index', intersect: false },
+            onClick: (event) => {
+              const points = chart.getElementsAtEventForMode(event, 'index', { intersect: false }, true);
+              if (points.length > 0) {
                 if (chart._tooltipLocked) {
                   chart._tooltipLocked = false;
                   chart.tooltip.setActiveElements([]);
-                  chart.update();
                 } else {
                   chart._tooltipLocked = true;
-                  chart.tooltip.setActiveElements(activeElements, { x: 0, y: 0 });
-                  chart.update();
+                  chart.tooltip.setActiveElements(
+                    chart.data.datasets.map((_, di) => ({ datasetIndex: di, index: points[0].index })),
+                    { x: 0, y: 0 }
+                  );
                 }
+                chart.update();
               }
             },
-            onHover: (event, activeElements) => {
-              if (chart._tooltipLocked) return;
+            onHover: (event, activeElements, ch) => {
+              if (ch._tooltipLocked) return;
             },
             plugins: {
               legend: { display: false },
@@ -1425,21 +1434,25 @@
           options: {
             responsive: true,
             maintainAspectRatio: false,
-            onClick: (event, activeElements) => {
-              if (activeElements.length > 0) {
+            interaction: { mode: 'index', intersect: false },
+            onClick: (event) => {
+              const points = chart.getElementsAtEventForMode(event, 'index', { intersect: false }, true);
+              if (points.length > 0) {
                 if (chart._tooltipLocked) {
                   chart._tooltipLocked = false;
                   chart.tooltip.setActiveElements([]);
-                  chart.update();
                 } else {
                   chart._tooltipLocked = true;
-                  chart.tooltip.setActiveElements(activeElements, { x: 0, y: 0 });
-                  chart.update();
+                  chart.tooltip.setActiveElements(
+                    chart.data.datasets.map((_, di) => ({ datasetIndex: di, index: points[0].index })),
+                    { x: 0, y: 0 }
+                  );
                 }
+                chart.update();
               }
             },
-            onHover: (event, activeElements) => {
-              if (chart._tooltipLocked) return;
+            onHover: (event, activeElements, ch) => {
+              if (ch._tooltipLocked) return;
             },
             plugins: {
               legend: { display: false },
