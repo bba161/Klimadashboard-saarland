@@ -699,8 +699,8 @@
 
         // Innerhalb des Bandes: Vergleich mit Mittelwert
         if (heuteRef.mean != null) {
-          if (txk < heuteRef.mean) return { text: "kühler als im historischen Durchschnitt", cls: "wenig-leicht" };
-          if (txk > heuteRef.mean) return { text: "wärmer als im historischen Durchschnitt", cls: "viel-leicht" };
+          if (txk < heuteRef.mean) return { text: "kühler als der historische Durchschnitt", cls: "wenig-leicht" };
+          if (txk > heuteRef.mean) return { text: "wärmer als der historische Durchschnitt", cls: "viel-leicht" };
         }
         return { text: "im historischen Durchschnitt", cls: "normal" };
       }
