@@ -449,7 +449,7 @@
       let referenzen = null;   // Inhalt von saarland_referenzen.json
       let plzMapping = null;
       let chart = null;
-      let aktuelleReferenz = "1961-1990";
+      let aktuelleReferenz = "1991-2020";
       let aktuellerTab = "temperatur";
       let aktuelleStation = null;
       const stationBauCache = new Map(); // station_id -> fertig gebautes "station"-Objekt (pro Sitzung)
@@ -884,6 +884,20 @@
           </div>
         `;
 
+        // Hinweis anzeigen falls aktuell gewählter Referenzbereich keine Daten hat
+        const hinweisEl = document.getElementById("referenz-hinweis");
+        if (hinweisEl && aktuellerTab !== "sommertage") {
+          const hatDaten = aktuellerTab === "temperatur"
+            ? aktuelleStation.referenzband_temperatur?.[aktuelleReferenz]?.some(r => r && r.mean != null)
+            : aktuelleStation.referenzband_niederschlag?.[aktuelleReferenz]?.some(r => r && r.kum_mean != null);
+          if (!hatDaten) {
+            hinweisEl.textContent = "Für diese Station liegen für den Zeitraum " + aktuelleReferenz + " keine ausreichenden Referenzdaten vor.";
+            hinweisEl.style.display = "";
+          } else {
+            hinweisEl.style.display = "none";
+          }
+        }
+
         // Desktop Tab-Klick (auf Kachel-Body, nicht Header)
         document.querySelectorAll(".kachel[data-tab]").forEach(k => {
           k.addEventListener("click", (e) => {
@@ -1160,6 +1174,7 @@
                 borderWidth: 1.5,
                 borderDash: [4, 4],
                 pointRadius: 0,
+                pointHoverRadius: 4,
                 fill: false,
                 tension: 0.3,
                 order: 2
@@ -1182,11 +1197,20 @@
             responsive: true,
             maintainAspectRatio: false,
             onClick: (event, activeElements) => {
-              // Klick aktiviert Tooltip
               if (activeElements.length > 0) {
-                chart.tooltip.setActiveElements(activeElements);
-                chart.update();
+                if (chart._tooltipLocked) {
+                  chart._tooltipLocked = false;
+                  chart.tooltip.setActiveElements([]);
+                  chart.update();
+                } else {
+                  chart._tooltipLocked = true;
+                  chart.tooltip.setActiveElements(activeElements, { x: 0, y: 0 });
+                  chart.update();
+                }
               }
+            },
+            onHover: (event, activeElements) => {
+              if (chart._tooltipLocked) return;
             },
             plugins: {
               legend: { display: false },
@@ -1300,6 +1324,7 @@
                 borderWidth: 2.5,
                 pointRadius: kumWerte.map((v, i) => i === kumWerte.length - 1 ? 5 : 0),
                 pointBackgroundColor: "#004d8b",
+                pointHoverRadius: 6,
                 fill: false,
                 tension: 0.2,
                 order: 1
@@ -1311,9 +1336,19 @@
             maintainAspectRatio: false,
             onClick: (event, activeElements) => {
               if (activeElements.length > 0) {
-                chart.tooltip.setActiveElements(activeElements);
-                chart.update();
+                if (chart._tooltipLocked) {
+                  chart._tooltipLocked = false;
+                  chart.tooltip.setActiveElements([]);
+                  chart.update();
+                } else {
+                  chart._tooltipLocked = true;
+                  chart.tooltip.setActiveElements(activeElements, { x: 0, y: 0 });
+                  chart.update();
+                }
               }
+            },
+            onHover: (event, activeElements) => {
+              if (chart._tooltipLocked) return;
             },
             plugins: {
               legend: { display: false },
@@ -1392,9 +1427,19 @@
             maintainAspectRatio: false,
             onClick: (event, activeElements) => {
               if (activeElements.length > 0) {
-                chart.tooltip.setActiveElements(activeElements);
-                chart.update();
+                if (chart._tooltipLocked) {
+                  chart._tooltipLocked = false;
+                  chart.tooltip.setActiveElements([]);
+                  chart.update();
+                } else {
+                  chart._tooltipLocked = true;
+                  chart.tooltip.setActiveElements(activeElements, { x: 0, y: 0 });
+                  chart.update();
+                }
               }
+            },
+            onHover: (event, activeElements) => {
+              if (chart._tooltipLocked) return;
             },
             plugins: {
               legend: { display: false },
