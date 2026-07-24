@@ -484,10 +484,17 @@
 
       // Stundenwerte -> Tageswerte (txk = Tagesmaximum, rsk = Tagessumme)
       function aggregiereZuTageswerten(weatherHourly) {
+        const jetzt = new Date();
+        const jetztISO = jetzt.toISOString(); // z.B. "2026-07-24T13:45:00Z"
+        const heuteDatum = jetztISO.slice(0, 10).replace(/-/g, "");
+
         const proTag = new Map();
         for (const stunde of weatherHourly || []) {
           if (!stunde.timestamp) continue;
           const datum = stunde.timestamp.slice(0, 10).replace(/-/g, "");
+          // Für vergangene Tage: alle Stunden verwenden
+          // Für heute: nur Stunden, die bereits vergangen sind (timestamp <= jetzt)
+          if (datum === heuteDatum && stunde.timestamp > jetztISO) continue;
           const eintrag = proTag.get(datum) || { txk: null, rsk: 0 };
           if (typeof stunde.temperature === "number") {
             eintrag.txk = eintrag.txk === null ? stunde.temperature : Math.max(eintrag.txk, stunde.temperature);
@@ -495,7 +502,6 @@
           if (typeof stunde.precipitation === "number") eintrag.rsk += stunde.precipitation;
           proTag.set(datum, eintrag);
         }
-        const heuteDatum = new Date().toISOString().slice(0, 10).replace(/-/g, "");
         return Array.from(proTag.entries())
           .filter(([datum]) => datum <= heuteDatum)
           .sort(([a], [b]) => a.localeCompare(b))
@@ -699,8 +705,8 @@
 
         // Innerhalb des Bandes: Vergleich mit Mittelwert
         if (heuteRef.mean != null) {
-          if (txk < heuteRef.mean) return { text: "kühler als der historische Durchschnitt", cls: "wenig-leicht" };
-          if (txk > heuteRef.mean) return { text: "wärmer als der historische Durchschnitt", cls: "viel-leicht" };
+          if (txk < heuteRef.mean) return { text: "kühler als im historischen Durchschnitt", cls: "wenig-leicht" };
+          if (txk > heuteRef.mean) return { text: "wärmer als im historischen Durchschnitt", cls: "viel-leicht" };
         }
         return { text: "im historischen Durchschnitt", cls: "normal" };
       }
