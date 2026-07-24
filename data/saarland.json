@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-24T07:50:01+00:00",
+  "generated_at": "2026-07-24T09:59:17+00:00",
   "sommertag_schwelle_c": 25.0,
   "stations": {
     "00460": {
@@ -12,8 +12,8 @@
       "tageshoechstwert_heute_c": null,
       "niederschlag_letzte_30_tage_mm": null,
       "aktuelle_temperatur": {
-        "wert": 15.4,
-        "zeitpunkt": "2026072223"
+        "wert": 16.4,
+        "zeitpunkt": "2026072323"
       },
       "hourly_temp_distance_km": 0.0,
       "referenzperioden": {
@@ -171,6 +171,11 @@
         },
         {
           "datum": "20260722",
+          "txk": null,
+          "rsk": null
+        },
+        {
+          "datum": "20260723",
           "txk": null,
           "rsk": null
         },
@@ -936,7 +941,7 @@
           }
         ]
       },
-      "letztes_tageswert_datum": "20260722",
+      "letztes_tageswert_datum": "20260723",
       "status": "ok",
       "fehler": null
     },
@@ -1799,8 +1804,8 @@
       "tageshoechstwert_heute_c": null,
       "niederschlag_letzte_30_tage_mm": null,
       "aktuelle_temperatur": {
-        "wert": 13.5,
-        "zeitpunkt": "2026072223"
+        "wert": 11.9,
+        "zeitpunkt": "2026072323"
       },
       "hourly_temp_distance_km": 0.0,
       "referenzperioden": {
@@ -1958,6 +1963,11 @@
         },
         {
           "datum": "20260722",
+          "txk": null,
+          "rsk": null
+        },
+        {
+          "datum": "20260723",
           "txk": null,
           "rsk": null
         },
@@ -2723,7 +2733,7 @@
           }
         ]
       },
-      "letztes_tageswert_datum": "20260722",
+      "letztes_tageswert_datum": "20260723",
       "status": "ok",
       "fehler": null
     },
@@ -2795,8 +2805,8 @@
       "tageshoechstwert_heute_c": null,
       "niederschlag_letzte_30_tage_mm": null,
       "aktuelle_temperatur": {
-        "wert": 12.6,
-        "zeitpunkt": "2026072223"
+        "wert": 11.3,
+        "zeitpunkt": "2026072323"
       },
       "hourly_temp_distance_km": 0.0,
       "referenzperioden": {
@@ -2954,6 +2964,11 @@
         },
         {
           "datum": "20260722",
+          "txk": null,
+          "rsk": null
+        },
+        {
+          "datum": "20260723",
           "txk": null,
           "rsk": null
         },
@@ -3719,7 +3734,7 @@
           }
         ]
       },
-      "letztes_tageswert_datum": "20260722",
+      "letztes_tageswert_datum": "20260723",
       "status": "ok",
       "fehler": null
     },
@@ -3733,8 +3748,8 @@
       "tageshoechstwert_heute_c": null,
       "niederschlag_letzte_30_tage_mm": null,
       "aktuelle_temperatur": {
-        "wert": 14.2,
-        "zeitpunkt": "2026072223"
+        "wert": 15.7,
+        "zeitpunkt": "2026072323"
       },
       "hourly_temp_distance_km": 0.0,
       "referenzperioden": {
@@ -3892,6 +3907,11 @@
         },
         {
           "datum": "20260722",
+          "txk": null,
+          "rsk": null
+        },
+        {
+          "datum": "20260723",
           "txk": null,
           "rsk": null
         },
@@ -4657,7 +4677,7 @@
           }
         ]
       },
-      "letztes_tageswert_datum": "20260722",
+      "letztes_tageswert_datum": "20260723",
       "status": "ok",
       "fehler": null
     },
@@ -5459,8 +5479,8 @@
       "tageshoechstwert_heute_c": null,
       "niederschlag_letzte_30_tage_mm": null,
       "aktuelle_temperatur": {
-        "wert": 15.7,
-        "zeitpunkt": "2026072223"
+        "wert": 16.3,
+        "zeitpunkt": "2026072323"
       },
       "hourly_temp_distance_km": 0.0,
       "referenzperioden": {
@@ -5618,6 +5638,11 @@
         },
         {
           "datum": "20260722",
+          "txk": null,
+          "rsk": null
+        },
+        {
+          "datum": "20260723",
           "txk": null,
           "rsk": null
         },
@@ -6383,7 +6408,7 @@
           }
         ]
       },
-      "letztes_tageswert_datum": "20260722",
+      "letztes_tageswert_datum": "20260723",
       "status": "ok",
       "fehler": null
     },
@@ -6398,7 +6423,7 @@
       "niederschlag_letzte_30_tage_mm": null,
       "aktuelle_temperatur": {
         "wert": 14.9,
-        "zeitpunkt": "2026072223"
+        "zeitpunkt": "2026072323"
       },
       "hourly_temp_distance_km": 0.0,
       "referenzperioden": {
@@ -6556,6 +6581,11 @@
         },
         {
           "datum": "20260722",
+          "txk": null,
+          "rsk": null
+        },
+        {
+          "datum": "20260723",
           "txk": null,
           "rsk": null
         },
@@ -7321,7 +7351,7 @@
           }
         ]
       },
-      "letztes_tageswert_datum": "20260722",
+      "letztes_tageswert_datum": "20260723",
       "status": "ok",
       "fehler": null
     },
@@ -7335,8 +7365,8 @@
       "tageshoechstwert_heute_c": null,
       "niederschlag_letzte_30_tage_mm": null,
       "aktuelle_temperatur": {
-        "wert": 15.3,
-        "zeitpunkt": "2026072223"
+        "wert": 14.1,
+        "zeitpunkt": "2026072323"
       },
       "hourly_temp_distance_km": 0.0,
       "referenzperioden": {
@@ -7494,6 +7524,11 @@
         },
         {
           "datum": "20260722",
+          "txk": null,
+          "rsk": null
+        },
+        {
+          "datum": "20260723",
           "txk": null,
           "rsk": null
         },
@@ -8259,7 +8294,7 @@
           }
         ]
       },
-      "letztes_tageswert_datum": "20260722",
+      "letztes_tageswert_datum": "20260723",
       "status": "ok",
       "fehler": null
     }
