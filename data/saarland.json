@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-23T23:33:02+00:00",
+  "generated_at": "2026-07-24T07:50:01+00:00",
   "sommertag_schwelle_c": 25.0,
   "stations": {
     "00460": {
@@ -29,11 +29,6 @@
         }
       },
       "tagesreihe_30d": [
-        {
-          "datum": "20260623",
-          "txk": null,
-          "rsk": null
-        },
         {
           "datum": "20260624",
           "txk": null,
@@ -180,7 +175,7 @@
           "rsk": null
         },
         {
-          "datum": "20260723",
+          "datum": "20260724",
           "txk": null,
           "rsk": 0.0
         }
@@ -188,12 +183,6 @@
       "referenzband_temperatur": {
         "1961-1990": [
           {
-            "tag": "06-23",
-            "mean": null,
-            "p10": null,
-            "p90": null
-          },
-          {
             "tag": "06-24",
             "mean": null,
             "p10": null,
@@ -369,6 +358,12 @@
           },
           {
             "tag": "07-23",
+            "mean": null,
+            "p10": null,
+            "p90": null
+          },
+          {
+            "tag": "07-24",
             "mean": null,
             "p10": null,
             "p90": null
@@ -376,12 +371,6 @@
         ],
         "1991-2020": [
           {
-            "tag": "06-23",
-            "mean": null,
-            "p10": null,
-            "p90": null
-          },
-          {
             "tag": "06-24",
             "mean": null,
             "p10": null,
@@ -557,6 +546,12 @@
           },
           {
             "tag": "07-23",
+            "mean": null,
+            "p10": null,
+            "p90": null
+          },
+          {
+            "tag": "07-24",
             "mean": null,
             "p10": null,
             "p90": null
@@ -566,12 +561,6 @@
       "referenzband_niederschlag": {
         "1961-1990": [
           {
-            "tag": "06-23",
-            "kum_mean": 0.0,
-            "kum_p10": 0.0,
-            "kum_p90": 0.0
-          },
-          {
             "tag": "06-24",
             "kum_mean": 0.0,
             "kum_p10": 0.0,
@@ -747,6 +736,12 @@
           },
           {
             "tag": "07-23",
+            "kum_mean": 0.0,
+            "kum_p10": 0.0,
+            "kum_p90": 0.0
+          },
+          {
+            "tag": "07-24",
             "kum_mean": 0.0,
             "kum_p10": 0.0,
             "kum_p90": 0.0
@@ -754,12 +749,6 @@
         ],
         "1991-2020": [
           {
-            "tag": "06-23",
-            "kum_mean": 0.0,
-            "kum_p10": 0.0,
-            "kum_p90": 0.0
-          },
-          {
             "tag": "06-24",
             "kum_mean": 0.0,
             "kum_p10": 0.0,
@@ -935,6 +924,12 @@
           },
           {
             "tag": "07-23",
+            "kum_mean": 0.0,
+            "kum_p10": 0.0,
+            "kum_p90": 0.0
+          },
+          {
+            "tag": "07-24",
             "kum_mean": 0.0,
             "kum_p10": 0.0,
             "kum_p90": 0.0
@@ -1822,11 +1817,6 @@
       },
       "tagesreihe_30d": [
         {
-          "datum": "20260623",
-          "txk": null,
-          "rsk": null
-        },
-        {
           "datum": "20260624",
           "txk": null,
           "rsk": null
@@ -1972,7 +1962,7 @@
           "rsk": null
         },
         {
-          "datum": "20260723",
+          "datum": "20260724",
           "txk": null,
           "rsk": 0.0
         }
@@ -1980,12 +1970,6 @@
       "referenzband_temperatur": {
         "1961-1990": [
           {
-            "tag": "06-23",
-            "mean": null,
-            "p10": null,
-            "p90": null
-          },
-          {
             "tag": "06-24",
             "mean": null,
             "p10": null,
@@ -2161,6 +2145,12 @@
           },
           {
             "tag": "07-23",
+            "mean": null,
+            "p10": null,
+            "p90": null
+          },
+          {
+            "tag": "07-24",
             "mean": null,
             "p10": null,
             "p90": null
@@ -2168,12 +2158,6 @@
         ],
         "1991-2020": [
           {
-            "tag": "06-23",
-            "mean": null,
-            "p10": null,
-            "p90": null
-          },
-          {
             "tag": "06-24",
             "mean": null,
             "p10": null,
@@ -2349,6 +2333,12 @@
           },
           {
             "tag": "07-23",
+            "mean": null,
+            "p10": null,
+            "p90": null
+          },
+          {
+            "tag": "07-24",
             "mean": null,
             "p10": null,
             "p90": null
@@ -2358,12 +2348,6 @@
       "referenzband_niederschlag": {
         "1961-1990": [
           {
-            "tag": "06-23",
-            "kum_mean": 0.0,
-            "kum_p10": 0.0,
-            "kum_p90": 0.0
-          },
-          {
             "tag": "06-24",
             "kum_mean": 0.0,
             "kum_p10": 0.0,
@@ -2539,6 +2523,12 @@
           },
           {
             "tag": "07-23",
+            "kum_mean": 0.0,
+            "kum_p10": 0.0,
+            "kum_p90": 0.0
+          },
+          {
+            "tag": "07-24",
             "kum_mean": 0.0,
             "kum_p10": 0.0,
             "kum_p90": 0.0
@@ -2546,12 +2536,6 @@
         ],
         "1991-2020": [
           {
-            "tag": "06-23",
-            "kum_mean": 0.0,
-            "kum_p10": 0.0,
-            "kum_p90": 0.0
-          },
-          {
             "tag": "06-24",
             "kum_mean": 0.0,
             "kum_p10": 0.0,
@@ -2727,6 +2711,12 @@
           },
           {
             "tag": "07-23",
+            "kum_mean": 0.0,
+            "kum_p10": 0.0,
+            "kum_p90": 0.0
+          },
+          {
+            "tag": "07-24",
             "kum_mean": 0.0,
             "kum_p10": 0.0,
             "kum_p90": 0.0
@@ -2823,11 +2813,6 @@
       },
       "tagesreihe_30d": [
         {
-          "datum": "20260623",
-          "txk": null,
-          "rsk": null
-        },
-        {
           "datum": "20260624",
           "txk": null,
           "rsk": null
@@ -2973,7 +2958,7 @@
           "rsk": null
         },
         {
-          "datum": "20260723",
+          "datum": "20260724",
           "txk": null,
           "rsk": 0.0
         }
@@ -2981,12 +2966,6 @@
       "referenzband_temperatur": {
         "1961-1990": [
           {
-            "tag": "06-23",
-            "mean": null,
-            "p10": null,
-            "p90": null
-          },
-          {
             "tag": "06-24",
             "mean": null,
             "p10": null,
@@ -3162,6 +3141,12 @@
           },
           {
             "tag": "07-23",
+            "mean": null,
+            "p10": null,
+            "p90": null
+          },
+          {
+            "tag": "07-24",
             "mean": null,
             "p10": null,
             "p90": null
@@ -3169,12 +3154,6 @@
         ],
         "1991-2020": [
           {
-            "tag": "06-23",
-            "mean": null,
-            "p10": null,
-            "p90": null
-          },
-          {
             "tag": "06-24",
             "mean": null,
             "p10": null,
@@ -3350,6 +3329,12 @@
           },
           {
             "tag": "07-23",
+            "mean": null,
+            "p10": null,
+            "p90": null
+          },
+          {
+            "tag": "07-24",
             "mean": null,
             "p10": null,
             "p90": null
@@ -3359,12 +3344,6 @@
       "referenzband_niederschlag": {
         "1961-1990": [
           {
-            "tag": "06-23",
-            "kum_mean": 0.0,
-            "kum_p10": 0.0,
-            "kum_p90": 0.0
-          },
-          {
             "tag": "06-24",
             "kum_mean": 0.0,
             "kum_p10": 0.0,
@@ -3540,6 +3519,12 @@
           },
           {
             "tag": "07-23",
+            "kum_mean": 0.0,
+            "kum_p10": 0.0,
+            "kum_p90": 0.0
+          },
+          {
+            "tag": "07-24",
             "kum_mean": 0.0,
             "kum_p10": 0.0,
             "kum_p90": 0.0
@@ -3547,12 +3532,6 @@
         ],
         "1991-2020": [
           {
-            "tag": "06-23",
-            "kum_mean": 0.0,
-            "kum_p10": 0.0,
-            "kum_p90": 0.0
-          },
-          {
             "tag": "06-24",
             "kum_mean": 0.0,
             "kum_p10": 0.0,
@@ -3728,6 +3707,12 @@
           },
           {
             "tag": "07-23",
+            "kum_mean": 0.0,
+            "kum_p10": 0.0,
+            "kum_p90": 0.0
+          },
+          {
+            "tag": "07-24",
             "kum_mean": 0.0,
             "kum_p10": 0.0,
             "kum_p90": 0.0
@@ -3766,11 +3751,6 @@
       },
       "tagesreihe_30d": [
         {
-          "datum": "20260623",
-          "txk": null,
-          "rsk": null
-        },
-        {
           "datum": "20260624",
           "txk": null,
           "rsk": null
@@ -3916,7 +3896,7 @@
           "rsk": null
         },
         {
-          "datum": "20260723",
+          "datum": "20260724",
           "txk": null,
           "rsk": 0.0
         }
@@ -3924,12 +3904,6 @@
       "referenzband_temperatur": {
         "1961-1990": [
           {
-            "tag": "06-23",
-            "mean": null,
-            "p10": null,
-            "p90": null
-          },
-          {
             "tag": "06-24",
             "mean": null,
             "p10": null,
@@ -4105,6 +4079,12 @@
           },
           {
             "tag": "07-23",
+            "mean": null,
+            "p10": null,
+            "p90": null
+          },
+          {
+            "tag": "07-24",
             "mean": null,
             "p10": null,
             "p90": null
@@ -4112,12 +4092,6 @@
         ],
         "1991-2020": [
           {
-            "tag": "06-23",
-            "mean": null,
-            "p10": null,
-            "p90": null
-          },
-          {
             "tag": "06-24",
             "mean": null,
             "p10": null,
@@ -4293,6 +4267,12 @@
           },
           {
             "tag": "07-23",
+            "mean": null,
+            "p10": null,
+            "p90": null
+          },
+          {
+            "tag": "07-24",
             "mean": null,
             "p10": null,
             "p90": null
@@ -4302,12 +4282,6 @@
       "referenzband_niederschlag": {
         "1961-1990": [
           {
-            "tag": "06-23",
-            "kum_mean": 0.0,
-            "kum_p10": 0.0,
-            "kum_p90": 0.0
-          },
-          {
             "tag": "06-24",
             "kum_mean": 0.0,
             "kum_p10": 0.0,
@@ -4483,6 +4457,12 @@
           },
           {
             "tag": "07-23",
+            "kum_mean": 0.0,
+            "kum_p10": 0.0,
+            "kum_p90": 0.0
+          },
+          {
+            "tag": "07-24",
             "kum_mean": 0.0,
             "kum_p10": 0.0,
             "kum_p90": 0.0
@@ -4490,12 +4470,6 @@
         ],
         "1991-2020": [
           {
-            "tag": "06-23",
-            "kum_mean": 0.0,
-            "kum_p10": 0.0,
-            "kum_p90": 0.0
-          },
-          {
             "tag": "06-24",
             "kum_mean": 0.0,
             "kum_p10": 0.0,
@@ -4671,6 +4645,12 @@
           },
           {
             "tag": "07-23",
+            "kum_mean": 0.0,
+            "kum_p10": 0.0,
+            "kum_p90": 0.0
+          },
+          {
+            "tag": "07-24",
             "kum_mean": 0.0,
             "kum_p10": 0.0,
             "kum_p90": 0.0
@@ -5497,11 +5477,6 @@
       },
       "tagesreihe_30d": [
         {
-          "datum": "20260623",
-          "txk": null,
-          "rsk": null
-        },
-        {
           "datum": "20260624",
           "txk": null,
           "rsk": null
@@ -5647,7 +5622,7 @@
           "rsk": null
         },
         {
-          "datum": "20260723",
+          "datum": "20260724",
           "txk": null,
           "rsk": 0.0
         }
@@ -5655,12 +5630,6 @@
       "referenzband_temperatur": {
         "1961-1990": [
           {
-            "tag": "06-23",
-            "mean": null,
-            "p10": null,
-            "p90": null
-          },
-          {
             "tag": "06-24",
             "mean": null,
             "p10": null,
@@ -5836,6 +5805,12 @@
           },
           {
             "tag": "07-23",
+            "mean": null,
+            "p10": null,
+            "p90": null
+          },
+          {
+            "tag": "07-24",
             "mean": null,
             "p10": null,
             "p90": null
@@ -5843,12 +5818,6 @@
         ],
         "1991-2020": [
           {
-            "tag": "06-23",
-            "mean": null,
-            "p10": null,
-            "p90": null
-          },
-          {
             "tag": "06-24",
             "mean": null,
             "p10": null,
@@ -6024,6 +5993,12 @@
           },
           {
             "tag": "07-23",
+            "mean": null,
+            "p10": null,
+            "p90": null
+          },
+          {
+            "tag": "07-24",
             "mean": null,
             "p10": null,
             "p90": null
@@ -6033,12 +6008,6 @@
       "referenzband_niederschlag": {
         "1961-1990": [
           {
-            "tag": "06-23",
-            "kum_mean": 0.0,
-            "kum_p10": 0.0,
-            "kum_p90": 0.0
-          },
-          {
             "tag": "06-24",
             "kum_mean": 0.0,
             "kum_p10": 0.0,
@@ -6214,6 +6183,12 @@
           },
           {
             "tag": "07-23",
+            "kum_mean": 0.0,
+            "kum_p10": 0.0,
+            "kum_p90": 0.0
+          },
+          {
+            "tag": "07-24",
             "kum_mean": 0.0,
             "kum_p10": 0.0,
             "kum_p90": 0.0
@@ -6221,12 +6196,6 @@
         ],
         "1991-2020": [
           {
-            "tag": "06-23",
-            "kum_mean": 0.0,
-            "kum_p10": 0.0,
-            "kum_p90": 0.0
-          },
-          {
             "tag": "06-24",
             "kum_mean": 0.0,
             "kum_p10": 0.0,
@@ -6402,6 +6371,12 @@
           },
           {
             "tag": "07-23",
+            "kum_mean": 0.0,
+            "kum_p10": 0.0,
+            "kum_p90": 0.0
+          },
+          {
+            "tag": "07-24",
             "kum_mean": 0.0,
             "kum_p10": 0.0,
             "kum_p90": 0.0
@@ -6440,11 +6415,6 @@
       },
       "tagesreihe_30d": [
         {
-          "datum": "20260623",
-          "txk": null,
-          "rsk": null
-        },
-        {
           "datum": "20260624",
           "txk": null,
           "rsk": null
@@ -6590,7 +6560,7 @@
           "rsk": null
         },
         {
-          "datum": "20260723",
+          "datum": "20260724",
           "txk": null,
           "rsk": 0.0
         }
@@ -6598,12 +6568,6 @@
       "referenzband_temperatur": {
         "1961-1990": [
           {
-            "tag": "06-23",
-            "mean": null,
-            "p10": null,
-            "p90": null
-          },
-          {
             "tag": "06-24",
             "mean": null,
             "p10": null,
@@ -6779,6 +6743,12 @@
           },
           {
             "tag": "07-23",
+            "mean": null,
+            "p10": null,
+            "p90": null
+          },
+          {
+            "tag": "07-24",
             "mean": null,
             "p10": null,
             "p90": null
@@ -6786,12 +6756,6 @@
         ],
         "1991-2020": [
           {
-            "tag": "06-23",
-            "mean": null,
-            "p10": null,
-            "p90": null
-          },
-          {
             "tag": "06-24",
             "mean": null,
             "p10": null,
@@ -6967,6 +6931,12 @@
           },
           {
             "tag": "07-23",
+            "mean": null,
+            "p10": null,
+            "p90": null
+          },
+          {
+            "tag": "07-24",
             "mean": null,
             "p10": null,
             "p90": null
@@ -6976,12 +6946,6 @@
       "referenzband_niederschlag": {
         "1961-1990": [
           {
-            "tag": "06-23",
-            "kum_mean": 0.0,
-            "kum_p10": 0.0,
-            "kum_p90": 0.0
-          },
-          {
             "tag": "06-24",
             "kum_mean": 0.0,
             "kum_p10": 0.0,
@@ -7157,6 +7121,12 @@
           },
           {
             "tag": "07-23",
+            "kum_mean": 0.0,
+            "kum_p10": 0.0,
+            "kum_p90": 0.0
+          },
+          {
+            "tag": "07-24",
             "kum_mean": 0.0,
             "kum_p10": 0.0,
             "kum_p90": 0.0
@@ -7164,12 +7134,6 @@
         ],
         "1991-2020": [
           {
-            "tag": "06-23",
-            "kum_mean": 0.0,
-            "kum_p10": 0.0,
-            "kum_p90": 0.0
-          },
-          {
             "tag": "06-24",
             "kum_mean": 0.0,
             "kum_p10": 0.0,
@@ -7345,6 +7309,12 @@
           },
           {
             "tag": "07-23",
+            "kum_mean": 0.0,
+            "kum_p10": 0.0,
+            "kum_p90": 0.0
+          },
+          {
+            "tag": "07-24",
             "kum_mean": 0.0,
             "kum_p10": 0.0,
             "kum_p90": 0.0
@@ -7383,11 +7353,6 @@
       },
       "tagesreihe_30d": [
         {
-          "datum": "20260623",
-          "txk": null,
-          "rsk": null
-        },
-        {
           "datum": "20260624",
           "txk": null,
           "rsk": null
@@ -7533,7 +7498,7 @@
           "rsk": null
         },
         {
-          "datum": "20260723",
+          "datum": "20260724",
           "txk": null,
           "rsk": 0.0
         }
@@ -7541,12 +7506,6 @@
       "referenzband_temperatur": {
         "1961-1990": [
           {
-            "tag": "06-23",
-            "mean": null,
-            "p10": null,
-            "p90": null
-          },
-          {
             "tag": "06-24",
             "mean": null,
             "p10": null,
@@ -7722,6 +7681,12 @@
           },
           {
             "tag": "07-23",
+            "mean": null,
+            "p10": null,
+            "p90": null
+          },
+          {
+            "tag": "07-24",
             "mean": null,
             "p10": null,
             "p90": null
@@ -7729,12 +7694,6 @@
         ],
         "1991-2020": [
           {
-            "tag": "06-23",
-            "mean": null,
-            "p10": null,
-            "p90": null
-          },
-          {
             "tag": "06-24",
             "mean": null,
             "p10": null,
@@ -7910,6 +7869,12 @@
           },
           {
             "tag": "07-23",
+            "mean": null,
+            "p10": null,
+            "p90": null
+          },
+          {
+            "tag": "07-24",
             "mean": null,
             "p10": null,
             "p90": null
@@ -7919,12 +7884,6 @@
       "referenzband_niederschlag": {
         "1961-1990": [
           {
-            "tag": "06-23",
-            "kum_mean": null,
-            "kum_p10": null,
-            "kum_p90": null
-          },
-          {
             "tag": "06-24",
             "kum_mean": null,
             "kum_p10": null,
@@ -8100,6 +8059,12 @@
           },
           {
             "tag": "07-23",
+            "kum_mean": null,
+            "kum_p10": null,
+            "kum_p90": null
+          },
+          {
+            "tag": "07-24",
             "kum_mean": null,
             "kum_p10": null,
             "kum_p90": null
@@ -8107,12 +8072,6 @@
         ],
         "1991-2020": [
           {
-            "tag": "06-23",
-            "kum_mean": 0.0,
-            "kum_p10": 0.0,
-            "kum_p90": 0.0
-          },
-          {
             "tag": "06-24",
             "kum_mean": 0.0,
             "kum_p10": 0.0,
@@ -8288,6 +8247,12 @@
           },
           {
             "tag": "07-23",
+            "kum_mean": 0.0,
+            "kum_p10": 0.0,
+            "kum_p90": 0.0
+          },
+          {
+            "tag": "07-24",
             "kum_mean": 0.0,
             "kum_p10": 0.0,
             "kum_p90": 0.0
